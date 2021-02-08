@@ -1,12 +1,86 @@
 @import '../../styles/global.scss';
 
 .header {
-    height: 128px;
     border-bottom: 1px solid $color-umber;
     background: transparent;
     position: absolute;
+    padding: $spacer-large;
     z-index: 1;
     top: 0;
     left: 0;
     right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: $breakpoint-mobile) {
+        padding: $spacer-medium;
+    }
+
+    .header__logo {
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            svg {
+                fill: $color-floral-white;
+            }
+
+            &:hover svg {
+                fill: $color-apricot;
+            }
+        }
+
+        .logo__type {
+            font-size: 24px;
+            color: $color-floral-white;
+            font-family: $font-primary;
+            margin-left: $spacer-small;
+            font-weight: 700;
+
+            @media (max-width: $breakpoint-mobile) {
+                display: none;
+            }
+        }
+    }
+
+    .header__navbar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: $spacer-small 0;
+            margin-right: $spacer-medium;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            svg {
+                fill: $color-floral-white;
+            }
+
+            .svg__text {
+                font-size: 18px;
+                margin-right: $spacer-tiny;
+                color: $color-floral-white;
+                font-family: $font-primary;
+                font-weight: 700;
+                transition: $transition-basic color;
+            }
+
+            &:hover {
+                svg {
+                    fill: $color-apricot;
+                }
+                .svg__text {
+                    color: $color-apricot;
+                }
+            }
+        }
+    }
 }

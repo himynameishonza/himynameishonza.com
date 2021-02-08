@@ -19,9 +19,14 @@ $font-secondary: 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
 
 // Gutters & Spacers
 $gutter: 8px;
-$spacer: 42px;
+$spacer-large: 48px;
+$spacer-medium: 24px;
+$spacer-small: 16px;
+$spacer-tiny: 8px;
 
 // Breakpoints
 $breakpoint-desktop: 1366px;
 $breakpoint-tablet: 992px;
 $breakpoint-mobile: 876px;
+
+$transition-basic: 0.24s ease-in;
