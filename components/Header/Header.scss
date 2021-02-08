@@ -1,0 +1,12 @@
+@import '../../styles/global.scss';
+
+.header {
+    height: 128px;
+    border-bottom: 1px solid $color-umber;
+    background: transparent;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+}

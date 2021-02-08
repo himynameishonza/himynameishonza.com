@@ -1,0 +1,24 @@
+@import '../../styles/global.scss';
+
+.page {
+    width: 100%;
+    min-height: 100%;
+    background-color: $color-earie-black;
+    overflow-x: hidden;
+
+    .page__decoration {
+        position: fixed;
+        width: 200vw;
+        height: 200vw;
+        left: -160vw;
+        top: 0vh;
+        background-color: $color-jet;
+        transform: rotate(17deg);
+        opacity: 1;
+        transition: 0.2s opacity ease-in;
+
+        @media (max-width: $breakpoint-mobile) {
+            opacity: 0;
+        }
+    }
+}
