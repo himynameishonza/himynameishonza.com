@@ -6,6 +6,7 @@ export class Page extends React.Component {
     render() {
         return (
             <div className={styles['page']}>
+                {this.props.children}
                 <div className={styles['page__decoration']}></div>
             </div>
         );

@@ -1,0 +1,74 @@
+@import '../../styles/global.scss';
+
+.cookies-modal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 998;
+    background: var(--color-bg);
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+
+    .cookies-modal__illustration {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        box-sizing: border-box;
+
+        svg {
+            height: 100vh;
+            max-width: 100%;
+        }
+    }
+
+    .cookies-modal__content {
+        height: 100%;
+        border-left: 1px solid var(--color-divider);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: $spacer-large;
+        text-align: center;
+        box-sizing: border-box;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        svg {
+            display: none;
+        }
+
+        .flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            flex-grow: 0;
+            flex-shrink: 1;
+            margin: auto;
+        }
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        grid-template-columns: 1fr;
+
+        .cookies-modal__illustration {
+            display: none;
+        }
+
+        .cookies-modal__content {
+            border-left: none;
+
+            svg {
+                display: block;
+                max-height: 350px;
+                min-height: 300px;
+            }
+        }
+    }
+
+    &.cookies-modal--hide {
+        display: none;
+    }
+}

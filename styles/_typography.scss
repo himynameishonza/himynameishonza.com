@@ -1,26 +1,64 @@
 @import 'variables';
 
 h1 {
-    font-size: 64px;
+    font-size: 58px;
     font-weight: 700;
     font-family: $font-primary;
-    color: $color-floral-white;
-    line-height: 76px;
+    line-height: 67px;
+    color: var(--color-main-text);
+
+    @media (max-width: $breakpoint-tablet) {
+        font-size: 52px;
+        line-height: 64px;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        font-size: 42px;
+        line-height: 48px;
+    }
 }
 
 h2 {
     font-size: 32px;
     font-weight: 700;
     font-family: $font-primary;
-    color: $color-floral-white;
     line-height: 38px;
+    color: var(--color-main-text);
+
+    @media (max-width: $breakpoint-tablet) {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        font-size: 21px;
+        line-height: 28px;
+    }
 }
 
 h3 {
     font-size: 13px;
     font-weight: 700;
     font-family: $font-secondary;
-    color: $color-apricot;
     text-transform: uppercase;
     line-height: 23px;
+    color: var(--color-main-text);
+}
+
+p {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: $font-primary;
+    line-height: 23px;
+    margin: $spacer-small;
+    color: var(--color-main-text);
+
+    &.paragraph--narrow {
+        max-width: 45ch;
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+        font-size: 15px;
+        line-height: 24px;
+    }
 }

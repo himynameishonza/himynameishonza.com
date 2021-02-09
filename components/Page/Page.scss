@@ -3,8 +3,8 @@
 .page {
     width: 100%;
     min-height: 100%;
-    background-color: $color-earie-black;
-    overflow-x: hidden;
+    background-color: var(--color-bg);
+    z-index: 1;
 
     .page__decoration {
         position: fixed;
@@ -12,13 +12,10 @@
         height: 200vw;
         left: -160vw;
         top: 0vh;
-        background-color: $color-jet;
+        background-color: var(--color-bg-decoration);
         transform: rotate(17deg);
         opacity: 1;
-        transition: 0.2s opacity ease-in;
-
-        @media (max-width: $breakpoint-mobile) {
-            opacity: 0;
-        }
+        overflow: hidden;
+        z-index: 2;
     }
 }

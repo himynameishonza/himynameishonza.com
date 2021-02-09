@@ -1,7 +1,14 @@
-import React from "react";
+import React from 'react';
 
 export default () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" >
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 800 600"
+        style={{transform: 'scaleX(-1)'}}
+        aria-labelledby="cookiesTitle cookiesDescription"
+    >
+        <title id="cookiesTitle">Doprovodná grafika ke stránce Cookies</title>
+        <desc id="cookiesDescription">Sherlock Holmes sedí u stolu, pije čaj a kouká z okna.</desc>
         <path
             fill="#a8aeb2"
             d="M263.52 305.918c28.02-3.115 56.629 3.492 84.425-1.221 2.022-58.5.876-117.058-.27-175.582-.064-3.267-.142-6.611-1.31-9.662-1.333-3.484-3.985-6.304-6.844-8.701-11.289-9.462-26.936-13.493-41.391-10.664-4.738.927-9.334 2.549-13.633 4.746-5.528 2.824-10.608 6.644-14.437 11.53-5.583 7.124-8.249 16.176-9.13 25.184s-.096 18.084.56 27.112a947.582 947.582 0 011.713 107.011c-.41 10.087-.978 20.234.317 30.247z"

@@ -1,8 +1,8 @@
 @import '../../styles/global.scss';
 
 .header {
-    border-bottom: 1px solid $color-umber;
-    background: $color-earie-black;
+    border-bottom: 1px solid var(--color-dividers);
+    background: var(--color-bg);
     position: absolute;
     padding: $spacer-large;
     z-index: 998;
@@ -24,17 +24,17 @@
             justify-content: flex-start;
 
             svg {
-                fill: $color-floral-white;
+                fill: var(--color-main-text);
             }
 
             &:hover svg {
-                fill: $color-apricot;
+                fill: var(--color-link-hover);
             }
         }
 
         .logo__type {
             font-size: 24px;
-            color: $color-floral-white;
+            color: var(--color-main-text);
             font-family: $font-primary;
             margin-left: $spacer-small;
             font-weight: 700;
@@ -61,13 +61,13 @@
             }
 
             svg {
-                fill: $color-floral-white;
+                fill: var(--color-main-text);
             }
 
             .svg__text {
                 font-size: 16px;
                 margin-right: $spacer-tiny;
-                color: $color-floral-white;
+                color: var(--color-main-text);
                 font-family: $font-primary;
                 font-weight: 700;
                 transition: $transition-basic color;
@@ -75,10 +75,10 @@
 
             &:hover {
                 svg {
-                    fill: $color-apricot;
+                    fill: var(--color-link-hover);
                 }
                 .svg__text {
-                    color: $color-apricot;
+                    color: var(--color-link-hover);
                 }
             }
         }
