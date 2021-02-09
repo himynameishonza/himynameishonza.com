@@ -2,8 +2,8 @@
 
 .header {
     border-bottom: 1px solid $color-umber;
-    background: transparent;
-    position: absolute;
+    background: $color-earie-black;
+    position: fixed;
     padding: $spacer-large;
     z-index: 1;
     top: 0;
@@ -53,7 +53,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: $spacer-small 0;
+            height: 48px;
             margin-right: $spacer-medium;
 
             &:last-child {
@@ -65,7 +65,7 @@
             }
 
             .svg__text {
-                font-size: 18px;
+                font-size: 16px;
                 margin-right: $spacer-tiny;
                 color: $color-floral-white;
                 font-family: $font-primary;
@@ -80,6 +80,22 @@
                 .svg__text {
                     color: $color-apricot;
                 }
+            }
+        }
+
+        .social {
+            display: flex;
+            margin-right: $spacer-big;
+
+            a {
+                width: 42px;
+                height: 48px;
+                margin: 0;
+                padding: 0 4px;
+            }
+
+            @media (max-width: $breakpoint-mobile) {
+                display: none;
             }
         }
     }

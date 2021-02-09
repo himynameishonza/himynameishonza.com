@@ -13,14 +13,48 @@ export class Header extends React.Component {
                     </a>
                 </div>
                 <div className={styles['header__navbar']}>
-                    <a href="/">
-                        <span className={styles['svg__text']}>Zpět</span>
-                        <Icon icon="back" size="24" />
-                    </a>
-                    <a href="/">
-                        <span className={styles['svg__text']}>Menu</span>
-                        <Icon icon="menu" size="24" />
-                    </a>
+                    {this.props.showSocial && <div className={styles['social']}>
+                        <a href="https://www.facebook.com/himynameishonzacom">
+                            <Icon icon="social-facebook" size="21" />
+                        </a>
+                        <a href="https://twitter.com/himynameishonza">
+                            <Icon icon="social-twitter" size="21" />
+                        </a>
+                        <a href="https://www.instagram.com/himynameishonza/">
+                            <Icon icon="social-instagram" size="21" />
+                        </a>
+                        <a href="https://www.flickr.com/photos/55487287@N06/">
+                            <Icon icon="social-flickr" size="21" />
+                        </a>
+                    </div>}
+
+                    {this.props.showSettings &&
+                        <a href="/">
+                            <span className={styles['svg__text']}>O webu</span>
+                            <Icon icon="ui-about" size="24" />
+                        </a>}
+
+                    {this.props.showSettings &&
+                        <a href="/">
+                            <span className={styles['svg__text']}>Nastavení</span>
+                            <Icon icon="ui-cog" size="24" />
+                        </a>}
+
+                    {this.props.showBack &&
+                        <a href="/">
+                            <span className={styles['svg__text']}>Zpět</span>
+                            <Icon icon="ui-back" size="24" />
+                        </a>}
+                    {this.props.showClose &&
+                        <a href="/">
+                            <span className={styles['svg__text']}>Zavřít</span>
+                            <Icon icon="ui-close" size="24" />
+                        </a>}
+                    {this.props.showMenu &&
+                        <a href="/">
+                            <span className={styles['svg__text']}>Menu</span>
+                            <Icon icon="ui-menu" size="24" />
+                        </a>}
                 </div>
             </header>
         );
