@@ -1,8 +1,26 @@
 @import 'variables';
 
-h2 {
-    font-size: 28px;
+h1 {
+    font-size: 64px;
     font-weight: 700;
     font-family: $font-primary;
     color: $color-floral-white;
+    line-height: 76px;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: 700;
+    font-family: $font-primary;
+    color: $color-floral-white;
+    line-height: 38px;
+}
+
+h3 {
+    font-size: 13px;
+    font-weight: 700;
+    font-family: $font-secondary;
+    color: $color-apricot;
+    text-transform: uppercase;
+    line-height: 23px;
 }

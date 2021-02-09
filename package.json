@@ -15,11 +15,12 @@
     "next-compose-plugins": "^2.1.1",
     "next-routes": "^1.1.0",
     "node-sass": "^4.13.0",
+    "prettier": "^2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "prettier": "^2.2.1",
     "react-ga": "^3.1.2",
     "react-gtm-module": "^2.0.11",
+    "react-reveal": "^1.2.2",
     "standard": "^10.0.3",
     "webpack": "^4.41.2"
   }
