@@ -1,16 +1,12 @@
 import React from 'react';
 import styles from './Loading.scss';
-import Fade from 'react-reveal/Fade';
 export class Loading extends React.Component {
     state = {
         showLoading: false,
     };
 
     componentDidMount() {
-        this.timer = setTimeout(
-            () => this.setState({ showLoading: true }),
-            this.props.delay
-        );
+        this.timer = setTimeout(() => this.setState({showLoading: true}), this.props.delay);
     }
 
     componentWillUnmount() {
@@ -18,15 +14,18 @@ export class Loading extends React.Component {
     }
 
     render() {
-        return this.state.showLoading &&
-            <div className={styles['loading']}>
-                <div className={styles['loading__spinner']}>
-                    <div />
-                    <div />
-                    <div />
+        return (
+            this.state.showLoading && (
+                <div className={styles['loading']}>
+                    <div className={styles['loading__spinner']}>
+                        <div />
+                        <div />
+                        <div />
+                    </div>
+                    <h2>Načítám...</h2>
                 </div>
-                <h2>Načítám...</h2>
-            </div>
+            )
+        );
     }
 }
 

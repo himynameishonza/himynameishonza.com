@@ -1,31 +1,21 @@
 @import '../../styles/global.scss';
 
+@keyframes jumping {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(4px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 .side-content {
     width: 100%;
-    padding: $spacer-large;
+    padding: $spacer-big $spacer-large 0;
 
     @media (max-width: $breakpoint-mobile) {
-        padding: $spacer-small $spacer-medium;
-    }
-
-    .side-content__post {
-        margin: $spacer-medium 0;
-
-        a:hover {
-            p {
-                color: var(--color-link);
-                svg {
-                    opacity: 1;
-                }
-            }
-        }
-
-        p svg {
-            margin-left: 4px;
-            opacity: 0;
-            transform: rotate(180deg);
-            fill: var(--color-link);
-            transition: $transition-basic opacity;
-        }
+        padding: $spacer-big $spacer-medium;
     }
 }

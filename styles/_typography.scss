@@ -26,7 +26,7 @@ h2 {
     font-family: $font-primary;
     line-height: 38px;
     color: var(--color-main-text);
-    max-width: 15ch;
+    // max-width: 15ch;
 
     @media (max-width: $breakpoint-tablet) {
         font-size: 24px;
@@ -38,14 +38,14 @@ h2 {
         line-height: 28px;
     }
 
-    &.headline--side {
+    &.headline--medium {
         font-size: 24px;
         line-height: 32px;
     }
 }
 
 h3 {
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 700;
     font-family: $font-secondary;
     text-transform: uppercase;
@@ -80,7 +80,7 @@ p {
     font-size: 16px;
     font-weight: 400;
     font-family: $font-primary;
-    line-height: 23px;
+    line-height: 21px;
     margin: $spacer-small 0;
     color: var(--color-main-text);
     transition: $transition-basic color;
@@ -94,14 +94,20 @@ p {
         line-height: 24px;
     }
 
-    &.paragraph--side {
+    &.paragraph--medium {
         font-size: 14px;
-        line-height: 21px;
+        line-height: 18px;
     }
 }
 
-em {
+em,
+i {
     font-style: italic;
+}
+
+strong,
+b {
+    font-weight: bold;
 }
 
 ul {

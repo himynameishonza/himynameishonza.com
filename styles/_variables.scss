@@ -13,16 +13,9 @@
 // $color-umber: #6c574c; // Dark theme dividers
 // $color-champagne-pink: #f9e2d3; // Light theme dividers
 
-// Global theme variables;
-$color-main-text: black;
-$color-page-background: black;
-$color-page-decoration: grey;
-
 // Fonts
-$font-primary: 'New York', 'Times New Roman',
-    serif;
-$font-secondary: 'Ubuntu', 'Helvetica', 'Arial',
-    sans-serif;
+$font-primary: 'New York', 'Times New Roman', serif;
+$font-secondary: 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
 
 // Gutters & Spacers
 $gutter: 8px;
@@ -34,6 +27,7 @@ $spacer-tiny: 8px;
 
 // Breakpoints
 $breakpoint-desktop: 1366px;
+$breakpoint-laptop: 1200px;
 $breakpoint-tablet: 992px;
 $breakpoint-mobile: 876px;
 

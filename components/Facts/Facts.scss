@@ -4,9 +4,8 @@
     width: 100%;
     border-bottom: 1px var(--color-divider) solid;
     display: grid;
-    padding: $spacer-medium $spacer-large - 8px
-        $spacer-medium $spacer-large;
-    grid-template-columns: auto 48px;
+    padding: $spacer-medium $spacer-large - 8px $spacer-medium $spacer-large;
+    grid-template-columns: auto;
     column-gap: $spacer-small;
 
     .facts__content {

@@ -7,6 +7,50 @@
     margin: 0;
 }
 
+.text--margin-bottom-no {
+    margin-bottom: 0;
+}
+
 .text--margin-bottom-tiny {
     margin-bottom: $spacer-tiny;
+}
+
+.text--margin-bottom-small {
+    margin-bottom: $spacer-small;
+}
+
+.text--margin-bottom-medium {
+    margin-bottom: $spacer-medium;
+}
+
+.text--margin-bottom-big {
+    margin-bottom: $spacer-big;
+}
+
+.text--margin-bottom-large {
+    margin-bottom: $spacer-large;
+}
+
+.text--margin-top-no {
+    margin-bottom: 0;
+}
+
+.text--margin-top-tiny {
+    margin-top: $spacer-tiny;
+}
+
+.text--margin-top-small {
+    margin-top: $spacer-small;
+}
+
+.text--margin-top-medium {
+    margin-top: $spacer-medium;
+}
+
+.text--margin-top-big {
+    margin-top: $spacer-big;
+}
+
+.text--margin-top-large {
+    margin-top: $spacer-large;
 }

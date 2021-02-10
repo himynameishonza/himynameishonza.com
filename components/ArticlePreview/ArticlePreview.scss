@@ -1,0 +1,150 @@
+@import '../../styles/global.scss';
+
+@keyframes jumping {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(2px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.article-preview {
+    h2 {
+        display: grid;
+        grid-template-columns: auto 32px;
+
+        span {
+            width: 24px;
+            height: 24px;
+            padding-right: $spacer-small;
+            bottom: 0;
+            right: 0;
+            opacity: 0;
+            align-items: center;
+            justify-content: flex-end;
+            transition: $transition-basic opacity;
+
+            svg {
+                fill: var(--color-link);
+                opacity: 0;
+                animation: jumping 1s 1s forwards infinite;
+                transition: 1s opacity;
+            }
+        }
+    }
+
+    p {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        position: relative;
+    }
+
+    &:hover {
+        cursor: pointer;
+        h2 {
+            span {
+                opacity: 1;
+                svg {
+                    opacity: 1;
+                }
+            }
+        }
+
+        p {
+            color: var(--color-link-hover);
+        }
+    }
+}
+
+.article-preview--sidecar {
+    margin: $spacer-medium 0;
+    p {
+        -webkit-line-clamp: 3;
+    }
+}
+
+.article-preview--hero {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    a {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: $spacer-large;
+
+        @media (max-width: $breakpoint-laptop) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .hero__image {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        position: relative;
+
+        .image__container {
+            background-image: url('https://img.novydenik.com/wp-static/2020/07/5R0A1733.jpg?fm=jpg&q=85&w=1172');
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: 8px;
+            transition: $transition-basic filter;
+            display: block;
+
+            @media (max-width: $breakpoint-laptop) {
+                display: none;
+            }
+
+            @media (max-width: $breakpoint-tablet) {
+                padding-top: 56.25%;
+                display: block;
+            }
+        }
+
+        .image__decoration {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: var(--color-link);
+            opacity: 0;
+            transition: $transition-basic opacity;
+            border-radius: 8px;
+        }
+    }
+
+    .hero__content {
+        width: 100%;
+
+        p {
+            -webkit-line-clamp: 6;
+        }
+    }
+
+    &:hover {
+        .image__container {
+            filter: grayscale(100%) brightness(1.2) contrast(110%);
+        }
+
+        .image__decoration {
+            opacity: 0.1;
+        }
+    }
+}
+
+.article-preview--featured {
+    p {
+        -webkit-line-clamp: 6;
+    }
+}

@@ -1,0 +1,10 @@
+@import '../../styles/global.scss';
+
+nav {
+    width: 100%;
+    background: var(--color-bg);
+    z-index: 997;
+    position: fixed;
+    top: 145px;
+    bottom: 0;
+}
