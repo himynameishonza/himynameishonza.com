@@ -19,8 +19,10 @@ $color-page-background: black;
 $color-page-decoration: grey;
 
 // Fonts
-$font-primary: 'New York', 'Times New Roman', serif;
-$font-secondary: 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
+$font-primary: 'New York', 'Times New Roman',
+    serif;
+$font-secondary: 'Ubuntu', 'Helvetica', 'Arial',
+    sans-serif;
 
 // Gutters & Spacers
 $gutter: 8px;
@@ -35,4 +37,4 @@ $breakpoint-desktop: 1366px;
 $breakpoint-tablet: 992px;
 $breakpoint-mobile: 876px;
 
-$transition-basic: 0.24s ease-in;
+$transition-basic: 0.24s;

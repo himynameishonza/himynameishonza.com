@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './Facts.scss'
 import Icon from '../Icon'
 import facts from "../../public/static/facts.js";
-import classnames from 'classnames'
 
 export class Facts extends React.Component {
     constructor(props) {

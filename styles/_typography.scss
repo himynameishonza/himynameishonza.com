@@ -83,6 +83,7 @@ p {
     line-height: 23px;
     margin: $spacer-small 0;
     color: var(--color-main-text);
+    transition: $transition-basic color;
 
     &.paragraph--narrow {
         max-width: 45ch;

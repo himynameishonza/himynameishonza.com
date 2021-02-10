@@ -10,5 +10,22 @@
 
     .side-content__post {
         margin: $spacer-medium 0;
+
+        a:hover {
+            p {
+                color: var(--color-link);
+                svg {
+                    opacity: 1;
+                }
+            }
+        }
+
+        p svg {
+            margin-left: 4px;
+            opacity: 0;
+            transform: rotate(180deg);
+            fill: var(--color-link);
+            transition: $transition-basic opacity;
+        }
     }
 }
