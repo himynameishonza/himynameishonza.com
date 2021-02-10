@@ -2,7 +2,7 @@ semi: true
 tabWidth: 4
 singleQuote: true
 bracketSpacing: false
-printWidth: 100
+printWidth: 50
 arrowParens: avoid
 overrides:
   - files: ['*.js', '*.jsx']
