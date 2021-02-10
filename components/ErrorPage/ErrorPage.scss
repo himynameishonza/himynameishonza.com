@@ -1,6 +1,6 @@
 @import '../../styles/global.scss';
 
-.cookies-modal {
+.error-page {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -9,7 +9,7 @@
     display: grid;
     grid-template-columns: 50vw 50vw;
 
-    .cookies-modal__illustration {
+    .error-page__illustration {
         height: 100%;
         display: flex;
         align-items: center;
@@ -23,7 +23,7 @@
         }
     }
 
-    .cookies-modal__content {
+    .error-page__content {
         height: 100%;
         border-left: 1px solid var(--color-divider);
         display: flex;
@@ -53,11 +53,11 @@
     @media (max-width: $breakpoint-mobile) {
         grid-template-columns: 1fr;
 
-        .cookies-modal__illustration {
+        .error-page__illustration {
             display: none;
         }
 
-        .cookies-modal__content {
+        .error-page__content {
             border-left: none;
 
             svg {
@@ -67,8 +67,12 @@
             }
         }
     }
+}
 
-    &.cookies-modal--hide {
-        display: none;
+.details {
+    margin: $spacer-medium 0;
+
+    @media (max-width: $breakpoint-mobile) {
+        margin-top: 0;
     }
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import Illustration from '../Illustration';
-import {ButtonGroup, Button} from '../Button';
+import { ButtonGroup, Button } from '../Button';
 import styles from './CookiesModal.scss';
 import classnames from 'classnames';
-
 export class CookiesModal extends React.Component {
+
     render() {
         return (
             <div

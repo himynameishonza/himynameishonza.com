@@ -1,10 +1,9 @@
 import React from 'react';
+import Fade from 'react-reveal/Fade';
 import Head from '../components/Head';
 import Page from '../components/Page';
 import Header from '../components/Header';
-import Loading from '../components/Loading';
 import CookiesModal from '../components/CookiesModal';
-import Fade from 'react-reveal/Fade';
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
@@ -14,7 +13,6 @@ export class Homepage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loadingModal: true,
             renderPage: false,
             showCookiesModal: !cookiesExist,
         };
@@ -22,18 +20,18 @@ export class Homepage extends React.Component {
 
     setCookies(userChoice) {
         if (userChoice === true) {
-            cookies.set('cookiesSaved', true, {path: '/'});
-            cookies.set('theme', 'dark', {path: '/'});
-            cookies.set('markRead', true, {path: '/'});
-            this.setState({showCookiesModal: false});
+            cookies.set('cookiesSaved', true, { path: '/' });
+            cookies.set('theme', 'dark', { path: '/' });
+            cookies.set('markRead', true, { path: '/' });
+            this.setState({ showCookiesModal: false });
         } else {
-            this.setState({showCookiesModal: false});
+            this.setState({ showCookiesModal: false });
             return;
         }
     }
 
     componentDidMount() {
-        this.setState({loadingModal: false, renderPage: true});
+        this.setState({ renderPage: true });
         document.body.classList.add('theme--' + cookiesTheme);
 
         // This require needs to be fixed - it is loading both stylesheets!
@@ -45,13 +43,12 @@ export class Homepage extends React.Component {
     }
 
     render() {
+
+
         return (
             <>
-                <Head theme={cookiesTheme} />
-                <Fade opposite when={this.state.loadingModal}>
-                    <Loading hide={this.state.renderPage} />
-                </Fade>
 
+                <Head theme={cookiesTheme} />
                 {this.state.showCookiesModal && (
                     <CookiesModal
                         saveCookies={() => this.setCookies(true)}

@@ -1,11 +1,13 @@
 @import 'variables';
 
 h1 {
-    font-size: 58px;
+    font-size: 64px;
     font-weight: 700;
     font-family: $font-primary;
     line-height: 67px;
     color: var(--color-main-text);
+    max-width: 20ch;
+    margin: $spacer-small 0;
 
     @media (max-width: $breakpoint-tablet) {
         font-size: 52px;
@@ -24,6 +26,7 @@ h2 {
     font-family: $font-primary;
     line-height: 38px;
     color: var(--color-main-text);
+    max-width: 15ch;
 
     @media (max-width: $breakpoint-tablet) {
         font-size: 24px;
@@ -42,7 +45,30 @@ h3 {
     font-family: $font-secondary;
     text-transform: uppercase;
     line-height: 23px;
+    color: var(--color-link);
+    margin-top: $spacer-medium;
+
+    @media (max-width: $breakpoint-mobile) {
+        margin-top: $spacer-tiny;
+    }
+}
+
+h4 {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: $font-secondary;
+    line-height: 23px;
+    margin: $spacer-small;
     color: var(--color-main-text);
+
+    a {
+        color: var(--color-link);
+        transition: $transition-basic color;
+
+        &:hover {
+            color: var(--color-link-hover);
+        }
+    }
 }
 
 p {
@@ -60,5 +86,28 @@ p {
     @media (max-width: $breakpoint-tablet) {
         font-size: 15px;
         line-height: 24px;
+    }
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+        font-size: 16px;
+        font-weight: 400;
+        font-family: $font-primary;
+        line-height: 23px;
+        margin: $spacer-tiny 0;
+        color: var(--color-main-text);
+
+        &::before {
+            content: '\2022';
+            color: var(--color-link);
+            font-weight: bold;
+            display: inline-block;
+            width: 24px;
+            margin-left: -24px;
+        }
     }
 }

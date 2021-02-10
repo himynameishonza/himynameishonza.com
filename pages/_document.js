@@ -1,4 +1,5 @@
-import Document, {Html, Head, Main, NextScript} from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { withRouter } from 'next/router';
 
 export default class CustomDocument extends Document {
     render() {
