@@ -1,7 +1,7 @@
 @import '../../styles/global.scss';
 
 .header {
-    border-bottom: 1px solid var(--color-dividers);
+    border-bottom: 1px solid var(--color-divider);
     background: var(--color-bg);
     position: absolute;
     padding: $spacer-large;
@@ -70,7 +70,8 @@
                 color: var(--color-main-text);
                 font-family: $font-primary;
                 font-weight: 700;
-                transition: $transition-basic color;
+                transition: $transition-basic
+                    color;
             }
 
             &:hover {
@@ -78,7 +79,9 @@
                     fill: var(--color-link-hover);
                 }
                 .svg__text {
-                    color: var(--color-link-hover);
+                    color: var(
+                        --color-link-hover
+                    );
                 }
             }
         }

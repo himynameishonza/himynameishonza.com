@@ -47,7 +47,6 @@ export class Homepage extends React.Component {
 
         return (
             <>
-
                 <Head theme={cookiesTheme} />
                 {this.state.showCookiesModal && (
                     <CookiesModal
@@ -56,10 +55,8 @@ export class Homepage extends React.Component {
                     />
                 )}
 
-                <Fade opposite when={this.state.renderPage && !this.state.showCookiesModal}>
-                    <Header showMenu showSocial />
-                    <Page></Page>
-                </Fade>
+                <Header showMenu showSocial />
+                <Page type="homepage">{this.props.children}</Page>
             </>
         );
     }

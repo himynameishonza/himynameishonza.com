@@ -1,0 +1,37 @@
+@import '../../styles/global.scss';
+
+.facts {
+    width: 100%;
+    border-bottom: 1px var(--color-divider) solid;
+    display: grid;
+    padding: $spacer-medium $spacer-large - 8px
+        $spacer-medium $spacer-large;
+    grid-template-columns: auto 48px;
+    column-gap: $spacer-small;
+
+    .facts__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .facts__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+            fill: var(--color-link);
+            width: 42px;
+            height: 42px;
+
+            @media (max-width: $breakpoint-mobile) {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        padding: $spacer-small $spacer-medium;
+    }
+}

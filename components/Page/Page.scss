@@ -4,7 +4,7 @@
     width: 100%;
     min-height: 100%;
     background-color: var(--color-bg);
-    z-index: 1;
+    position: relative;
 
     .page__decoration {
         position: fixed;
@@ -12,10 +12,76 @@
         height: 200vw;
         left: -160vw;
         top: 0vh;
-        background-color: var(--color-bg-decoration);
+        background-color: var(
+            --color-bg-decoration
+        );
         transform: rotate(17deg);
-        opacity: 1;
         overflow: hidden;
-        z-index: 2;
+    }
+
+    .page__content {
+        left: 0;
+        right: 0;
+        top: 145px;
+        bottom: 0;
+        position: absolute;
+        z-index: 1;
+
+        @media (max-width: $breakpoint-mobile) {
+            top: 97px;
+        }
+    }
+
+    &.page--homepage {
+        overflow: hidden;
+
+        .page__content {
+            display: grid;
+            height: 100%;
+            overflow: hidden;
+            grid-template-columns: 1fr 1fr 1fr 450px;
+            grid-template-rows: 1fr 1fr;
+            gap: 0px 0px;
+            grid-template-areas:
+                'hero-article hero-article hero-article side-content'
+                'articles articles articles side-content';
+
+            @media (max-width: $breakpoint-tablet) {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                grid-template-areas:
+                    'hero-article  side-content'
+                    'articles  side-content';
+            }
+
+            @media (max-width: $breakpoint-mobile) {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+                grid-template-areas:
+                    'hero-article'
+                    'articles'
+                    'side-content';
+            }
+
+            .hero-article {
+                grid-area: hero-article;
+            }
+
+            .articles {
+                grid-area: articles;
+            }
+
+            .side-content {
+                grid-area: side-content;
+                border-left: 1px
+                    var(--color-divider) solid;
+
+                @media (max-width: $breakpoint-mobile) {
+                    border-left: none;
+                    border-top: 1px
+                        var(--color-divider) solid;
+                }
+            }
+        }
     }
 }

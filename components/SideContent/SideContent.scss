@@ -1,0 +1,14 @@
+@import '../../styles/global.scss';
+
+.side-content {
+    width: 100%;
+    padding: $spacer-large;
+
+    @media (max-width: $breakpoint-mobile) {
+        padding: $spacer-small $spacer-medium;
+    }
+
+    .side-content__post {
+        margin: $spacer-medium 0;
+    }
+}
