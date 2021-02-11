@@ -16,7 +16,7 @@ export function HeroArticlePreview(props) {
                     <h2>
                         {props.title}
                         <span>
-                            <Icon icon="ui-forward" size="16" />
+                            <Icon icon="ui-forward" size="21" />
                         </span>
                     </h2>
                     <p>{props.excerpt}</p>
@@ -33,7 +33,7 @@ export function SidecarArticlePreview(props) {
                 <h2 className={classnames(styles['headline--medium'], styles['text--no-margin'], styles['text--margin-bottom-tiny'])}>
                     {props.title}
                     <span>
-                        <Icon icon="ui-forward" size="16" />
+                        <Icon icon="ui-forward" size="12" />
                     </span>
                 </h2>
                 <p className={classnames(styles['paragraph--medium'], styles['text--no-margin'], styles['text--margin-bottom-big'])}>

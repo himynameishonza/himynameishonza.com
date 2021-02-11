@@ -10,7 +10,7 @@ function Facts() {
         <section className={styles['facts']} aria-label="Sekce (Bez)významná fakta">
             <div className={styles['facts__content']}>
                 <h3 className={classnames(styles['text--no-margin'], styles['text--margin-bottom-tiny'])}>(Bez)významná fakta</h3>
-                <p className={styles['text--no-margin']}>
+                <p className={classnames(styles['text--no-margin'], styles['paragraph--medium'])}>
                     <strong>{fact.content}</strong>
                 </p>
             </div>

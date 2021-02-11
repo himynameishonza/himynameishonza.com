@@ -1,5 +1,9 @@
 @import 'variables';
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 h1 {
     font-size: 64px;
     font-weight: 700;
@@ -21,26 +25,25 @@ h1 {
 }
 
 h2 {
-    font-size: 32px;
+    font-size: 38px;
     font-weight: 700;
     font-family: $font-primary;
-    line-height: 38px;
+    line-height: 40px;
     color: var(--color-main-text);
-    // max-width: 15ch;
 
     @media (max-width: $breakpoint-tablet) {
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 32px;
+        line-height: 36px;
     }
 
     @media (max-width: $breakpoint-mobile) {
-        font-size: 21px;
-        line-height: 28px;
+        font-size: 28px;
+        line-height: 30px;
     }
 
     &.headline--medium {
         font-size: 24px;
-        line-height: 32px;
+        line-height: 25px;
     }
 }
 
@@ -79,7 +82,7 @@ h4 {
 p {
     font-size: 16px;
     font-weight: 400;
-    font-family: $font-primary;
+    font-family: $font-tertiary;
     line-height: 21px;
     margin: $spacer-small 0;
     color: var(--color-main-text);

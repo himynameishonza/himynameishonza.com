@@ -79,11 +79,19 @@
                 @media (max-width: $breakpoint-tablet) {
                     grid-template-columns: 1fr;
                     row-gap: $spacer-large;
+                    article:nth-child(2),
+                    article:nth-child(3) {
+                        display: none;
+                    }
                 }
 
                 @media (max-width: $breakpoint-mobile) {
                     padding: $spacer-medium;
                     row-gap: $spacer-medium;
+                    article:nth-child(2),
+                    article:nth-child(3) {
+                        display: block;
+                    }
                 }
             }
 

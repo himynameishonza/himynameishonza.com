@@ -8,6 +8,7 @@
     background: var(--color-bg);
     display: grid;
     grid-template-columns: 50vw 50vw;
+    overflow-y: auto;
 
     .error-page__illustration {
         height: 100%;
@@ -32,6 +33,10 @@
         padding: $spacer-large;
         text-align: center;
         box-sizing: border-box;
+
+        @media (max-width: $breakpoint-mobile) {
+            padding: $spacer-large $spacer-medium;
+        }
 
         svg {
             display: none;
