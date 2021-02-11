@@ -8,6 +8,7 @@ export class Header extends React.Component {
         return (
             <>
                 <header className={styles['header']}>
+
                     <div className={styles['header__logo']}>
                         <a href="/" aria-label="Přejít na hlavní stránku">
                             <Icon icon="logo" size="48" />
@@ -15,7 +16,7 @@ export class Header extends React.Component {
                         </a>
                     </div>
                     <div className={styles['header__navbar']}>
-                        {this.props.showSocial && (
+                        {this.props.showSocial && !this.props.navState && (
                             <div className={styles['social']}>
                                 <a href="https://www.facebook.com/himynameishonzacom" aria-label="Odkaz na facebookový profil autora webu">
                                     <Icon icon="social-facebook" size="21" />
@@ -31,42 +32,44 @@ export class Header extends React.Component {
                                 </a>
                             </div>
                         )}
-
-                        {this.props.showSettings && (
-                            <a href="/">
+                        {this.props.showAbout && this.props.navState && (
+                            <a href="/o-webu" aria-label="Přejít na stránku O webu">
                                 <span className={styles['svg__text']}>O webu</span>
                                 <Icon icon="ui-about" size="24" />
                             </a>
                         )}
 
-                        {this.props.showSettings && (
-                            <a href="/">
+                        {this.props.showSettings && this.props.navState && (
+                            <a href="/" aria-label="Přejít na stránku Nastavení">
                                 <span className={styles['svg__text']}>Nastavení</span>
                                 <Icon icon="ui-cog" size="24" />
                             </a>
                         )}
 
+
                         {this.props.showBack && (
-                            <a href="/">
+                            <a href="/" aria-label="Zpět do hlavního menu">
                                 <span className={styles['svg__text']}>Zpět</span>
                                 <Icon icon="ui-back" size="24" />
                             </a>
                         )}
-                        {this.props.navOpened && (
-                            <a onClick={this.props.navToggle} aria-label="Zavřít hlavní menu">
+
+                        {this.props.navState && (
+                            <a aria-label="Zavřít hlavní menu" onClick={this.props.navToggle}>
                                 <span className={styles['svg__text']}>Zavřít</span>
                                 <Icon icon="ui-close" size="24" />
                             </a>
                         )}
-                        {!this.props.navOpened && (
-                            <a onClick={this.props.navToggle} aria-label="Otevřít hlavní menu">
+
+                        {!this.props.navState && (
+                            <a aria-label="Otevřít hlavní menu" onClick={this.props.navToggle}>
                                 <span className={styles['svg__text']}>Menu</span>
                                 <Icon icon="ui-menu" size="24" />
                             </a>
                         )}
                     </div>
                 </header>
-                {this.props.navOpened && <Navigation />}
+                { this.props.navState && <Navigation />}
             </>
         );
     }

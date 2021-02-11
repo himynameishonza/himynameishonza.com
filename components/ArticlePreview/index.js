@@ -8,9 +8,8 @@ export function HeroArticlePreview(props) {
         <article className={classnames(styles['article-preview'], styles['article-preview--hero'])}>
             <a href={props.link} aria-label={'Odkaz na článek ' + props.title + ' z rubriky ' + props.category}>
                 <div className={styles['hero__image']}>
-                    <div className={styles['image__container']}>
-                        <div className={styles['image__decoration']}></div>
-                    </div>
+                    <div className={styles['image__container']}></div>
+                    <div className={styles['image__decoration']}></div>
                 </div>
                 <div className={styles['hero__content']}>
                     <h3 className={styles['text--margin-bottom-tiny']}>{props.category}</h3>

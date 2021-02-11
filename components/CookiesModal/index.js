@@ -1,6 +1,6 @@
 import React from 'react';
 import Illustration from '../Illustration';
-import {ButtonGroup, Button} from '../Button';
+import { ButtonGroup, Button } from '../Button';
 import styles from './CookiesModal.scss';
 import classnames from 'classnames';
 
@@ -20,7 +20,7 @@ function CookiesModal(props) {
                     <h2>Dáte si sušenku?</h2>
                     <Illustration illustration="cookies" />
                     <p className={styles['paragraph--narrow']}>
-                        Pro využití všech funkcí je potřeba ukládat soubory cookies. Souhlasíte s jejich ukládáním ve vašem prohlížeči?
+                        Pro využití všech funkcí webu je potřeba ukládat soubory cookies. Souhlasíte s jejich ukládáním ve vašem prohlížeči?
                     </p>
                     <ButtonGroup>
                         <Button type="secondary" label="Ne, je to kampaň" onclick={props.discardCookies} />

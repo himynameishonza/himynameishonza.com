@@ -1,11 +1,11 @@
 @import '../../styles/global.scss';
 
-.page {
+.layout {
     width: 100%;
     background-color: var(--color-bg);
     position: relative;
 
-    .page__decoration {
+    .layout__decoration {
         position: fixed;
         width: 200vw;
         height: 200vw;
@@ -13,18 +13,17 @@
         top: 0vh;
         background-color: var(--color-bg-decoration);
         transform: rotate(17deg);
-        overflow: hidden;
     }
 
-    .page__content {
+    .layout__content {
         position: relative;
         z-index: 1;
     }
 
-    &.page--homepage {
-        .page__content {
+    &.layout--homepage {
+        .layout__content {
+            border-bottom: 1px var(--color-divider) solid;
             display: grid;
-            height: 100%;
             overflow: hidden;
             grid-template-columns: 1fr 1fr 1fr 350px;
             grid-template-rows: auto auto;

@@ -6,7 +6,7 @@ export default class CustomDocument extends Document {
         return (
             <Html lang="cs">
                 <Head />
-                <body>
+                <body className="theme--light">
                     <Main />
                     <NextScript />
                 </body>

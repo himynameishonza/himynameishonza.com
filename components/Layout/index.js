@@ -1,17 +1,20 @@
 import React from 'react';
-import '../../styles/global.scss';
-import styles from './Page.scss';
 import Facts from '../Facts';
 import SideContent from '../SideContent';
+import { HeroArticlePreview, FeaturedArticlePreview } from '../ArticlePreview';
+import '../../styles/global.scss';
+import styles from './Layout.scss';
 import classnames from 'classnames';
-import {HeroArticlePreview, FeaturedArticlePreview} from '../ArticlePreview';
-export class Page extends React.Component {
+
+
+export class Layout extends React.Component {
     render() {
         return (
-            <div className={classnames(styles['page'], styles['page--' + this.props.type])}>
+
+            <div className={classnames(styles['layout'], styles['layout--' + this.props.type])}>
                 {this.props.type === 'homepage' && (
                     <>
-                        <div className={styles['page__content']}>
+                        <div className={styles['layout__content']}>
                             <div className={styles['hero-article']}>
                                 <HeroArticlePreview
                                     category="Knihy"
@@ -49,7 +52,7 @@ export class Page extends React.Component {
                                 <SideContent />
                             </div>
                         </div>
-                        <div className={styles['page__decoration']} />
+                        <div className={styles['layout__decoration']} />
                     </>
                 )}
             </div>
@@ -57,4 +60,4 @@ export class Page extends React.Component {
     }
 }
 
-export default Page;
+export default Layout;

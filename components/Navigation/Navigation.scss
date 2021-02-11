@@ -7,4 +7,8 @@ nav {
     position: fixed;
     top: 145px;
     bottom: 0;
+
+    @media (max-width: $breakpoint-mobile) {
+        top: 97px;
+    }
 }

@@ -4,7 +4,7 @@
     width: 100vw;
     height: 100vh;
     position: fixed;
-    z-index: 999;
+    z-index: 998;
     background: var(--color-bg);
     display: grid;
     grid-template-columns: 50vw 50vw;
@@ -32,8 +32,6 @@
         padding: $spacer-large;
         text-align: center;
         box-sizing: border-box;
-        overflow-y: scroll;
-        overflow-x: hidden;
 
         svg {
             display: none;

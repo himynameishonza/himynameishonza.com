@@ -1,0 +1,59 @@
+@import '../../styles/global.scss';
+
+.footer {
+    position: relative;
+    padding: $spacer-medium $spacer-large;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: $breakpoint-mobile) {
+        padding: $spacer-medium;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+    }
+
+    .footer__left {
+        font-family: $font-secondary;
+        color: var(--color-divider);
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+        font-size: 11px;
+        padding: $spacer-small 0;
+    }
+
+    .footer__right ul {
+        padding: 0;
+        list-style: none;
+        display: flex;
+
+        li {
+            &::before {
+                display: none;
+            }
+            font-family: $font-secondary;
+            color: var(--color-divider);
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 12px;
+            margin-right: $spacer-medium;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            a {
+                color: var(--color-link-hover);
+                transition: $transition-basic color;
+                padding: $spacer-small 0;
+
+                &:hover {
+                    color: var(--color-link);
+                }
+            }
+        }
+    }
+}
