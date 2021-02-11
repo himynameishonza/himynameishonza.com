@@ -70,6 +70,10 @@
                 font-family: $font-primary;
                 font-weight: 700;
                 transition: $transition-basic color;
+
+                @media (max-width: $breakpoint-mobile) {
+                    display: none;
+                }
             }
 
             &:hover {

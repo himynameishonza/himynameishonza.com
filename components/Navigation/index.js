@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Navigation.scss';
 import quotes from '../../public/static/quotes.js';
-import { Fade, Bounce } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 function Navigation(props) {
     let quote = quotes[Math.floor(Math.random() * quotes.length)];

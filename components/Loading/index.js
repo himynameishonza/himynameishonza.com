@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Loading.scss';
-import Fade from 'react-reveal';
+import { Fade } from "react-awesome-reveal";
 import classnames from 'classnames';
 
 
@@ -12,7 +12,7 @@ function Loading(props) {
     });
 
     return (
-        <Fade when={!status}>
+        <Fade>
             <div className={classnames(styles['loading'], { [styles['loading--hide']]: status })}>
                 <div className={styles['loading__spinner']}>
                     <div />
@@ -20,7 +20,8 @@ function Loading(props) {
                     <div />
                 </div>
                 <h2>Načítám...</h2>
-            </div></Fade>
+            </div>
+        </Fade>
     );
 }
 

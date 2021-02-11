@@ -75,7 +75,7 @@
         box-sizing: border-box;
 
         @media (max-width: $breakpoint-mobile) {
-            padding: $spacer-large $spacer-medium;
+            padding: $spacer-medium;
         }
 
         ul {
