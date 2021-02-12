@@ -53,7 +53,7 @@ function Layout(props) {
         <>
 
             <Loading show={renderPage} />
-            <Head theme={cookiesTheme} />
+            <Head theme={cookiesTheme} title={props.title} />
             {
                 cookiesModal && (
                     <CookiesModal saveCookies={() => initCookies(true)} discardCookies={() => initCookies(false)} />
@@ -103,6 +103,7 @@ function Layout(props) {
                             </div>
                         </div>
                         <div className={styles['layout__decoration']} />
+                        <Footer />
                     </>
                 )}
 
@@ -116,10 +117,8 @@ function Layout(props) {
                             </div>
                             <div className={styles['info-page__content']}>
                                 <div className={styles['content-container']}>
-                                    <h1 className={styles['text--align-center']}>O webu</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel libero accumsan, ornare magna at, molestie lorem. Donec mollis tortor eget nunc sagittis porttitor. Aliquam erat volutpat. Donec auctor sollicitudin aliquet. In hac habitasse platea dictumst. Nullam odio urna, sodales laoreet erat in, faucibus malesuada tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et nibh in mi sagittis volutpat a dapibus dui. Ut tincidunt fermentum sem vitae faucibus. Praesent enim augue, euismod sed dapibus eu, auctor sed ante. Morbi malesuada, turpis vel aliquam varius, urna sapien elementum diam, at varius neque urna vel mi. Nam ante turpis, molestie cursus nisl vitae, feugiat hendrerit nulla. Nullam ornare facilisis velit ut congue.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel libero accumsan, ornare magna at, molestie lorem. Donec mollis tortor eget nunc sagittis porttitor. Aliquam erat volutpat. Donec auctor sollicitudin aliquet. In hac habitasse platea dictumst. Nullam odio urna, sodales laoreet erat in, faucibus malesuada tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et nibh in mi sagittis volutpat a dapibus dui. Ut tincidunt fermentum sem vitae faucibus. Praesent enim augue, euismod sed dapibus eu, auctor sed ante. Morbi malesuada, turpis vel aliquam varius, urna sapien elementum diam, at varius neque urna vel mi. Nam ante turpis, molestie cursus nisl vitae, feugiat hendrerit nulla. Nullam ornare facilisis velit ut congue.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel libero accumsan, ornare magna at, molestie lorem. Donec mollis tortor eget nunc sagittis porttitor. Aliquam erat volutpat. Donec auctor sollicitudin aliquet. In hac habitasse platea dictumst. Nullam odio urna, sodales laoreet erat in, faucibus malesuada tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et nibh in mi sagittis volutpat a dapibus dui. Ut tincidunt fermentum sem vitae faucibus. Praesent enim augue, euismod sed dapibus eu, auctor sed ante. Morbi malesuada, turpis vel aliquam varius, urna sapien elementum diam, at varius neque urna vel mi. Nam ante turpis, molestie cursus nisl vitae, feugiat hendrerit nulla. Nullam ornare facilisis velit ut congue.</p>
+                                    <h1>{props.title}</h1>
+                                    {props.children}
                                 </div>
                             </div>
                         </div>
