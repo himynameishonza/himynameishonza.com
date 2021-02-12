@@ -1,18 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import classnames from 'classnames';
+import Cookies from 'universal-cookie';
+import Head from '../Head';
+import Header from '../Header';
 import Facts from '../Facts';
 import SideContent from '../SideContent';
+import CookiesModal from '../CookiesModal';
 import { HeroArticlePreview, FeaturedArticlePreview } from '../ArticlePreview';
+import Loading from '../Loading';
+import Illustration from '../Illustration';
+import Footer from '../Footer';
 import '../../styles/global.scss';
 import styles from './Layout.scss';
-import classnames from 'classnames';
 
+const cookies = new Cookies();
+const cookiesExist = cookies.get('cookiesSaved') === undefined ? false : true;
+let cookiesTheme = cookies.get('theme') === undefined ? 'light' : cookies.get('theme');
 
-export class Layout extends React.Component {
-    render() {
-        return (
+function Layout(props) {
 
-            <div className={classnames(styles['layout'], styles['layout--' + this.props.type])}>
-                {this.props.type === 'homepage' && (
+    const [renderPage, setRenderPage] = useState(false);
+    const [cookiesModal, setCookiesModal] = useState(!cookiesExist);
+    const [navState, setNavState] = useState(false);
+    const [scrollable, setScrollable] = useState(false);
+
+    function initCookies(userChoice) {
+        if (userChoice === true) {
+            cookies.set('cookiesSaved', true, { path: '/' });
+            cookies.set('theme', 'light', { path: '/' });
+            cookies.set('markRead', true, { path: '/' });
+            setCookiesModal(false);
+            setScrollable(false);
+        } else {
+            setCookiesModal(false);
+            setScrollable(false);
+            return;
+        }
+    }
+
+    useEffect(() => {
+        document.body.classList.remove('theme--dark', 'theme--light');
+        document.body.classList.add('theme--' + cookiesTheme);
+
+        !scrollable ? document.body.classList.add('scroll-locked') : document.body.classList.remove('scroll-locked');
+
+        cookiesModal || navState || !renderPage ? setScrollable(false) : setScrollable(true);
+
+        setRenderPage(true)
+    });
+
+    return (
+        <>
+
+            <Loading show={renderPage} />
+            <Head theme={cookiesTheme} />
+            {
+                cookiesModal && (
+                    <CookiesModal saveCookies={() => initCookies(true)} discardCookies={() => initCookies(false)} />
+                )
+            }
+            <Header showAbout showSettings showSocial navToggle={() => setNavState(!navState)} navState={navState} />
+
+            <div className={classnames(styles['layout'], styles['layout--' + props.type])}>
+                {props.type === 'homepage' && (
                     <>
                         <div className={styles['layout__content']}>
                             <div className={styles['hero-article']}>
@@ -55,9 +105,30 @@ export class Layout extends React.Component {
                         <div className={styles['layout__decoration']} />
                     </>
                 )}
+
+                {props.type === 'info-page' && (
+                    <>
+                        <div className={styles['layout__content']}>
+                            <div className={styles['info-page__illustration']}>
+                                <div className={styles['illustration__container']}>
+                                    <Illustration illustration={'error500'} />
+                                </div>
+                            </div>
+                            <div className={styles['info-page__content']}>
+                                <div className={styles['content-container']}>
+                                    <h1 className={styles['text--align-center']}>O webu</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel libero accumsan, ornare magna at, molestie lorem. Donec mollis tortor eget nunc sagittis porttitor. Aliquam erat volutpat. Donec auctor sollicitudin aliquet. In hac habitasse platea dictumst. Nullam odio urna, sodales laoreet erat in, faucibus malesuada tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et nibh in mi sagittis volutpat a dapibus dui. Ut tincidunt fermentum sem vitae faucibus. Praesent enim augue, euismod sed dapibus eu, auctor sed ante. Morbi malesuada, turpis vel aliquam varius, urna sapien elementum diam, at varius neque urna vel mi. Nam ante turpis, molestie cursus nisl vitae, feugiat hendrerit nulla. Nullam ornare facilisis velit ut congue.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel libero accumsan, ornare magna at, molestie lorem. Donec mollis tortor eget nunc sagittis porttitor. Aliquam erat volutpat. Donec auctor sollicitudin aliquet. In hac habitasse platea dictumst. Nullam odio urna, sodales laoreet erat in, faucibus malesuada tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et nibh in mi sagittis volutpat a dapibus dui. Ut tincidunt fermentum sem vitae faucibus. Praesent enim augue, euismod sed dapibus eu, auctor sed ante. Morbi malesuada, turpis vel aliquam varius, urna sapien elementum diam, at varius neque urna vel mi. Nam ante turpis, molestie cursus nisl vitae, feugiat hendrerit nulla. Nullam ornare facilisis velit ut congue.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel libero accumsan, ornare magna at, molestie lorem. Donec mollis tortor eget nunc sagittis porttitor. Aliquam erat volutpat. Donec auctor sollicitudin aliquet. In hac habitasse platea dictumst. Nullam odio urna, sodales laoreet erat in, faucibus malesuada tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et nibh in mi sagittis volutpat a dapibus dui. Ut tincidunt fermentum sem vitae faucibus. Praesent enim augue, euismod sed dapibus eu, auctor sed ante. Morbi malesuada, turpis vel aliquam varius, urna sapien elementum diam, at varius neque urna vel mi. Nam ante turpis, molestie cursus nisl vitae, feugiat hendrerit nulla. Nullam ornare facilisis velit ut congue.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
+
             </div>
-        );
-    }
+        </>
+    );
 }
 
 export default Layout;

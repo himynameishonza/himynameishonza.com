@@ -30,9 +30,12 @@ $spacer-tiny: 8px;
 $breakpoint-desktop: 1366px;
 $breakpoint-laptop: 1200px;
 $breakpoint-tablet: 992px;
-$breakpoint-mobile: 876px;
+$breakpoint-mobile: 640px;
 
 $transition-basic: 0.24s;
+
+$header-desktop: 145px;
+$header-mobile: 97px;
 
 :global {
     body.theme--dark {

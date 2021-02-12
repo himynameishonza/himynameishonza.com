@@ -2,18 +2,17 @@
 
 .navigation {
     width: 100%;
+    height: calc(100% - #{$header-desktop});
     background: var(--color-bg);
     z-index: 997;
     position: fixed;
-    top: 145px;
-    bottom: 0;
     display: grid;
     grid-template-columns: 50vw 50vw;
     overflow-x: hidden;
     overflow-y: auto;
 
     @media (max-width: $breakpoint-mobile) {
-        top: 97px;
+        height: calc(100% - #{$header-mobile});
         grid-template-columns: 1fr;
     }
 
@@ -66,6 +65,7 @@
     }
 
     .nav__content {
+        height: 100%;
         border-left: 1px solid var(--color-divider);
         display: flex;
         align-items: center;
