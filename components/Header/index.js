@@ -10,7 +10,6 @@ function Header(props) {
     return (
         <>
             <header className={styles['header']}>
-
                 <div className={styles['header__logo']}>
                     <a href="/" aria-label="Přejít na hlavní stránku">
                         <Icon icon="logo" size="48" />

@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Settings.scss';
-import { Fade } from "react-awesome-reveal";
-import Illustration from '../Illustration'
-
+import Illustration from '../Illustration';
+import { useTransition, animated } from 'react-spring';
+import classnames from 'classnames';
+import { readThemeCookie, readMarkReadCookie, saveThemeCookie } from '../../utils/cookies';
 
 function Settings(props) {
-
-    const [theme, setTheme] = useState(false);
-    const [markRead, setMarkRead] = useState(true);
     const [settingsChanged, setSettingsChanged] = useState(false);
+    const transitions = useTransition(settingsChanged, null, {
+        from: { position: 'absolute', bottom: 0, opacity: 0 }, enter: { opacity: 1 },
+        leave: { opacity: 0 },
+    })
 
-
-    function changeSettings(settingTheme, settingMarkread) {
-        setTheme(settingTheme);
-        setMarkRead(settingMarkread);
-
-        setSettingsChanged(true)
-        setTimeout(() => {
-            setSettingsChanged(false)
-        }, 3000);
-
-    }
+    useEffect(() => {
+        if (settingsChanged) {
+            const timer = setTimeout(() => {
+                setSettingsChanged(false)
+            }, 3000);
+            return () => clearTimeout(timer);
+        }
+    });
 
     return <section className={styles["settings"]}>
 
@@ -29,51 +28,53 @@ function Settings(props) {
         </div>
 
         <nav className={styles['settings__content']}>
-            <Fade duration={300} direction="right" cascade damping="0.1">
-                <ul>
-                    <li>
-                        <div className={styles['setting__title']}>Vzhled</div>
-                        <div className={styles['setting__content']}>
-                            <div className={styles['switch']}>
-                                <div className={styles['switch__text']}>Světlý</div>
-                                <label className={styles['switch__component']} >
-                                    <input type="checkbox" checked={theme} />
-                                    <span className={styles['switch__slider']} onClick={() => changeSettings(!theme, markRead)}></span>
-                                </label>
-                                <div className={styles['switch__text']}>Tmavý</div>
-                            </div>
+            <ul>
+                <li>
+                    <div className={styles['setting__title']}>Vzhled</div>
+                    <div className={styles['setting__content']}>
+                        <div className={styles['switch']}>
+                            <div className={styles['switch__text']}>Světlý</div>
+                            <label className={styles['switch__component']} >
+                                <input type="checkbox" checked={readThemeCookie() === 'dark' ? true : false} onChange={() => saveThemeCookie(readThemeCookie() === 'light' ? 'dark' : 'light')} />
+                                <span className={styles['switch__slider']} ></span>
+                            </label>
+                            <div className={styles['switch__text']}>Tmavý</div>
                         </div>
-                    </li>
+                    </div>
+                </li>
 
-                    <li>
-                        <div className={styles['setting__title']}>Označit přečtené články</div>
-                        <div className={styles['setting__content']}>
-                            <div className={styles['switch']}>
-                                <div className={styles['switch__text']}>Ne</div>
-                                <label className={styles['switch__component']}>
-                                    <input type="checkbox" checked={markRead} />
-                                    <span className={styles['switch__slider']} onClick={() => changeSettings(theme, !markRead)}></span>
-                                </label>
-                                <div className={styles['switch__text']}>Ano</div>
-                            </div>
+                <li>
+                    <div className={styles['setting__title']}>Označit přečtené články</div>
+                    <div className={styles['setting__content']}>
+                        <div className={styles['switch']}>
+                            <div className={styles['switch__text']}>Ne</div>
+                            <label className={styles['switch__component']}>
+                                <input type="checkbox" checked={!readMarkReadCookie} />
+                                <span className={styles['switch__slider']}></span>
+                            </label>
+                            <div className={styles['switch__text']}>Ano</div>
                         </div>
-                    </li>
+                    </div>
+                </li>
 
-                    <li>
-                        <div className={styles['setting__title']}>Možnosti sdílení</div>
-                        <div className={styles['setting__content']}>
-                            <div className={styles['sharing']}>
-                                <a>Facebook</a>
-                                <a className={styles['inactive']}>Twitter</a>
-                                <a>Odkaz</a>
-                                <a>Kindle</a>
-                            </div>
+                <li>
+                    <div className={styles['setting__title']}>Možnosti sdílení</div>
+                    {/* <div className={styles['setting__content']}>
+                        <div className={styles['sharing']}>
+                            <a className={classnames({ [styles['inactive']]: !sharing[0] })}>Facebook</a>
+                            <a className={classnames({ [styles['inactive']]: !sharing[1] })}>Twitter</a>
+                            <a className={classnames({ [styles['inactive']]: !sharing[2] })}>Odkaz</a>
+                            <a className={classnames({ [styles['inactive']]: !sharing[3] })}>Kindle</a>
+                            <a className={classnames({ [styles['inactive']]: !sharing[4] })}>Tisk</a>
                         </div>
-                    </li>
-                </ul>
-            </Fade>
+                    </div> */}
+                </li>
+            </ul>
 
-            {settingsChanged && <div className={styles['message']}>Nastavení uloženo</div>}
+            {transitions.map(({ item, key, props }) =>
+                item && <animated.div key={key} style={props}><div className={styles['message']}>Nastavení uloženo</div></animated.div>
+            )}
+
         </nav >
     </section >;
 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
-import Cookies from 'universal-cookie';
 import Head from '../Head';
 import Header from '../Header';
 import Facts from '../Facts';
@@ -12,40 +11,38 @@ import Illustration from '../Illustration';
 import Footer from '../Footer';
 import '../../styles/global.scss';
 import styles from './Layout.scss';
-
-const cookies = new Cookies();
-const cookiesExist = cookies.get('cookiesSaved') === undefined ? false : true;
-let cookiesTheme = cookies.get('theme') === undefined ? 'light' : cookies.get('theme');
+import { setInitialCookies, readThemeCookie, readMasterCookie, saveMasterCookie } from "../../utils/cookies"
 
 function Layout(props) {
 
     const [renderPage, setRenderPage] = useState(false);
-    const [cookiesModal, setCookiesModal] = useState(!cookiesExist);
     const [navState, setNavState] = useState(false);
+    const [cookiesModal, setCookiesModal] = useState(readMasterCookie() === undefined)
     const [scrollable, setScrollable] = useState(false);
 
     function initCookies(userChoice) {
         if (userChoice === true) {
-            cookies.set('cookiesSaved', true, { path: '/' });
-            cookies.set('theme', 'light', { path: '/' });
-            cookies.set('markRead', true, { path: '/' });
-            setCookiesModal(false);
+            setInitialCookies();
             setScrollable(false);
+            saveMasterCookie(true);
+            setCookiesModal(false);
         } else {
-            setCookiesModal(false);
             setScrollable(false);
+            setCookiesModal(false);
             return;
         }
     }
 
     useEffect(() => {
         document.body.classList.remove('theme--dark', 'theme--light');
-        document.body.classList.add('theme--' + cookiesTheme);
+        if (readMasterCookie() === undefined) {
+            document.body.classList.add('theme--light');
+        } else {
+            document.body.classList.add('theme--' + readThemeCookie());
 
+        }
         !scrollable ? document.body.classList.add('scroll-locked') : document.body.classList.remove('scroll-locked');
-
         cookiesModal || navState || !renderPage ? setScrollable(false) : setScrollable(true);
-
         setRenderPage(true)
     });
 
@@ -53,7 +50,7 @@ function Layout(props) {
         <>
 
             <Loading show={renderPage} />
-            <Head theme={cookiesTheme} title={props.title} />
+            <Head theme={readThemeCookie()} title={props.title} />
             {
                 cookiesModal && (
                     <CookiesModal saveCookies={() => initCookies(true)} discardCookies={() => initCookies(false)} />
