@@ -11,7 +11,7 @@ import Illustration from '../Illustration';
 import Footer from '../Footer';
 import '../../styles/global.scss';
 import styles from './Layout.scss';
-import { setInitialCookies, readThemeCookie, readMasterCookie, saveMasterCookie } from "../../utils/cookies"
+import { setInitialCookies, readThemeCookie, readMasterCookie, saveMasterCookie, setTheme } from "../../utils/cookies"
 
 function Layout(props) {
 
@@ -19,6 +19,7 @@ function Layout(props) {
     const [navState, setNavState] = useState(false);
     const [cookiesModal, setCookiesModal] = useState(readMasterCookie() === undefined)
     const [scrollable, setScrollable] = useState(false);
+
 
     function initCookies(userChoice) {
         if (userChoice === true) {
@@ -34,16 +35,11 @@ function Layout(props) {
     }
 
     useEffect(() => {
-        document.body.classList.remove('theme--dark', 'theme--light');
-        if (readMasterCookie() === undefined) {
-            document.body.classList.add('theme--light');
-        } else {
-            document.body.classList.add('theme--' + readThemeCookie());
-
-        }
         !scrollable ? document.body.classList.add('scroll-locked') : document.body.classList.remove('scroll-locked');
         cookiesModal || navState || !renderPage ? setScrollable(false) : setScrollable(true);
+        setTheme();
         setRenderPage(true)
+
     });
 
     return (

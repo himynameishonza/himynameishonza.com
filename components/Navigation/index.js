@@ -3,6 +3,7 @@ import styles from './Navigation.scss';
 import quotes from '../../public/static/quotes.js';
 
 function Navigation(props) {
+
     let quote = quotes[Math.floor(Math.random() * quotes.length)];
     return <section className={styles["navigation"]}>
         <div className={styles['nav__illustration']}>

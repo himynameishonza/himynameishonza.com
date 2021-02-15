@@ -16,7 +16,7 @@ export class Footer extends React.Component {
                 <div className={styles['footer__right']}>
                     <ul>
                         <li><a href="/" aria-label="Odkaz na stránku Podpořit web">Podpořit web</a></li>
-                        <li><a href="/gdpr" aria-label="Odkaz na stránku GDPR &amp; Cookies">GDPR &amp; Cookies</a></li>
+                        {/* <li><a href="/gdpr" aria-label="Odkaz na stránku GDPR &amp; Cookies">GDPR &amp; Cookies</a></li> */}
                     </ul>
                 </div>
             </footer>

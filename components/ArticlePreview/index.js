@@ -16,7 +16,7 @@ export function HeroArticlePreview(props) {
                     <h2>
                         {props.title}
                         <span>
-                            <Icon icon="ui-forward" size="21" />
+                            <Icon icon="ui-forward" size="18" />
                         </span>
                     </h2>
                     <p>{props.excerpt}</p>

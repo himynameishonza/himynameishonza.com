@@ -4,7 +4,7 @@ export const cookies = new Cookies();
 
 export function setInitialCookies() {
     cookies.set('masterCookie', false, { path: '/' });
-    cookies.set('theme', 'dark', { path: '/' });
+    cookies.set('theme', 'light', { path: '/' });
     cookies.set('markRead', true, { path: '/' });
     cookies.set('sharing', [false, false, true, true, true], { path: '/' });
 }
@@ -52,5 +52,11 @@ export function readSharingCookie() {
     return cookies.get('sharing');
 }
 
+// Set theme to body
+export function setTheme() {
+    document.body.classList.remove('theme--light', 'theme--dark');
+    readThemeCookie() === undefined ?
+        document.body.classList.add('theme--light') : document.body.classList.add('theme--' + readThemeCookie());
+}
 
 export default cookies;

@@ -84,6 +84,9 @@
             width: 100%;
 
             li {
+                font-size: 32px;
+                font-family: $font-primary;
+                line-height: 22px;
                 width: 100%;
                 &::before {
                     display: none;
@@ -93,7 +96,6 @@
                     width: 100%;
                     display: flex;
                     flex-direction: column;
-                    font-size: 32px;
                     padding: $spacer-tiny $spacer-small 0;
                     transition: $transition-basic color;
 

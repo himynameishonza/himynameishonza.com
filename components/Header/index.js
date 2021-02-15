@@ -3,9 +3,14 @@ import styles from './Header.scss';
 import Icon from '../Icon';
 import Navigation from '../Navigation';
 import Settings from '../Settings';
+import { useKeyboardEvent } from "../../utils/keyHandle"
 
 function Header(props) {
     const [settingsState, setSettingsState] = useState(false);
+
+    useKeyboardEvent('Escape', () => {
+        settingsState ? setSettingsState(false) : () => navToggle();
+    })
 
     return (
         <>
