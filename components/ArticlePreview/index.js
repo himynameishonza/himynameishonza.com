@@ -1,12 +1,16 @@
 import React from 'react';
 import styles from './ArticlePreview.scss';
+import {plainText} from '../../utils';
 import Icon from '../Icon';
 import classnames from 'classnames';
 
 export function HeroArticlePreview(props) {
     return (
         <article className={classnames(styles['article-preview'], styles['article-preview--hero'])}>
-            <a href={props.link} aria-label={'Odkaz na článek ' + props.title + ' z rubriky ' + props.category}>
+            <a
+                href={props.link}
+                aria-label={'Odkaz na článek ' + props.title + ' z rubriky ' + props.category}
+            >
                 <div className={styles['hero__image']}>
                     <div className={styles['image__container']}></div>
                     <div className={styles['image__decoration']}></div>
@@ -19,7 +23,7 @@ export function HeroArticlePreview(props) {
                             <Icon icon="ui-forward" size="18" />
                         </span>
                     </h2>
-                    <p>{props.excerpt}</p>
+                    <p>{plainText(props.excerpt)}</p>
                 </div>
             </a>
         </article>
@@ -28,15 +32,32 @@ export function HeroArticlePreview(props) {
 
 export function SidecarArticlePreview(props) {
     return (
-        <article className={classnames(styles['article-preview'], styles['article-preview--sidecar'])}>
-            <a href={props.link} aria-label={'Odkaz na článek ' + props.title + ' z rubriky ' + props.category}>
-                <h2 className={classnames(styles['headline--medium'], styles['text--no-margin'], styles['text--margin-bottom-tiny'])}>
+        <article
+            className={classnames(styles['article-preview'], styles['article-preview--sidecar'])}
+        >
+            <a
+                href={props.link}
+                aria-label={'Odkaz na článek ' + props.title + ' z rubriky ' + props.category}
+            >
+                <h2
+                    className={classnames(
+                        styles['headline--medium'],
+                        styles['text--no-margin'],
+                        styles['text--margin-bottom-tiny']
+                    )}
+                >
                     {props.title}
                     <span>
                         <Icon icon="ui-forward" size="12" />
                     </span>
                 </h2>
-                <p className={classnames(styles['paragraph--medium'], styles['text--no-margin'], styles['text--margin-bottom-big'])}>
+                <p
+                    className={classnames(
+                        styles['paragraph--medium'],
+                        styles['text--no-margin'],
+                        styles['text--margin-bottom-big']
+                    )}
+                >
                     {props.excerpt}
                 </p>
             </a>
@@ -46,18 +67,28 @@ export function SidecarArticlePreview(props) {
 
 export function FeaturedArticlePreview(props) {
     return (
-        <article className={classnames(styles['article-preview'], styles['article-preview--featured'])}>
-            <a href={props.link} aria-label={'Odkaz na článek ' + props.title + ' z rubriky ' + props.category}>
+        <article
+            className={classnames(styles['article-preview'], styles['article-preview--featured'])}
+        >
+            <a
+                href={props.link}
+                aria-label={'Odkaz na článek ' + props.title + ' z rubriky ' + props.category}
+            >
                 <div className={styles['hero__content']}>
                     <h3 className={styles['text--margin-bottom-tiny']}>{props.category}</h3>
-
-                    <h2 className={classnames(styles['headline--medium'], styles['text--no-margin'], styles['text--margin-bottom-tiny'])}>
+                    <h2
+                        className={classnames(
+                            styles['headline--medium'],
+                            styles['text--no-margin'],
+                            styles['text--margin-bottom-tiny']
+                        )}
+                    >
                         {props.title}
                         <span>
                             <Icon icon="ui-forward" size="16" />
                         </span>
                     </h2>
-                    <p>{props.excerpt}</p>
+                    <p>{plainText(props.excerpt)}</p>
                 </div>
             </a>
         </article>

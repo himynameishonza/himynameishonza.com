@@ -1,22 +1,24 @@
 @import '../../styles/global.scss';
 
 .header {
-    border-bottom: 1px solid var(--color-divider);
-    background: var(--color-bg);
     position: sticky;
     top: 0;
-    padding: $spacer-large;
     z-index: 996;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    @media (max-width: $breakpoint-mobile) {
-        padding: $spacer-medium;
-    }
-
     .header__logo {
         z-index: 997;
+        padding: $spacer-large 0 $spacer-large $spacer-large;
+        border-bottom: 1px solid var(--color-divider);
+        background: var(--color-bg);
+        width: 100%;
+
+        @media (max-width: $breakpoint-mobile) {
+            padding: $spacer-medium 0 $spacer-medium $spacer-medium;
+        }
+
         a {
             display: flex;
             align-items: center;
@@ -45,9 +47,18 @@
     }
 
     .header__navbar {
+        padding: $spacer-large $spacer-large $spacer-large 0;
+        background: var(--color-bg);
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
+        border-bottom: 1px solid var(--color-divider);
+        width: 100%;
+
+        @media (max-width: $breakpoint-mobile) {
+            padding: $spacer-medium $spacer-medium $spacer-medium 0;
+        }
+
         a {
             display: flex;
             align-items: center;
@@ -106,5 +117,13 @@
 
     &.header--article {
         background: transparent;
+
+        .header__logo {
+            border-bottom: none;
+            background: transparent;
+            svg {
+                fill: var(--color-bg);
+            }
+        }
     }
 }

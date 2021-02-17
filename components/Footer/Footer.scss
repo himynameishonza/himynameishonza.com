@@ -2,6 +2,7 @@
 
 .footer {
     position: relative;
+    border-top: 1px var(--color-divider) solid;
     padding: $spacer-medium $spacer-large;
     width: 100%;
     display: flex;

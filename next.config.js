@@ -13,9 +13,17 @@ const nextConfig = {
     },
 };
 
-module.exports = withPlugins([
-    withCSS,
-    withSass({
-        cssModules: true,
-    }),
-]);
+module.exports = withPlugins(
+    [
+        withCSS,
+        withSass({
+            cssModules: true,
+        }),
+    ],
+    {
+        images: {
+            domains: ['cdn.sanity.io'],
+            deviceSizes: [640, 960, 1200, 1440],
+        },
+    }
+);

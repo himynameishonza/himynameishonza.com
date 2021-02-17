@@ -22,7 +22,6 @@
 
     &.layout--homepage {
         .layout__content {
-            border-bottom: 1px var(--color-divider) solid;
             display: grid;
             overflow: hidden;
             grid-template-columns: 1fr 1fr 1fr 350px;
@@ -107,6 +106,20 @@
         }
     }
 
+    &.layout--archive {
+        .layout__content {
+            display: grid;
+            overflow: hidden;
+            grid-template-columns: 1fr;
+            gap: 0px 0px;
+            max-width: 960px;
+            margin: 0 auto;
+            grid-template-areas:
+                'hero-article'
+                'other-articles';
+        }
+    }
+
     &.layout--info-page {
         .layout__content {
             display: grid;
@@ -181,6 +194,7 @@
 
         .article__content {
             padding-left: 50%;
+            padding: $spacer-large $spacer-large $spacer-large 50%;
         }
     }
 }

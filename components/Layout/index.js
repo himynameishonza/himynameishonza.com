@@ -1,25 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import classnames from 'classnames';
+import React, {useState, useEffect} from 'react';
+import Image from 'next/image';
+import BlockContent from '@sanity/block-content-to-react';
 import Head from '../Head';
 import Header from '../Header';
 import Facts from '../Facts';
 import SideContent from '../SideContent';
 import CookiesModal from '../CookiesModal';
-import { HeroArticlePreview, FeaturedArticlePreview } from '../ArticlePreview';
+import {HeroArticlePreview, FeaturedArticlePreview} from '../ArticlePreview';
 import Loading from '../Loading';
 import Illustration from '../Illustration';
 import Footer from '../Footer';
+import {
+    setInitialCookies,
+    readThemeCookie,
+    readMasterCookie,
+    saveMasterCookie,
+    setTheme,
+} from '../../utils/cookies';
+import {
+    serializers,
+    urlFor,
+    readingTime,
+    dateFormater,
+    monthFormater,
+    plainText,
+} from '../../utils';
 import '../../styles/global.scss';
 import styles from './Layout.scss';
-import { setInitialCookies, readThemeCookie, readMasterCookie, saveMasterCookie, setTheme } from "../../utils/cookies"
+import classnames from 'classnames';
 
 function Layout(props) {
-
     const [renderPage, setRenderPage] = useState(false);
     const [navState, setNavState] = useState(false);
-    const [cookiesModal, setCookiesModal] = useState(readMasterCookie() === undefined)
+    const [cookiesModal, setCookiesModal] = useState(readMasterCookie() === undefined);
     const [scrollable, setScrollable] = useState(false);
-
 
     function initCookies(userChoice) {
         if (userChoice === true) {
@@ -35,27 +49,88 @@ function Layout(props) {
     }
 
     useEffect(() => {
-        !scrollable ? document.body.classList.add('scroll-locked') : document.body.classList.remove('scroll-locked');
+        !scrollable
+            ? document.body.classList.add('scroll-locked')
+            : document.body.classList.remove('scroll-locked');
         cookiesModal || navState || !renderPage ? setScrollable(false) : setScrollable(true);
         setTheme();
-        setRenderPage(true)
-
+        setRenderPage(true);
     });
 
     return (
         <>
-
             <Loading show={renderPage} />
-            <Head theme={readThemeCookie()} title={props.title} />
-            {
-                cookiesModal && (
-                    <CookiesModal saveCookies={() => initCookies(true)} discardCookies={() => initCookies(false)} />
-                )
-            }
-            <Header showAbout showSettings showSocial navToggle={() => setNavState(!navState)} navState={navState} type={props.type} />
+            <Head
+                theme={readThemeCookie()}
+                title={props.type !== 'homepage' && props.data ? props.data.title : props.title}
+                description={
+                    props.type !== 'homepage' && props.data
+                        ? plainText(props.data.body)
+                        : props.description
+                }
+            />
+            {cookiesModal && (
+                <CookiesModal
+                    saveCookies={() => initCookies(true)}
+                    discardCookies={() => initCookies(false)}
+                />
+            )}
+            <Header
+                showAbout
+                showSettings
+                showSocial
+                navToggle={() => setNavState(!navState)}
+                navState={navState}
+                type={props.type}
+            />
 
             <div className={classnames(styles['layout'], styles['layout--' + props.type])}>
                 {props.type === 'homepage' && (
+                    <>
+                        <div className={styles['layout__content']}>
+                            <div className={styles['hero-article']}>
+                                <HeroArticlePreview
+                                    category="Knihy"
+                                    title={props.data[0].title}
+                                    link={'/' + props.data[0].slug.current}
+                                    excerpt={props.data[0].body}
+                                />
+                            </div>
+
+                            <div className={styles['featured-articles']}>
+                                <FeaturedArticlePreview
+                                    category="Knihy"
+                                    title={props.data[1].title}
+                                    link={'/' + props.data[1].slug.current}
+                                    excerpt={props.data[1].body}
+                                />
+
+                                <FeaturedArticlePreview
+                                    category="Knihy"
+                                    title={props.data[2].title}
+                                    link={'/' + props.data[2].slug.current}
+                                    excerpt={props.data[2].body}
+                                />
+
+                                <FeaturedArticlePreview
+                                    category="Knihy"
+                                    title={props.data[3].title}
+                                    link={'/' + props.data[3].slug.current}
+                                    excerpt={props.data[3].body}
+                                />
+                            </div>
+
+                            <div className={styles['side-content']}>
+                                <Facts />
+                                <SideContent />
+                            </div>
+                        </div>
+                        <div className={styles['layout__decoration']} />
+                        <Footer />
+                    </>
+                )}
+
+                {props.type === 'archive' && (
                     <>
                         <div className={styles['layout__content']}>
                             <div className={styles['hero-article']}>
@@ -65,34 +140,6 @@ function Layout(props) {
                                     link="/"
                                     excerpt="Dorazil mi balík víkendového čtiva z Deníku N. A jako první mi do ruky padla kniha mojí oblíbené novinářky Jany Ciglerové, která strávila spolu se svojí rodinou nezanedbatelnou část života ve Spojených státech a která své všední i nevšední zážitky zasílala do českých luhů a hájů ve formě deníkových záznamů. Ty pak před rokem vyšly jako sbírka Americký deník. Kniha obsahuje čtyřicet esejí, v každé z nich si potom Ciglerová vybírá jedno téma z každodenního života Čecha žijícího v Americe."
                                 />
-                            </div>
-
-                            <div className={styles['featured-articles']}>
-                                <FeaturedArticlePreview
-                                    category="Film"
-                                    title="The Upside"
-                                    link="/"
-                                    excerpt="Že se dívám na předělávku Nedotknutelných z roku 2011 mi došlo asi až po dvaceti minutách sledování. Název filmu na Prime Videu byl totiž The Upside, nikoliv Untouchables. Jakmile mi ale secvakly obvody, překvapivě jsem neměl chuť film vypnout. Že si Američané potrpí na remaky filmů a seriálů originální evropské produkce, je všeobecně známo. Zatímco například u seriálu The Office byla předělávka vcelku nasnadě, u Nedotknutelných to ale už tak pochopitelné není. "
-                                />
-
-                                <FeaturedArticlePreview
-                                    category="Knihy"
-                                    title="Josi Klein Halevi: Dopisy přes zeď"
-                                    link="/"
-                                    excerpt="Další rest splněn. Už delší dobu jsem hledal knihu o historii izraelsko-palestinského konfliktu, která by mi jednoduchou formou vysvětlila, v čem tkví hlavní problém tohoto nekonečného přetahování na Blízkém východě. Dopisy přes zeď jsou přesně tím, co jsem hledal."
-                                />
-
-                                <FeaturedArticlePreview
-                                    category="Knihy"
-                                    title="Hans Rosling: Faktomluva"
-                                    link="/"
-                                    excerpt="Knihu Faktomluva jsem si úmyslně šetřil na konec roku. Když jsem si někdy před měsícem naordinoval absolutní abstinenci od denního zpravodajství, hledal jsem alternativu. Rozečetl jsem skvělou knihu Dějiny USA (tu asi nechám bez recenze, recenzoval bych totiž spíš samotné dějiny USA, nikoliv knihu) a začal číst trochu víc beletrie. Faktomluvu jsem si nechal na čas po Vánocích, jelikož slibovala, že mi zvedne náladu. A zvedla!"
-                                />
-                            </div>
-
-                            <div className={styles['side-content']}>
-                                <Facts />
-                                <SideContent />
                             </div>
                         </div>
                         <div className={styles['layout__decoration']} />
@@ -122,21 +169,36 @@ function Layout(props) {
                     <>
                         <div className={styles['layout__content']}>
                             <div className={styles['article__hero']}>
-                                d
+                                {props.data.mainImage && (
+                                    <Image
+                                        alt="Image"
+                                        src={urlFor(props.data.mainImage).width().url()}
+                                        layout="fill"
+                                        objectFit="cover"
+                                        quality={process.env.IMAGE_QUALITY}
+                                        loading="lazy"
+                                        nopin="nopin"
+                                    />
+                                )}
                             </div>
                             <div className={styles['article__content']}>
                                 <div className={styles['content-container']}>
-                                    <h1>Title of article</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est mauris, pretium eu ullamcorper vitae, dictum vitae orci. Cras blandit augue sit amet volutpat porta. Phasellus diam est, pharetra eu lacus vel, porta egestas nisi. Maecenas efficitur consectetur ultricies. Sed commodo ipsum massa, et bibendum dolor lacinia non. Curabitur auctor justo pulvinar aliquam vulputate. Praesent condimentum maximus vehicula. Proin nunc velit, rhoncus vitae mauris vitae, venenatis sollicitudin dolor. In porttitor vulputate vestibulum. Aenean aliquam tempus nunc, quis blandit metus cursus ac. Nullam feugiat ultrices pretium. Curabitur posuere nunc sed tortor vestibulum varius. Mauris egestas ornare ex vel varius. Donec lacinia, magna nec porta vestibulum, purus ipsum mattis orci, vulputate tempus nunc ante sed quam. Nam pulvinar consequat ornare.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est mauris, pretium eu ullamcorper vitae, dictum vitae orci. Cras blandit augue sit amet volutpat porta. Phasellus diam est, pharetra eu lacus vel, porta egestas nisi. Maecenas efficitur consectetur ultricies. Sed commodo ipsum massa, et bibendum dolor lacinia non. Curabitur auctor justo pulvinar aliquam vulputate. Praesent condimentum maximus vehicula. Proin nunc velit, rhoncus vitae mauris vitae, venenatis sollicitudin dolor. In porttitor vulputate vestibulum. Aenean aliquam tempus nunc, quis blandit metus cursus ac. Nullam feugiat ultrices pretium. Curabitur posuere nunc sed tortor vestibulum varius. Mauris egestas ornare ex vel varius. Donec lacinia, magna nec porta vestibulum, purus ipsum mattis orci, vulputate tempus nunc ante sed quam. Nam pulvinar consequat ornare.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est mauris, pretium eu ullamcorper vitae, dictum vitae orci. Cras blandit augue sit amet volutpat porta. Phasellus diam est, pharetra eu lacus vel, porta egestas nisi. Maecenas efficitur consectetur ultricies. Sed commodo ipsum massa, et bibendum dolor lacinia non. Curabitur auctor justo pulvinar aliquam vulputate. Praesent condimentum maximus vehicula. Proin nunc velit, rhoncus vitae mauris vitae, venenatis sollicitudin dolor. In porttitor vulputate vestibulum. Aenean aliquam tempus nunc, quis blandit metus cursus ac. Nullam feugiat ultrices pretium. Curabitur posuere nunc sed tortor vestibulum varius. Mauris egestas ornare ex vel varius. Donec lacinia, magna nec porta vestibulum, purus ipsum mattis orci, vulputate tempus nunc ante sed quam. Nam pulvinar consequat ornare.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est mauris, pretium eu ullamcorper vitae, dictum vitae orci. Cras blandit augue sit amet volutpat porta. Phasellus diam est, pharetra eu lacus vel, porta egestas nisi. Maecenas efficitur consectetur ultricies. Sed commodo ipsum massa, et bibendum dolor lacinia non. Curabitur auctor justo pulvinar aliquam vulputate. Praesent condimentum maximus vehicula. Proin nunc velit, rhoncus vitae mauris vitae, venenatis sollicitudin dolor. In porttitor vulputate vestibulum. Aenean aliquam tempus nunc, quis blandit metus cursus ac. Nullam feugiat ultrices pretium. Curabitur posuere nunc sed tortor vestibulum varius. Mauris egestas ornare ex vel varius. Donec lacinia, magna nec porta vestibulum, purus ipsum mattis orci, vulputate tempus nunc ante sed quam. Nam pulvinar consequat ornare.</p>
+                                    <h1>{props.data.title}</h1>
+                                    <h3>
+                                        {readingTime(props.data.body)}{' '}
+                                        {dateFormater(props.data.publishedAt) +
+                                            '. ' +
+                                            monthFormater(props.data.publishedAt)}
+                                    </h3>
+                                    <BlockContent
+                                        blocks={props.data.body}
+                                        serializers={serializers}
+                                    />
                                 </div>
                             </div>
                         </div>
                     </>
                 )}
-
             </div>
         </>
     );
