@@ -22,8 +22,7 @@ export function useKeyboardEvent(key, callback) {
 // Router
 export function goBack() {
     const router = useRouter();
-    console.log(router);
-    // return () => router.back();
+    //return () => router.back();
 }
 
 // Date formater
@@ -148,4 +147,8 @@ function blocksToText(blocks, opts = {}) {
             .join(' ');
         return words;
     });
+}
+
+export function getCategory(reference) {
+    return reference;
 }

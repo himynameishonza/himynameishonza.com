@@ -8,7 +8,9 @@ import SideContent from '../SideContent';
 import CookiesModal from '../CookiesModal';
 import {HeroArticlePreview, FeaturedArticlePreview} from '../ArticlePreview';
 import Loading from '../Loading';
+import ErrorPage from '../ErrorPage';
 import Illustration from '../Illustration';
+import {useSpring, animated} from 'react-spring';
 import Footer from '../Footer';
 import {
     setInitialCookies,
@@ -24,16 +26,18 @@ import {
     dateFormater,
     monthFormater,
     plainText,
+    getCategory,
 } from '../../utils';
 import '../../styles/global.scss';
 import styles from './Layout.scss';
 import classnames from 'classnames';
 
 function Layout(props) {
-    const [renderPage, setRenderPage] = useState(false);
     const [navState, setNavState] = useState(false);
     const [cookiesModal, setCookiesModal] = useState(readMasterCookie() === undefined);
     const [scrollable, setScrollable] = useState(false);
+    const [renderReady, setRenderReady] = useState(false);
+    const animationFadeIn = useSpring({opacity: 1, from: {opacity: 0}});
 
     function initCookies(userChoice) {
         if (userChoice === true) {
@@ -52,38 +56,39 @@ function Layout(props) {
         !scrollable
             ? document.body.classList.add('scroll-locked')
             : document.body.classList.remove('scroll-locked');
-        cookiesModal || navState || !renderPage ? setScrollable(false) : setScrollable(true);
+        cookiesModal || navState ? setScrollable(false) : setScrollable(true);
         setTheme();
-        setRenderPage(true);
+        setRenderReady(true);
     });
 
     return (
         <>
-            <Loading show={renderPage} />
             <Head
                 theme={readThemeCookie()}
                 title={props.type !== 'homepage' && props.data ? props.data.title : props.title}
                 description={
-                    props.type !== 'homepage' && props.data
+                    props.type === 'article' && props.data
                         ? plainText(props.data.body)
                         : props.description
                 }
             />
+            {!renderReady || (props.type === 'loading' && <Loading />)}
             {cookiesModal && (
                 <CookiesModal
                     saveCookies={() => initCookies(true)}
                     discardCookies={() => initCookies(false)}
                 />
             )}
-            <Header
-                showAbout
-                showSettings
-                showSocial
-                navToggle={() => setNavState(!navState)}
-                navState={navState}
-                type={props.type}
-            />
-
+            {props.type !== 'error' && (
+                <Header
+                    showAbout
+                    showSettings
+                    showSocial
+                    navToggle={() => setNavState(!navState)}
+                    navState={navState}
+                    type={props.type}
+                />
+            )}
             <div className={classnames(styles['layout'], styles['layout--' + props.type])}>
                 {props.type === 'homepage' && (
                     <>
@@ -135,12 +140,8 @@ function Layout(props) {
                     <>
                         <div className={styles['layout__content']}>
                             <div className={styles['hero-article']}>
-                                <HeroArticlePreview
-                                    category="Knihy"
-                                    title="Jana Ciglerová: Americký deník"
-                                    link="/"
-                                    excerpt="Dorazil mi balík víkendového čtiva z Deníku N. A jako první mi do ruky padla kniha mojí oblíbené novinářky Jany Ciglerové, která strávila spolu se svojí rodinou nezanedbatelnou část života ve Spojených státech a která své všední i nevšední zážitky zasílala do českých luhů a hájů ve formě deníkových záznamů. Ty pak před rokem vyšly jako sbírka Americký deník. Kniha obsahuje čtyřicet esejí, v každé z nich si potom Ciglerová vybírá jedno téma z každodenního života Čecha žijícího v Americe."
-                                />
+                                <h2>{props.data[0].title}</h2>
+                                <h3>{props.data[0].description}</h3>
                             </div>
                         </div>
                         <div className={styles['layout__decoration']} />
@@ -167,7 +168,7 @@ function Layout(props) {
                 )}
 
                 {props.type === 'article' && (
-                    <>
+                    <animated.div style={animationFadeIn}>
                         <div className={styles['layout__content']}>
                             <div className={styles['article__hero']}>
                                 {props.data.mainImage && (
@@ -185,7 +186,9 @@ function Layout(props) {
                             <div className={styles['article__content']}>
                                 <div className={styles['content-container']}>
                                     <h1>{props.data.title}</h1>
+
                                     <h3>
+                                        {getCategory(props.data.categories[0]['_key'])} -
                                         {readingTime(props.data.body)}{' '}
                                         {dateFormater(props.data.publishedAt) +
                                             '. ' +
@@ -198,8 +201,10 @@ function Layout(props) {
                                 </div>
                             </div>
                         </div>
-                    </>
+                    </animated.div>
                 )}
+
+                {props.type === 'error' && <ErrorPage statusCode={props.statusCode} />}
             </div>
         </>
     );

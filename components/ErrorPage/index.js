@@ -2,7 +2,6 @@ import React from 'react';
 import Router from 'next/router';
 import Illustration from '../Illustration';
 import styles from './ErrorPage.scss';
-import classnames from 'classnames';
 export class ErrorPage extends React.Component {
     constructor(props) {
         super(props);
@@ -43,8 +42,7 @@ export class ErrorPage extends React.Component {
                     <div className={styles['flex-container']}>
                         <h1>{this.props.statusCode}</h1>
                         <h2>
-                            {this.props.statusCode === 404 &&
-                                'Požadovaná stránka nebyla nenalezena'}
+                            {this.props.statusCode === 404 && 'Požadovaná stránka nebyla nalezena'}
                         </h2>
                         <h2>{this.props.statusCode === 408 && 'Vypršel čas spojení'}</h2>
                         <h2>

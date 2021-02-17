@@ -26,6 +26,6 @@ export function getPost(slug) {
 
 export function getPostsInCategory(category) {
     return fetch(
-        `https://befmpc9h.api.sanity.io/v1/data/query/production?query=*[_type%20==%20"${category}"]|%20order(publishedAt desc)`
+        `https://befmpc9h.api.sanity.io/v1/data/query/production?query=*[slug match "${category}"]`
     );
 }

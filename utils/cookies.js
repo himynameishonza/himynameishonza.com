@@ -3,15 +3,15 @@ import Cookies from 'universal-cookie';
 export const cookies = new Cookies();
 
 export function setInitialCookies() {
-    cookies.set('masterCookie', false, { path: '/' });
-    cookies.set('theme', 'light', { path: '/' });
-    cookies.set('markRead', true, { path: '/' });
-    cookies.set('sharing', [false, false, true, true, true], { path: '/' });
+    cookies.set('masterCookie', false, {path: '/'});
+    cookies.set('theme', 'light', {path: '/'});
+    cookies.set('markRead', true, {path: '/'});
+    cookies.set('sharing', [false, false, true, true, true], {path: '/'});
 }
 
 // Master Cookie
 export function saveMasterCookie(masterCookie) {
-    cookies.set('masterCookie', masterCookie, { path: '/' });
+    cookies.set('masterCookie', masterCookie, {path: '/'});
 }
 
 export function readMasterCookie() {
@@ -20,16 +20,16 @@ export function readMasterCookie() {
 
 // Theme Cookie
 export function saveThemeCookie(theme) {
-    cookies.set('theme', theme, { path: '/' });
+    cookies.set('theme', theme, {path: '/'});
 }
 
 export function readThemeCookie() {
-    return cookies.get('theme')
+    return cookies.get('theme');
 }
 
 // Mark as Read Cookie
 export function saveMarkReadCookie(markRead) {
-    cookies.set('markRead', markRead, { path: '/' });
+    cookies.set('markRead', markRead, {path: '/'});
 }
 
 export function readMarkReadCookie() {
@@ -38,7 +38,7 @@ export function readMarkReadCookie() {
 
 // Sharing Cookie
 export function saveSharingCookie(sharing) {
-    cookies.set('sharing', sharing, { path: '/' });
+    cookies.set('sharing', sharing, {path: '/'});
 }
 
 export function readSharingCookie() {
@@ -48,8 +48,9 @@ export function readSharingCookie() {
 // Set theme to body
 export function setTheme() {
     document.body.classList.remove('theme--light', 'theme--dark');
-    readThemeCookie() === undefined ?
-        document.body.classList.add('theme--light') : document.body.classList.add('theme--' + readThemeCookie());
+    readThemeCookie() === undefined
+        ? document.body.classList.add('theme--light')
+        : document.body.classList.add('theme--' + readThemeCookie());
 }
 
 export default cookies;

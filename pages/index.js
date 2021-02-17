@@ -2,7 +2,6 @@ import React from 'react';
 import Layout from '../components/Layout';
 import {getHomepagePosts} from '../api/';
 import '../styles/global.scss';
-import Loading from '../components/Loading';
 import ReactGA from 'react-ga';
 
 export class Homepage extends React.Component {
@@ -12,10 +11,6 @@ export class Homepage extends React.Component {
     }
 
     render() {
-        if (!this.props.posts) {
-            return <Loading />;
-        }
-
         return <Layout type="homepage" data={this.props.posts.result} />;
     }
 }

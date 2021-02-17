@@ -13,5 +13,10 @@ export default {
             title: 'Popis',
             type: 'text',
         },
+        {
+            name: 'slug',
+            title: 'Slug',
+            type: 'string',
+        },
     ],
 };
