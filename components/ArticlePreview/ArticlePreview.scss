@@ -114,6 +114,10 @@
             border-radius: 8px;
             transition: $transition-basic filter;
             display: block;
+
+            & > div {
+                border-radius: 8px;
+            }
         }
 
         .image__decoration {

@@ -1,8 +1,9 @@
 import React from 'react';
-import styles from './ArticlePreview.scss';
-import {plainText} from '../../utils';
+import Image from 'next/image';
+import {plainText, urlFor} from '../../utils';
 import Icon from '../Icon';
 import classnames from 'classnames';
+import styles from './ArticlePreview.scss';
 
 export function HeroArticlePreview(props) {
     return (
@@ -12,7 +13,17 @@ export function HeroArticlePreview(props) {
                 aria-label={'Odkaz na článek ' + props.title + ' z rubriky ' + props.category}
             >
                 <div className={styles['hero__image']}>
-                    <div className={styles['image__container']}></div>
+                    <div className={styles['image__container']}>
+                        <Image
+                            alt="Image"
+                            src={urlFor(props.mainImage).width().url()}
+                            layout="fill"
+                            objectFit="cover"
+                            quality={process.env.IMAGE_QUALITY}
+                            loading="lazy"
+                            nopin="nopin"
+                        />
+                    </div>
                     <div className={styles['image__decoration']}></div>
                 </div>
                 <div className={styles['hero__content']}>

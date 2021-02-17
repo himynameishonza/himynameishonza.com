@@ -94,6 +94,7 @@ function Layout(props) {
                                     title={props.data[0].title}
                                     link={'/' + props.data[0].slug.current}
                                     excerpt={props.data[0].body}
+                                    mainImage={props.data[0].mainImage}
                                 />
                             </div>
 
