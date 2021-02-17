@@ -52,7 +52,7 @@ function Layout(props) {
                     <CookiesModal saveCookies={() => initCookies(true)} discardCookies={() => initCookies(false)} />
                 )
             }
-            <Header showAbout showSettings showSocial navToggle={() => setNavState(!navState)} navState={navState} />
+            <Header showAbout showSettings showSocial navToggle={() => setNavState(!navState)} navState={navState} type={props.type} />
 
             <div className={classnames(styles['layout'], styles['layout--' + props.type])}>
                 {props.type === 'homepage' && (
@@ -112,6 +112,25 @@ function Layout(props) {
                                 <div className={styles['content-container']}>
                                     <h1>{props.title}</h1>
                                     {props.children}
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
+
+                {props.type === 'article' && (
+                    <>
+                        <div className={styles['layout__content']}>
+                            <div className={styles['article__hero']}>
+                                d
+                            </div>
+                            <div className={styles['article__content']}>
+                                <div className={styles['content-container']}>
+                                    <h1>Title of article</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est mauris, pretium eu ullamcorper vitae, dictum vitae orci. Cras blandit augue sit amet volutpat porta. Phasellus diam est, pharetra eu lacus vel, porta egestas nisi. Maecenas efficitur consectetur ultricies. Sed commodo ipsum massa, et bibendum dolor lacinia non. Curabitur auctor justo pulvinar aliquam vulputate. Praesent condimentum maximus vehicula. Proin nunc velit, rhoncus vitae mauris vitae, venenatis sollicitudin dolor. In porttitor vulputate vestibulum. Aenean aliquam tempus nunc, quis blandit metus cursus ac. Nullam feugiat ultrices pretium. Curabitur posuere nunc sed tortor vestibulum varius. Mauris egestas ornare ex vel varius. Donec lacinia, magna nec porta vestibulum, purus ipsum mattis orci, vulputate tempus nunc ante sed quam. Nam pulvinar consequat ornare.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est mauris, pretium eu ullamcorper vitae, dictum vitae orci. Cras blandit augue sit amet volutpat porta. Phasellus diam est, pharetra eu lacus vel, porta egestas nisi. Maecenas efficitur consectetur ultricies. Sed commodo ipsum massa, et bibendum dolor lacinia non. Curabitur auctor justo pulvinar aliquam vulputate. Praesent condimentum maximus vehicula. Proin nunc velit, rhoncus vitae mauris vitae, venenatis sollicitudin dolor. In porttitor vulputate vestibulum. Aenean aliquam tempus nunc, quis blandit metus cursus ac. Nullam feugiat ultrices pretium. Curabitur posuere nunc sed tortor vestibulum varius. Mauris egestas ornare ex vel varius. Donec lacinia, magna nec porta vestibulum, purus ipsum mattis orci, vulputate tempus nunc ante sed quam. Nam pulvinar consequat ornare.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est mauris, pretium eu ullamcorper vitae, dictum vitae orci. Cras blandit augue sit amet volutpat porta. Phasellus diam est, pharetra eu lacus vel, porta egestas nisi. Maecenas efficitur consectetur ultricies. Sed commodo ipsum massa, et bibendum dolor lacinia non. Curabitur auctor justo pulvinar aliquam vulputate. Praesent condimentum maximus vehicula. Proin nunc velit, rhoncus vitae mauris vitae, venenatis sollicitudin dolor. In porttitor vulputate vestibulum. Aenean aliquam tempus nunc, quis blandit metus cursus ac. Nullam feugiat ultrices pretium. Curabitur posuere nunc sed tortor vestibulum varius. Mauris egestas ornare ex vel varius. Donec lacinia, magna nec porta vestibulum, purus ipsum mattis orci, vulputate tempus nunc ante sed quam. Nam pulvinar consequat ornare.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est mauris, pretium eu ullamcorper vitae, dictum vitae orci. Cras blandit augue sit amet volutpat porta. Phasellus diam est, pharetra eu lacus vel, porta egestas nisi. Maecenas efficitur consectetur ultricies. Sed commodo ipsum massa, et bibendum dolor lacinia non. Curabitur auctor justo pulvinar aliquam vulputate. Praesent condimentum maximus vehicula. Proin nunc velit, rhoncus vitae mauris vitae, venenatis sollicitudin dolor. In porttitor vulputate vestibulum. Aenean aliquam tempus nunc, quis blandit metus cursus ac. Nullam feugiat ultrices pretium. Curabitur posuere nunc sed tortor vestibulum varius. Mauris egestas ornare ex vel varius. Donec lacinia, magna nec porta vestibulum, purus ipsum mattis orci, vulputate tempus nunc ante sed quam. Nam pulvinar consequat ornare.</p>
                                 </div>
                             </div>
                         </div>

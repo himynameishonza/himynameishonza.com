@@ -5,7 +5,7 @@ function Homepage(props) {
 
 
     return (
-        <Layout type="homepage" >{props.children}</Layout>
+        <Layout type="homepage">{props.children}</Layout>
     )
 }
 export default Homepage;

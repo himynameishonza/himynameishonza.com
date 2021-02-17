@@ -4,6 +4,7 @@ import Icon from '../Icon';
 import Navigation from '../Navigation';
 import Settings from '../Settings';
 import { useKeyboardEvent } from "../../utils/keyHandle"
+import classnames from 'classnames';
 
 function Header(props) {
     const [settingsState, setSettingsState] = useState(false);
@@ -14,11 +15,11 @@ function Header(props) {
 
     return (
         <>
-            <header className={styles['header']}>
+            <header className={classnames(styles['header'], styles['header--' + props.type])}>
                 <div className={styles['header__logo']}>
                     <a href="/" aria-label="Přejít na hlavní stránku">
                         <Icon icon="logo" size="48" />
-                        <span className={styles['logo__type']}>himynameishonza</span>
+                        {props.type !== 'article' && <span className={styles['logo__type']}>himynameishonza</span>}
                     </a>
                 </div>
                 <div className={styles['header__navbar']}>

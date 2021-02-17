@@ -6,7 +6,7 @@
     position: sticky;
     top: 0;
     padding: $spacer-large;
-    z-index: 997;
+    z-index: 996;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -16,6 +16,7 @@
     }
 
     .header__logo {
+        z-index: 997;
         a {
             display: flex;
             align-items: center;
@@ -101,5 +102,9 @@
                 display: none;
             }
         }
+    }
+
+    &.header--article {
+        background: transparent;
     }
 }

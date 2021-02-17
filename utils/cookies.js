@@ -11,35 +11,28 @@ export function setInitialCookies() {
 
 // Master Cookie
 export function saveMasterCookie(masterCookie) {
-
     cookies.set('masterCookie', masterCookie, { path: '/' });
-    console.log("Saved Master cookie: " + cookies.get('masterCookie'))
 }
 
 export function readMasterCookie() {
-    console.log("Current Master cookie: " + cookies.get('masterCookie'));
     return cookies.get('masterCookie');
 }
 
 // Theme Cookie
 export function saveThemeCookie(theme) {
     cookies.set('theme', theme, { path: '/' });
-    console.log("Saved Theme cookie: " + cookies.get('theme'));
 }
 
 export function readThemeCookie() {
-    console.log("Current Theme cookie: " + cookies.get('theme'));
     return cookies.get('theme')
 }
 
 // Mark as Read Cookie
 export function saveMarkReadCookie(markRead) {
     cookies.set('markRead', markRead, { path: '/' });
-    console.log("Saved Mark Read cookie: " + cookies.get('markRead'));
 }
 
 export function readMarkReadCookie() {
-    console.log("Current Mark Read cookie: " + cookies.get('markRead'));
     return cookies.get('markRead');
 }
 
