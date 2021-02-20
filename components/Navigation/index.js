@@ -24,21 +24,21 @@ function Navigation(props) {
                             Filmy<span>Stručné recenze filmů</span>
                         </a>
                     </li>
-                    <li>
+                    {/* <li>
                         <a href="/rubrika/hry">
                             Hry<span>Recenze nových i starých her</span>
                         </a>
-                    </li>
+                    </li> */}
                     <li>
                         <a href="/rubrika/povidky">
                             Povídky<span>Povídky a novely</span>
                         </a>
                     </li>
-                    <li>
+                    {/* <li>
                         <a href="/rubrika/blog">
                             Blog<span>Cokoliv mě zrovna napadne</span>
                         </a>
-                    </li>
+                    </li> */}
                     <li>
                         <a href="/rubrika/venku-zase-prsi">
                             Venku zase prší<span>O tramvajích, dešti a stupidních lidech</span>

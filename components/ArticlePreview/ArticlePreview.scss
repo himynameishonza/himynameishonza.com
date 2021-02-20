@@ -103,7 +103,6 @@
         position: relative;
 
         .image__container {
-            background-image: url('https://img.novydenik.com/wp-static/2020/07/5R0A1733.jpg?fm=jpg&q=85&w=1172');
             background-size: cover;
             background-position: center;
             position: absolute;
@@ -112,7 +111,7 @@
             bottom: 0;
             left: 0;
             border-radius: 8px;
-            transition: $transition-basic filter;
+            transition: $transition-long filter;
             display: block;
 
             & > div {
@@ -122,14 +121,14 @@
 
         .image__decoration {
             position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: var(--color-link);
-            opacity: 0;
-            transition: $transition-basic opacity;
+            top: 10px;
+            right: 10px;
+            bottom: 10px;
+            left: 10px;
+            opacity: 0.6;
+            transition: $transition-long all;
             border-radius: 8px;
+            border: 1px solid var(--color-link);
         }
         @media (max-width: $breakpoint-desktop) {
             display: block;
@@ -162,7 +161,12 @@
         }
 
         .image__decoration {
-            opacity: 0.3;
+            opacity: 0.4;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: var(--color-link);
         }
     }
 }
@@ -234,7 +238,6 @@
         position: relative;
 
         .image__container {
-            background-image: url('https://img.novydenik.com/wp-static/2020/07/5R0A1733.jpg?fm=jpg&q=85&w=1172');
             background-size: cover;
             background-position: center;
             position: absolute;
@@ -243,7 +246,7 @@
             bottom: 0;
             left: 0;
             border-radius: 8px;
-            transition: $transition-basic filter;
+            transition: $transition-long filter;
             display: block;
 
             & > div {
@@ -253,14 +256,14 @@
 
         .image__decoration {
             position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: var(--color-link);
-            opacity: 0;
-            transition: $transition-basic opacity;
+            top: 10px;
+            right: 10px;
+            bottom: 10px;
+            left: 10px;
+            opacity: 0.6;
+            transition: $transition-long all;
             border-radius: 8px;
+            border: 1px solid var(--color-link);
         }
     }
 
@@ -278,7 +281,12 @@
         }
 
         .image__decoration {
-            opacity: 0.3;
+            opacity: 0.4;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: var(--color-link);
         }
     }
 }

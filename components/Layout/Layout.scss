@@ -183,6 +183,7 @@
             bottom: 0;
             right: 55%;
             left: 0;
+            border-right: 1px var(--color-divider) solid;
 
             @media (max-width: $breakpoint-laptop) {
                 right: 50%;

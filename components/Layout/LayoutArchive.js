@@ -5,7 +5,6 @@ import classnames from 'classnames';
 export function LayoutArchive(props) {
     return (
         <>
-            {console.log(props.data)}
             <div className={styles['layout__content']}>
                 <div className={styles['container--archive']}>
                     <h3
