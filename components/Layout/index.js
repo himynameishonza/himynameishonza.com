@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import Head from '../Head';
+import {useRouter} from 'next/router';
 import Header from '../Header';
 import {LayoutInfoPage, LayoutArticle, LayoutArchive, LayoutHomepage} from './Layout';
 import CookiesModal from '../CookiesModal';
 import ErrorPage from '../ErrorPage';
+import Footer from '../Footer';
 
 import {
     setInitialCookies,
@@ -13,7 +15,7 @@ import {
     setTheme,
 } from '../../utils/cookies';
 
-import {plainText} from '../../utils';
+import {plainText, goBack} from '../../utils';
 import '../../styles/global.scss';
 import styles from './Layout.scss';
 import classnames from 'classnames';
@@ -55,7 +57,6 @@ function Layout(props) {
                         : props.description
                 }
             />
-
             {cookiesModal && (
                 <CookiesModal
                     saveCookies={() => initCookies(true)}
@@ -83,6 +84,7 @@ function Layout(props) {
 
                 {props.type === 'error' && <ErrorPage statusCode={props.statusCode} />}
             </div>
+            {props.type !== 'article' && <Footer />}
         </>
     );
 }

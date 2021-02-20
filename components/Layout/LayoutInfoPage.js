@@ -11,10 +11,8 @@ export function LayoutInfoPage(props) {
                     </div>
                 </div>
                 <div className={styles['info-page__content']}>
-                    <div className={styles['content-container']}>
-                        <h1 className={styles['headline--medium']}>{props.title}</h1>
-                        {props.children}
-                    </div>
+                    <h1 className={styles['headline--medium']}>{props.title}</h1>
+                    {props.children}
                 </div>
             </div>
         </>

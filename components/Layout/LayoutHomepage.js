@@ -1,6 +1,5 @@
 import styles from './Layout.scss';
 import {HeroArticlePreview, FeaturedArticlePreview} from '../ArticlePreview';
-import Footer from '../Footer';
 import Facts from '../Facts';
 import SideContent from '../SideContent';
 
@@ -15,6 +14,7 @@ export function LayoutHomepage(props) {
                         link={'/' + props.data[0].slug.current}
                         excerpt={props.data[0].body}
                         mainImage={props.data[0].mainImage}
+                        mainImageDark={props.data[0].mainImageDark}
                     />
                 </div>
 
@@ -47,7 +47,6 @@ export function LayoutHomepage(props) {
                 </div>
             </div>
             <div className={styles['layout__decoration']} />
-            <Footer />
         </>
     );
 }

@@ -27,7 +27,7 @@ export function LayoutArticle(props) {
                     )}
                 </div>
                 <div className={styles['article__content']}>
-                    <div className={styles['content-container']}>
+                    <div className={styles['container--article']}>
                         <h1 className={styles['headline--medium']}>{props.data.title}</h1>
 
                         <h3 className={styles['headline--medium']}>

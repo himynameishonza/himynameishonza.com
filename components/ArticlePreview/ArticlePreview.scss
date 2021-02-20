@@ -167,6 +167,122 @@
     }
 }
 
+.article-preview--archive {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    a {
+        display: grid;
+        grid-template-columns: 0.7fr 1.3fr;
+        column-gap: $spacer-large;
+
+        @media (max-width: $breakpoint-desktop) {
+            grid-template-columns: 0.7fr 1.3fr;
+        }
+
+        @media (max-width: $breakpoint-laptop) {
+            row-gap: $spacer-medium;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: $breakpoint-tablet) {
+            row-gap: $spacer-small;
+        }
+
+        @media (max-width: $breakpoint-mobile) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &:first-of-type {
+        a {
+            grid-template-columns: 1fr 1fr;
+            padding-bottom: $spacer-large;
+            border-bottom: 1px solid var(--color-divider);
+
+            @media (min-width: $breakpoint-desktop + 1) {
+                h2 {
+                    font-size: 38px;
+                    line-height: 40px;
+                }
+            }
+
+            @media (max-width: $breakpoint-desktop) {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            @media (max-width: $breakpoint-laptop) {
+                row-gap: $spacer-medium;
+            }
+
+            @media (max-width: $breakpoint-tablet) {
+                row-gap: $spacer-small;
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            @media (max-width: $breakpoint-mobile) {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+
+    .hero__image {
+        width: 100%;
+        padding-bottom: 59.65%;
+        border-radius: 8px;
+        position: relative;
+
+        .image__container {
+            background-image: url('https://img.novydenik.com/wp-static/2020/07/5R0A1733.jpg?fm=jpg&q=85&w=1172');
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: 8px;
+            transition: $transition-basic filter;
+            display: block;
+
+            & > div {
+                border-radius: 8px;
+            }
+        }
+
+        .image__decoration {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: var(--color-link);
+            opacity: 0;
+            transition: $transition-basic opacity;
+            border-radius: 8px;
+        }
+    }
+
+    .hero__content {
+        width: 100%;
+
+        p {
+            -webkit-line-clamp: 5;
+        }
+    }
+
+    &:hover {
+        .image__container {
+            filter: grayscale(100%) brightness(1.2) contrast(110%);
+        }
+
+        .image__decoration {
+            opacity: 0.3;
+        }
+    }
+}
+
 .article-preview--featured {
     p {
         -webkit-line-clamp: 6;

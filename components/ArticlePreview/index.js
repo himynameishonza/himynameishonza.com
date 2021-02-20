@@ -4,6 +4,7 @@ import {plainText, urlFor} from '../../utils';
 import Icon from '../Icon';
 import classnames from 'classnames';
 import styles from './ArticlePreview.scss';
+import {readThemeCookie} from '../../utils/cookies';
 export function HeroArticlePreview(props) {
     return (
         <article className={classnames(styles['article-preview'], styles['article-preview--hero'])}>
@@ -15,7 +16,11 @@ export function HeroArticlePreview(props) {
                     <div className={styles['image__container']}>
                         <Image
                             alt="Image"
-                            src={urlFor(props.mainImage).width().url()}
+                            src={
+                                readThemeCookie() === 'dark' && props.mainImageDark !== undefined
+                                    ? urlFor(props.mainImageDark).width().url()
+                                    : urlFor(props.mainImage).width().url()
+                            }
                             layout="fill"
                             objectFit="cover"
                             quality={process.env.IMAGE_QUALITY}
@@ -115,6 +120,25 @@ export function ArchiveArticlePreview(props) {
                 href={props.link}
                 aria-label={'Odkaz na článek ' + props.title + ' z rubriky ' + props.category}
             >
+                <div className={styles['hero__image']}>
+                    <div className={styles['image__container']}>
+                        <Image
+                            alt="Image"
+                            src={
+                                readThemeCookie() === 'dark' && props.mainImageDark !== undefined
+                                    ? urlFor(props.mainImageDark).width().url()
+                                    : urlFor(props.mainImage).width().url()
+                            }
+                            layout="fill"
+                            objectFit="cover"
+                            quality={process.env.IMAGE_QUALITY}
+                            loading="lazy"
+                            nopin="nopin"
+                        />
+                    </div>
+
+                    <div className={styles['image__decoration']}></div>
+                </div>
                 <div className={styles['hero__content']}>
                     <h2
                         className={classnames(
