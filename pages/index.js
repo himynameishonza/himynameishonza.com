@@ -11,7 +11,6 @@ export class Homepage extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <Layout
                 type="homepage"

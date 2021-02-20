@@ -18,14 +18,13 @@ export function getPostsVZP() {
 
 export function getPost(slug) {
     return fetch(
-        apiURL + `*[slug.current=="${slug}"]{"categoryNames":categories[]->{title},%20...}`
+        apiURL + `*[slug.current=="${slug}"]{"categoryNames":categories[]->{title,slug},%20...}`
     );
 }
 
 export function getPostsInCategory(category) {
-    return fetch(apiURL + `*[slug match "${category}"]`);
-}
-
-export function getCategoryById(id) {
-    return fetch(apiURL + `*[slug match "${id}"]`);
+    return fetch(
+        apiURL +
+            `%2A%5B_type%3D%3D%27post%27%26%26%2A%5B_type%3D%3D%22category%22%26%26slug%3D%3D%22${category}%22%5D%5B0%5D._id%20in%20categories%5B%5D._ref%5D%7B...%7D%7Corder%28publishedAt%20desc%29%5B0...4%5D`
+    );
 }

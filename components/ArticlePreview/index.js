@@ -106,4 +106,33 @@ export function FeaturedArticlePreview(props) {
     );
 }
 
+export function ArchiveArticlePreview(props) {
+    return (
+        <article
+            className={classnames(styles['article-preview'], styles['article-preview--archive'])}
+        >
+            <a
+                href={props.link}
+                aria-label={'Odkaz na článek ' + props.title + ' z rubriky ' + props.category}
+            >
+                <div className={styles['hero__content']}>
+                    <h2
+                        className={classnames(
+                            styles['headline--medium'],
+                            styles['text--no-margin'],
+                            styles['text--margin-bottom-tiny']
+                        )}
+                    >
+                        {props.title}
+                        <span>
+                            <Icon icon="ui-forward" size="16" />
+                        </span>
+                    </h2>
+                    <p>{plainText(props.excerpt)}</p>
+                </div>
+            </a>
+        </article>
+    );
+}
+
 export default HeroArticlePreview;

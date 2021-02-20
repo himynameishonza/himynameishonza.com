@@ -47,6 +47,7 @@
 
         @media (max-width: $breakpoint-mobile) {
             padding: $spacer-medium;
+            border-left: none;
         }
 
         ul {

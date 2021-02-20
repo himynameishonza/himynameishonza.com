@@ -40,6 +40,11 @@
     display: flex;
     padding: $spacer-small;
 
+    &.button-group--centered {
+        align-items: center;
+        justify-content: center;
+    }
+
     .button {
         margin-right: $spacer-tiny;
 
@@ -49,7 +54,7 @@
     }
 
     @media (max-width: $breakpoint-mobile) {
-        flex-direction: column;
+        flex-direction: column-reverse;
 
         .button {
             margin-right: 0;

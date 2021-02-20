@@ -172,3 +172,10 @@
         -webkit-line-clamp: 6;
     }
 }
+
+.article-preview--archive {
+    margin-bottom: $spacer-large;
+    p {
+        -webkit-line-clamp: 5;
+    }
+}

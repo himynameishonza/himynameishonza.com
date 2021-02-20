@@ -8,7 +8,10 @@ export function Button(props) {
             {props.label}
         </a>
     ) : (
-        <button onClick={props.onclick} className={classnames(styles['button'], styles['button--' + props.type])}>
+        <button
+            onClick={props.onclick}
+            className={classnames(styles['button'], styles['button--' + props.type])}
+        >
             {props.label}
         </button>
     );
@@ -16,7 +19,12 @@ export function Button(props) {
 
 export function ButtonGroup(props) {
     return (
-        <div href className={styles['button-group']}>
+        <div
+            href
+            className={classnames(styles['button-group'], {
+                [styles['button-group--centered']]: props.centered,
+            })}
+        >
             {props.children}
         </div>
     );

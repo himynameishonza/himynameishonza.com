@@ -41,6 +41,7 @@ h1 {
     @media (max-width: $breakpoint-mobile) {
         font-size: 42px;
         line-height: 48px;
+        margin: $spacer-tiny 0;
     }
 
     &.headline--medium {

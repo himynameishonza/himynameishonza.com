@@ -3,15 +3,18 @@ import Cookies from 'universal-cookie';
 export const cookies = new Cookies();
 
 export function setInitialCookies() {
-    cookies.set('masterCookie', false, {path: '/'});
-    cookies.set('theme', 'light', {path: '/'});
-    cookies.set('markRead', true, {path: '/'});
-    cookies.set('sharing', [false, false, true, true, true], {path: '/'});
+    cookies.set('masterCookie', false, {path: '/', maxAge: 60 * 60 * 24 * 365});
+    cookies.set('theme', 'light', {path: '/', maxAge: 60 * 60 * 24 * 365});
+    cookies.set('markRead', true, {path: '/', maxAge: 60 * 60 * 24 * 365});
+    cookies.set('sharing', [false, false, true, true, true], {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 365,
+    });
 }
 
 // Master Cookie
 export function saveMasterCookie(masterCookie) {
-    cookies.set('masterCookie', masterCookie, {path: '/'});
+    cookies.set('masterCookie', masterCookie, {path: '/', maxAge: 60 * 60 * 24 * 365});
 }
 
 export function readMasterCookie() {
@@ -20,7 +23,7 @@ export function readMasterCookie() {
 
 // Theme Cookie
 export function saveThemeCookie(theme) {
-    cookies.set('theme', theme, {path: '/'});
+    cookies.set('theme', theme, {path: '/', maxAge: 60 * 60 * 24 * 365});
 }
 
 export function readThemeCookie() {
@@ -29,7 +32,7 @@ export function readThemeCookie() {
 
 // Mark as Read Cookie
 export function saveMarkReadCookie(markRead) {
-    cookies.set('markRead', markRead, {path: '/'});
+    cookies.set('markRead', markRead, {path: '/', maxAge: 60 * 60 * 24 * 365});
 }
 
 export function readMarkReadCookie() {
@@ -38,7 +41,7 @@ export function readMarkReadCookie() {
 
 // Sharing Cookie
 export function saveSharingCookie(sharing) {
-    cookies.set('sharing', sharing, {path: '/'});
+    cookies.set('sharing', sharing, {path: '/', maxAge: 60 * 60 * 24 * 36});
 }
 
 export function readSharingCookie() {

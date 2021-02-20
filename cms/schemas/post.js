@@ -21,16 +21,30 @@ export default {
             name: 'mainImage',
             title: 'Obrázek (výchozí)',
             type: 'image',
+            fields: [
+                {
+                    name: 'author',
+                    title: 'Autor',
+                    type: 'string',
+                },
+            ],
             options: {
-                hotspot: false,
+                hotspot: true,
             },
         },
         {
             name: 'mainImageDark',
             title: 'Obrázek (tmavý)',
             type: 'image',
+            fields: [
+                {
+                    name: 'author',
+                    title: 'Autor',
+                    type: 'string',
+                },
+            ],
             options: {
-                hotspot: false,
+                hotspot: true,
             },
         },
         {

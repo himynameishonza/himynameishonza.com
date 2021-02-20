@@ -22,7 +22,7 @@ export function useKeyboardEvent(key, callback) {
 // Router
 export function goBack() {
     const router = useRouter();
-    //return () => router.back();
+    return () => router.back();
 }
 
 // Date formater
@@ -147,10 +147,4 @@ function blocksToText(blocks, opts = {}) {
             .join(' ');
         return words;
     });
-}
-
-// Get category name by reference ID
-export function getCategory(reference) {
-    // console.log(reference);
-    return reference;
 }
