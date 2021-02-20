@@ -224,6 +224,11 @@
                     padding: $spacer-medium;
                 }
 
+                h3 span {
+                    opacity: 0.2;
+                    margin: 0 $spacer-tiny;
+                }
+
                 p {
                     line-height: 28px;
                 }

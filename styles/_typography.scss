@@ -89,6 +89,16 @@ h3 {
     @media (max-width: $breakpoint-mobile) {
         margin-top: $spacer-tiny;
     }
+
+    &.headline--medium {
+        font-size: 14px;
+        line-height: 14px;
+
+        @media (max-width: $breakpoint-mobile) {
+            font-size: 12px;
+            line-height: 14px;
+        }
+    }
 }
 
 h4 {

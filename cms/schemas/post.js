@@ -19,10 +19,18 @@ export default {
         },
         {
             name: 'mainImage',
-            title: 'Obrázek',
+            title: 'Obrázek (výchozí)',
             type: 'image',
             options: {
-                hotspot: true,
+                hotspot: false,
+            },
+        },
+        {
+            name: 'mainImageDark',
+            title: 'Obrázek (tmavý)',
+            type: 'image',
+            options: {
+                hotspot: false,
             },
         },
         {

@@ -1,10 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import {plainText, urlFor, getCategory} from '../../utils';
+import {plainText, urlFor} from '../../utils';
 import Icon from '../Icon';
 import classnames from 'classnames';
 import styles from './ArticlePreview.scss';
-
 export function HeroArticlePreview(props) {
     return (
         <article className={classnames(styles['article-preview'], styles['article-preview--hero'])}>
@@ -24,6 +23,7 @@ export function HeroArticlePreview(props) {
                             nopin="nopin"
                         />
                     </div>
+
                     <div className={styles['image__decoration']}></div>
                 </div>
                 <div className={styles['hero__content']}>

@@ -160,7 +160,12 @@ function Layout(props) {
                                 {props.data.mainImage && (
                                     <Image
                                         alt="Image"
-                                        src={urlFor(props.data.mainImage).width().url()}
+                                        src={
+                                            readThemeCookie() === 'dark' &&
+                                            props.data.mainImageDark !== undefined
+                                                ? urlFor(props.data.mainImageDark).width().url()
+                                                : urlFor(props.data.mainImage).width().url()
+                                        }
                                         layout="fill"
                                         objectFit="cover"
                                         quality={process.env.IMAGE_QUALITY}
@@ -175,18 +180,32 @@ function Layout(props) {
                                         {props.data.title}
                                     </h1>
 
-                                    <h3>
-                                        {props.data.categoryNames[0].title} -
-                                        {readingTime(props.data.body)}{' '}
-                                        {dateFormater(props.data.publishedAt) +
-                                            '. ' +
-                                            monthFormater(props.data.publishedAt)}
+                                    <h3 className={styles['headline--medium']}>
+                                        {props.data.categoryNames[0].title === 'Venku zase prší'
+                                            ? null
+                                            : dateFormater(props.data.publishedAt) +
+                                              '. ' +
+                                              monthFormater(props.data.publishedAt)}
+                                        {props.data.categoryNames[0].title ===
+                                        'Venku zase prší' ? null : (
+                                            <span>|</span>
+                                        )}
+                                        {props.data.categoryNames[0].title}
+                                        <span>|</span>
+                                        {readingTime(props.data.body)}
                                     </h3>
                                     <div className={styles['content__hero']}>
                                         {props.data.mainImage && (
                                             <Image
                                                 alt="Image"
-                                                src={urlFor(props.data.mainImage).width().url()}
+                                                src={
+                                                    readThemeCookie() === 'dark' &&
+                                                    props.data.mainImageDark !== undefined
+                                                        ? urlFor(props.data.mainImageDark)
+                                                              .width()
+                                                              .url()
+                                                        : urlFor(props.data.mainImage).width().url()
+                                                }
                                                 layout="fill"
                                                 objectFit="cover"
                                                 quality={process.env.IMAGE_QUALITY}
