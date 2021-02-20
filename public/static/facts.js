@@ -1,63 +1,66 @@
 const facts = [
     {
-        content: <em>Voda se na planetě Zemi vyskytuje, mimo jiné, i v kapalné formě.</em>,
+        content: 'Voda se na planetě Zemi vyskytuje, mimo jiné, i v kapalné formě.',
     },
     {
-        content: <em>Průměrný dospělý člověk ztráví více času na WC, než cvičením.</em>,
+        content: 'Průměrný dospělý člověk ztráví více času na WC, než cvičením.',
     },
     {
-        content: <em>Vážky mají šest nohou, ale neumí chodit.</em>,
+        content: 'Vážky mají šest nohou, ale neumí chodit.',
     },
     {
-        content: <em>Semínka jablka obsahují amygdalin, jed ze skupiny kyanidů.</em>,
+        content: 'Semínka jablka obsahují amygdalin, jed ze skupiny kyanidů.',
     },
     {
-        content: <em>Průměrně rychlou chůzí by člověk došel pěšky na Měsíc za 9 až 10 let. Na Mars za 2 000 až 3 000 let.</em>,
+        content:
+            'Průměrně rychlou chůzí by člověk došel pěšky na Měsíc za 9 až 10 let. Na Mars za 2 000 až 3 000 let.',
     },
     {
-        content: <em>Tučňák je jediným ptákem, který umí plavat, ale neumí létat.</em>,
+        content: 'Tučňák je jediným ptákem, který umí plavat, ale neumí létat.',
     },
     {
-        content: <em>Padající kokosy zabíjí ročně více lidí, než žraloci.</em>,
+        content: 'Padající kokosy zabíjí ročně více lidí, než žraloci.',
     },
     {
-        content: <em>29. února má svátek Horymír</em>,
+        content: '29. února má svátek Horymír',
     },
     {
-        content: <em>Ve státě Michigan je legální lovit jednorožce.</em>,
+        content: 'Ve státě Michigan je legální lovit jednorožce.',
     },
     {
-        content: <em>Vědci zjistili, že krávy v rozdílných částech světa bučí s rozdílným přízvukem.</em>,
+        content: 'Vědci zjistili, že krávy v rozdílných částech světa bučí s rozdílným přízvukem.',
     },
     {
-        content: <em>V Číně je oficiálně cenzurováno slovo "cenzura".</em>,
+        content: 'V Číně je oficiálně cenzurováno slovo „cenzura”.',
     },
     {
-        content: <em>Britská MI6 se nabourala na web organizace Al-Káida a nahradila návod na výrobu bomby receptem na cupcake.</em>,
+        content:
+            'Britská MI6 se nabourala na web organizace Al-Káida a nahradila návod na výrobu bomby receptem na cupcake.',
     },
     {
-        content: <em>Humři mezi sebou komunikují pomocí močových měchýřů.</em>,
+        content: 'Humři mezi sebou komunikují pomocí močových měchýřů.',
     },
     {
-        content: <em>Přilišné množství beta-karotenu v krvi může způsobit, že zoranžovíte.</em>,
+        content: 'Přilišné množství beta-karotenu v krvi může způsobit, že zoranžovíte.',
     },
     {
-        content: <em>Současnou vlajku USA navrhl student prvního ročníku střední školy.</em>,
+        content: 'Současnou vlajku USA navrhl student prvního ročníku střední školy.',
     },
     {
-        content: <em>Uši a nos pokračují v růstu celý náš život.</em>,
+        content: 'Uši a nos pokračují v růstu celý náš život.',
     },
     {
-        content: <em>Rozloha Ruské federace je větší, než povrch Pluta.</em>,
+        content: 'Rozloha Ruské federace je větší, než povrch Pluta.',
     },
     {
-        content: <em>Téměř 89 % zemské pevniny prozatím nepatří Ruské federaci.</em>,
+        content: 'Téměř 89 % zemské pevniny prozatím nepatří Ruské federaci.',
     },
     {
-        content: <em>Za den se ve světě narodí přibližně 400 000 dětí.</em>,
+        content: 'Za den se ve světě narodí přibližně 400 000 dětí.',
     },
     {
-        content: <em>S přihlédnutím na počet narozených a zemřelých přibyde na planetě 80 milionů lidí za rok.</em>,
+        content:
+            'S přihlédnutím na počet narozených a zemřelých přibyde na planetě 80 milionů lidí za rok.',
     },
 ];
 

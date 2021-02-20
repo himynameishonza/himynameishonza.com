@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import {plainText, urlFor} from '../../utils';
+import {plainText, urlFor, getCategory} from '../../utils';
 import Icon from '../Icon';
 import classnames from 'classnames';
 import styles from './ArticlePreview.scss';
@@ -64,12 +64,12 @@ export function SidecarArticlePreview(props) {
                 </h2>
                 <p
                     className={classnames(
-                        styles['paragraph--medium'],
+                        styles['paragraph--small'],
                         styles['text--no-margin'],
                         styles['text--margin-bottom-big']
                     )}
                 >
-                    {props.excerpt}
+                    {plainText(props.excerpt)}
                 </p>
             </a>
         </article>

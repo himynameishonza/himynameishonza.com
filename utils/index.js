@@ -149,6 +149,8 @@ function blocksToText(blocks, opts = {}) {
     });
 }
 
+// Get category name by reference ID
 export function getCategory(reference) {
+    // console.log(reference);
     return reference;
 }

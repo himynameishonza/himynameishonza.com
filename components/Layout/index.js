@@ -7,7 +7,6 @@ import Facts from '../Facts';
 import SideContent from '../SideContent';
 import CookiesModal from '../CookiesModal';
 import {HeroArticlePreview, FeaturedArticlePreview} from '../ArticlePreview';
-import Loading from '../Loading';
 import ErrorPage from '../ErrorPage';
 import Illustration from '../Illustration';
 import {useSpring, animated} from 'react-spring';
@@ -36,7 +35,6 @@ function Layout(props) {
     const [navState, setNavState] = useState(false);
     const [cookiesModal, setCookiesModal] = useState(readMasterCookie() === undefined);
     const [scrollable, setScrollable] = useState(false);
-    const [renderReady, setRenderReady] = useState(false);
     const animationFadeIn = useSpring({opacity: 1, from: {opacity: 0}});
 
     function initCookies(userChoice) {
@@ -58,7 +56,6 @@ function Layout(props) {
             : document.body.classList.remove('scroll-locked');
         cookiesModal || navState ? setScrollable(false) : setScrollable(true);
         setTheme();
-        setRenderReady(true);
     });
 
     return (
@@ -72,7 +69,7 @@ function Layout(props) {
                         : props.description
                 }
             />
-            {!renderReady || (props.type === 'loading' && <Loading />)}
+
             {cookiesModal && (
                 <CookiesModal
                     saveCookies={() => initCookies(true)}
@@ -95,7 +92,7 @@ function Layout(props) {
                         <div className={styles['layout__content']}>
                             <div className={styles['hero-article']}>
                                 <HeroArticlePreview
-                                    category="Knihy"
+                                    category={props.data[0].categoryNames[0].title}
                                     title={props.data[0].title}
                                     link={'/' + props.data[0].slug.current}
                                     excerpt={props.data[0].body}
@@ -105,21 +102,21 @@ function Layout(props) {
 
                             <div className={styles['featured-articles']}>
                                 <FeaturedArticlePreview
-                                    category="Knihy"
+                                    category={props.data[1].categoryNames[0].title}
                                     title={props.data[1].title}
                                     link={'/' + props.data[1].slug.current}
                                     excerpt={props.data[1].body}
                                 />
 
                                 <FeaturedArticlePreview
-                                    category="Knihy"
+                                    category={props.data[2].categoryNames[0].title}
                                     title={props.data[2].title}
                                     link={'/' + props.data[2].slug.current}
                                     excerpt={props.data[2].body}
                                 />
 
                                 <FeaturedArticlePreview
-                                    category="Knihy"
+                                    category={props.data[3].categoryNames[0].title}
                                     title={props.data[3].title}
                                     link={'/' + props.data[3].slug.current}
                                     excerpt={props.data[3].body}
@@ -128,7 +125,7 @@ function Layout(props) {
 
                             <div className={styles['side-content']}>
                                 <Facts />
-                                <SideContent />
+                                <SideContent data={props.dataVzp} />
                             </div>
                         </div>
                         <div className={styles['layout__decoration']} />
@@ -136,18 +133,7 @@ function Layout(props) {
                     </>
                 )}
 
-                {props.type === 'archive' && (
-                    <>
-                        <div className={styles['layout__content']}>
-                            <div className={styles['hero-article']}>
-                                <h2>{props.data[0].title}</h2>
-                                <h3>{props.data[0].description}</h3>
-                            </div>
-                        </div>
-                        <div className={styles['layout__decoration']} />
-                        <Footer />
-                    </>
-                )}
+                {props.type === 'archive' && <>archív</>}
 
                 {props.type === 'info-page' && (
                     <>
@@ -185,15 +171,31 @@ function Layout(props) {
                             </div>
                             <div className={styles['article__content']}>
                                 <div className={styles['content-container']}>
-                                    <h1>{props.data.title}</h1>
+                                    <h1 className={styles['headline--medium']}>
+                                        {props.data.title}
+                                    </h1>
 
                                     <h3>
-                                        {getCategory(props.data.categories[0]['_key'])} -
+                                        {props.data.categoryNames[0].title} -
                                         {readingTime(props.data.body)}{' '}
                                         {dateFormater(props.data.publishedAt) +
                                             '. ' +
                                             monthFormater(props.data.publishedAt)}
                                     </h3>
+                                    <div className={styles['content__hero']}>
+                                        {props.data.mainImage && (
+                                            <Image
+                                                alt="Image"
+                                                src={urlFor(props.data.mainImage).width().url()}
+                                                layout="fill"
+                                                objectFit="cover"
+                                                quality={process.env.IMAGE_QUALITY}
+                                                loading="lazy"
+                                                nopin="nopin"
+                                            />
+                                        )}
+                                    </div>
+
                                     <BlockContent
                                         blocks={props.data.body}
                                         serializers={serializers}

@@ -1,12 +1,32 @@
 @import 'variables';
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@font-face {
+    font-family: 'mNewYork';
+    src: url(/static/fonts/NewYork-Bold.woff2);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'mNewYork';
+    src: url(/static/fonts/NewYork.woff2);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'mNewYork';
+    src: url(/static/fonts/NewYorkItalic.woff2);
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'mUbuntu';
+    src: url(/static/fonts/Ubuntu.woff2);
+}
 
 h1 {
     font-size: 64px;
-    font-weight: 700;
+    font-weight: bold;
     font-family: $font-primary;
     line-height: 67px;
     color: var(--color-main-text);
@@ -22,11 +42,21 @@ h1 {
         font-size: 42px;
         line-height: 48px;
     }
+
+    &.headline--medium {
+        font-size: 48px;
+        line-height: 54px;
+
+        @media (max-width: $breakpoint-mobile) {
+            font-size: 38px;
+            line-height: 42px;
+        }
+    }
 }
 
 h2 {
     font-size: 38px;
-    font-weight: 700;
+    font-weight: bold;
     font-family: $font-primary;
     line-height: 40px;
     color: var(--color-main-text);
@@ -49,7 +79,7 @@ h2 {
 
 h3 {
     font-size: 16px;
-    font-weight: 700;
+    font-weight: bold;
     font-family: $font-secondary;
     text-transform: uppercase;
     line-height: 23px;
@@ -63,7 +93,7 @@ h3 {
 
 h4 {
     font-size: 14px;
-    font-weight: 700;
+    font-weight: bold;
     font-family: $font-secondary;
     line-height: 23px;
     margin: $spacer-small;
@@ -80,26 +110,31 @@ h4 {
 }
 
 p {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
-    font-family: $font-tertiary;
-    line-height: 21px;
+    font-family: $font-primary;
+    line-height: 24px;
     margin: $spacer-small 0;
     color: var(--color-main-text);
     transition: $transition-basic color;
+
+    @media (max-width: $breakpoint-tablet) {
+        font-size: 18px;
+        line-height: 23px;
+    }
 
     &.paragraph--narrow {
         max-width: 45ch;
     }
 
-    @media (max-width: $breakpoint-tablet) {
-        font-size: 15px;
-        line-height: 24px;
+    &.paragraph--medium {
+        font-size: 17px;
+        line-height: 21px;
     }
 
-    &.paragraph--medium {
-        font-size: 14px;
-        line-height: 18px;
+    &.paragraph--small {
+        font-size: 17px;
+        line-height: 21px;
     }
 }
 
@@ -120,7 +155,7 @@ ul {
     li {
         font-size: 14px;
         font-weight: 400;
-        font-family: $font-tertiary;
+        font-family: $font-primary;
         line-height: 18px;
         margin: $spacer-tiny 0;
         color: var(--color-main-text);

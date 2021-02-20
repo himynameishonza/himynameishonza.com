@@ -38,7 +38,7 @@
             color: var(--color-main-text);
             font-family: $font-primary;
             margin-left: $spacer-small;
-            font-weight: 700;
+            font-weight: bold;
 
             @media (max-width: $breakpoint-mobile) {
                 display: none;
@@ -80,7 +80,7 @@
                 margin-right: $spacer-tiny;
                 color: var(--color-main-text);
                 font-family: $font-primary;
-                font-weight: 700;
+                font-weight: bold;
                 transition: $transition-basic color;
 
                 @media (max-width: $breakpoint-mobile) {
@@ -122,8 +122,17 @@
             border-bottom: none;
             background: transparent;
             svg {
-                fill: var(--color-bg);
+                fill: var(--color-main-text);
             }
+            @media (max-width: $breakpoint-tablet) {
+                border-bottom: 1px solid var(--color-divider);
+                background: var(--color-bg);
+            }
+        }
+
+        &.header--active .header__logo {
+            border-bottom: 1px solid var(--color-divider);
+            background: var(--color-bg);
         }
     }
 }

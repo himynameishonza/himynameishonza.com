@@ -28,7 +28,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-style: italic;
             padding: $spacer-large;
             flex-direction: column;
             z-index: 1;
@@ -36,9 +35,9 @@
             p {
                 text-align: center;
                 max-width: 35ch;
-                font-size: 19px;
-                line-height: 22px;
-                font-weight: 700;
+                font-size: 24px;
+                line-height: 26px;
+                font-weight: bold;
             }
 
             cite {
@@ -98,14 +97,15 @@
                     flex-direction: column;
                     padding: $spacer-tiny $spacer-small 0;
                     transition: $transition-basic color;
+                    font-weight: bold;
 
                     span {
                         opacity: 0;
                         font-style: italic;
-                        font-size: 14px;
+                        font-size: 16px;
                         margin-top: $spacer-tiny;
                         font-weight: normal;
-                        font-family: $font-tertiary;
+                        font-family: $font-primary;
                         transition: 1s opacity;
                     }
                 }

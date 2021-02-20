@@ -15,7 +15,11 @@ function Header(props) {
 
     return (
         <>
-            <header className={classnames(styles['header'], styles['header--' + props.type])}>
+            <header
+                className={classnames(styles['header'], styles['header--' + props.type], {
+                    [styles['header--active']]: props.navState,
+                })}
+            >
                 <div className={styles['header__logo']}>
                     <a href="/" aria-label="Přejít na hlavní stránku">
                         <Icon icon="logo" size="48" />

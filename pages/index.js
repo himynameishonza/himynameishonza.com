@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import {getHomepagePosts} from '../api/';
+import {getHomepagePosts, getPostsVZP} from '../api/';
 import '../styles/global.scss';
 import ReactGA from 'react-ga';
 
@@ -11,14 +11,25 @@ export class Homepage extends React.Component {
     }
 
     render() {
-        return <Layout type="homepage" data={this.props.posts.result} />;
+        console.log(this.props);
+        return (
+            <Layout
+                type="homepage"
+                data={this.props.posts.result}
+                dataVzp={this.props.vzpPosts.result}
+            />
+        );
     }
 }
 
 Homepage.getInitialProps = async ({req}) => {
     const res = await getHomepagePosts();
+    const res2 = await getPostsVZP();
+
     const json = await res.json();
-    return {posts: json};
+    const json2 = await res2.json();
+
+    return {posts: json, vzpPosts: json2};
 };
 
 export default Homepage;
