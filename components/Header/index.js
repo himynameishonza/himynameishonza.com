@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styles from './Header.scss';
 import Icon from '../Icon';
 import Navigation from '../Navigation';
 import Settings from '../Settings';
-import {useKeyboardEvent, goBack} from '../../utils/';
+import { useKeyboardEvent, goBack } from '../../utils/';
 import classnames from 'classnames';
 
 function Header(props) {
@@ -58,12 +58,12 @@ function Header(props) {
                         </div>
                     )}
 
-                    {props.showAbout && props.navState && !settingsState && (
+                    {/* {props.showAbout && props.navState && !settingsState && (
                         <a href="/o-webu" aria-label="Přejít na stránku O webu">
                             <span className={styles['svg__text']}>O webu</span>
                             <Icon icon="ui-about" size="24" />
                         </a>
-                    )}
+                    )} */}
 
                     {props.navState && !settingsState && (
                         <a

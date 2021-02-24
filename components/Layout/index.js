@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from '../Head';
-import {useRouter} from 'next/router';
 import Header from '../Header';
-import {LayoutInfoPage, LayoutArticle, LayoutArchive, LayoutHomepage} from './Layout';
+import { LayoutInfoPage, LayoutArticle, LayoutArchive, LayoutHomepage } from './Layout';
 import CookiesModal from '../CookiesModal';
 import ErrorPage from '../ErrorPage';
 import Footer from '../Footer';
@@ -15,7 +14,7 @@ import {
     setTheme,
 } from '../../utils/cookies';
 
-import {plainText, goBack} from '../../utils';
+import { plainText, goBack } from '../../utils';
 import '../../styles/global.scss';
 import styles from './Layout.scss';
 import classnames from 'classnames';
@@ -74,14 +73,11 @@ function Layout(props) {
                 />
             )}
             <div className={classnames(styles['layout'], styles['layout--' + props.type])}>
+
                 {props.type === 'homepage' && <LayoutHomepage {...props} />}
-
                 {props.type === 'archive' && <LayoutArchive {...props} />}
-
                 {props.type === 'info-page' && <LayoutInfoPage {...props} />}
-
                 {props.type === 'article' && <LayoutArticle {...props} />}
-
                 {props.type === 'error' && <ErrorPage statusCode={props.statusCode} />}
             </div>
             {props.type !== 'article' && <Footer />}
