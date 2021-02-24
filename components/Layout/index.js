@@ -3,7 +3,6 @@ import Head from '../Head';
 import Header from '../Header';
 import { LayoutInfoPage, LayoutArticle, LayoutArchive, LayoutHomepage } from './Layout';
 import CookiesModal from '../CookiesModal';
-import ErrorPage from '../ErrorPage';
 import Footer from '../Footer';
 
 import {
@@ -59,7 +58,6 @@ function Layout(props) {
             {cookiesModal && (
                 <CookiesModal
                     saveCookies={() => initCookies(true)}
-                    discardCookies={() => initCookies(false)}
                 />
             )}
             {props.type !== 'error' && (

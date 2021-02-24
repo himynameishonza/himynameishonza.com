@@ -2,15 +2,18 @@ import React from 'react';
 import Illustration from '../Illustration';
 import { ButtonGroup, Button } from '../Button';
 import styles from './CookiesModal.scss';
-import classnames from 'classnames';
+import { useRouter } from 'next/router'
 
 function CookiesModal(props) {
+    const router = useRouter()
+    const leavePage = () => {
+        router.push("https://www.facebook.com/himynameishonzacom")
+    }
+
     return (
+
         <div
-            className={classnames(styles['cookies-modal'], {
-                [styles['cookies-modal--hide']]: props.hide,
-            })}
-        >
+            className={styles['cookies-modal']}>
             <div className={styles['cookies-modal__illustration']}>
                 <Illustration illustration="cookies" />
             </div>
@@ -23,7 +26,7 @@ function CookiesModal(props) {
                         Pro využití všech funkcí webu je potřeba ukládat soubory cookies. Souhlasíte s jejich ukládáním ve vašem prohlížeči?
                     </p>
                     <ButtonGroup>
-                        <Button type="secondary" label="Ne, je to kampaň" onclick={props.discardCookies} />
+                        <Button type="secondary" label="Ne, je to kampaň" onclick={() => leavePage()} />
                         <Button type="primary" label="Ano, souhlasím" onclick={props.saveCookies} />
                     </ButtonGroup>
                 </div>
