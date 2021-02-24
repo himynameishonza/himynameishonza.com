@@ -1,11 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
-import {plainText, urlFor} from '../../utils';
+import { plainText, urlFor } from '../../utils';
 import Icon from '../Icon';
 import classnames from 'classnames';
 import styles from './ArticlePreview.scss';
-import {readThemeCookie} from '../../utils/cookies';
+import { readThemeCookie } from '../../utils/cookies';
+import { useSpring, animated } from 'react-spring'
+
 export function HeroArticlePreview(props) {
+    const fade = useSpring({ opacity: 1, from: { opacity: 0 } })
     return (
         <article className={classnames(styles['article-preview'], styles['article-preview--hero'])}>
             <a
@@ -13,21 +16,24 @@ export function HeroArticlePreview(props) {
                 aria-label={'Odkaz na článek ' + props.title + ' z rubriky ' + props.category}
             >
                 <div className={styles['hero__image']}>
-                    <div className={styles['image__container']}>
-                        <Image
-                            alt="Image"
-                            src={
-                                readThemeCookie() === 'dark' && props.mainImageDark !== undefined
-                                    ? urlFor(props.mainImageDark).width().url()
-                                    : urlFor(props.mainImage).width().url()
-                            }
-                            layout="fill"
-                            objectFit="cover"
-                            quality={process.env.IMAGE_QUALITY}
-                            loading="lazy"
-                            nopin="nopin"
-                        />
-                    </div>
+                    <animated.div style={fade}>
+                        <div className={styles['image__container']}>
+
+                            <Image
+                                alt="Image"
+                                src={
+                                    readThemeCookie() === 'dark' && props.mainImageDark !== undefined
+                                        ? urlFor(props.mainImageDark).width().url()
+                                        : urlFor(props.mainImage).width().url()
+                                }
+                                layout="fill"
+                                objectFit="cover"
+                                quality={process.env.IMAGE_QUALITY}
+                                loading="lazy"
+                                nopin="nopin"
+                            />
+                        </div>
+                    </animated.div>
 
                     <div className={styles['image__decoration']}></div>
                 </div>
@@ -112,6 +118,7 @@ export function FeaturedArticlePreview(props) {
 }
 
 export function ArchiveArticlePreview(props) {
+    const fade = useSpring({ opacity: 1, from: { opacity: 0 } })
     return (
         <article
             className={classnames(styles['article-preview'], styles['article-preview--archive'])}
@@ -121,21 +128,23 @@ export function ArchiveArticlePreview(props) {
                 aria-label={'Odkaz na článek ' + props.title + ' z rubriky ' + props.category}
             >
                 <div className={styles['hero__image']}>
-                    <div className={styles['image__container']}>
-                        <Image
-                            alt="Image"
-                            src={
-                                readThemeCookie() === 'dark' && props.mainImageDark !== undefined
-                                    ? urlFor(props.mainImageDark).width().url()
-                                    : urlFor(props.mainImage).width().url()
-                            }
-                            layout="fill"
-                            objectFit="cover"
-                            quality={process.env.IMAGE_QUALITY}
-                            loading="lazy"
-                            nopin="nopin"
-                        />
-                    </div>
+                    <animated.div style={fade}>
+                        <div className={styles['image__container']}>
+                            <Image
+                                alt="Image"
+                                src={
+                                    readThemeCookie() === 'dark' && props.mainImageDark !== undefined
+                                        ? urlFor(props.mainImageDark).width().url()
+                                        : urlFor(props.mainImage).width().url()
+                                }
+                                layout="fill"
+                                objectFit="cover"
+                                quality={process.env.IMAGE_QUALITY}
+                                loading="lazy"
+                                nopin="nopin"
+                            />
+                        </div>
+                    </animated.div>
 
                     <div className={styles['image__decoration']}></div>
                 </div>

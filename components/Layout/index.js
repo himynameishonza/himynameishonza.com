@@ -78,7 +78,6 @@ function Layout(props) {
                 {props.type === 'archive' && <LayoutArchive {...props} />}
                 {props.type === 'info-page' && <LayoutInfoPage {...props} />}
                 {props.type === 'article' && <LayoutArticle {...props} />}
-                {props.type === 'error' && <ErrorPage statusCode={props.statusCode} />}
             </div>
             {props.type !== 'article' && <Footer />}
         </>

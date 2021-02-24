@@ -1,5 +1,5 @@
 import styles from './Layout.scss';
-import {ArchiveArticlePreview} from '../ArticlePreview';
+import { ArchiveArticlePreview } from '../ArticlePreview';
 import classnames from 'classnames';
 
 export function LayoutArchive(props) {

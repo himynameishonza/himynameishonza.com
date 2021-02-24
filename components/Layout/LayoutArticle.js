@@ -3,27 +3,31 @@ import Image from 'next/image';
 import BlockContent from '@sanity/block-content-to-react';
 import { serializers, urlFor, readingTime, dateFormater, monthFormater } from '../../utils';
 import { readThemeCookie } from '../../utils/cookies';
+import { useSpring, animated } from 'react-spring'
 
 export function LayoutArticle(props) {
+    const fade = useSpring({ opacity: 1, from: { opacity: 0 } })
     return (
         <>
             <div className={styles['layout__content']}>
                 <div className={styles['article__hero']}>
                     {props.data.mainImage && (
-                        <Image
-                            alt="Image"
-                            src={
-                                readThemeCookie() === 'dark' &&
-                                    props.data.mainImageDark !== undefined
-                                    ? urlFor(props.data.mainImageDark).width().url()
-                                    : urlFor(props.data.mainImage).width().url()
-                            }
-                            layout="fill"
-                            objectFit="cover"
-                            quality={process.env.IMAGE_QUALITY}
-                            loading="lazy"
-                            nopin="nopin"
-                        />
+                        <animated.div style={fade}>
+                            <Image
+                                alt="Image"
+                                src={
+                                    readThemeCookie() === 'dark' &&
+                                        props.data.mainImageDark !== undefined
+                                        ? urlFor(props.data.mainImageDark).width().url()
+                                        : urlFor(props.data.mainImage).width().url()
+                                }
+                                layout="fill"
+                                objectFit="cover"
+                                quality={process.env.IMAGE_QUALITY}
+                                loading="lazy"
+                                nopin="nopin"
+                            />
+                        </animated.div>
                     )}
                 </div>
                 <div className={styles['article__content']}>
@@ -53,20 +57,22 @@ export function LayoutArticle(props) {
                             </h3> : null}
                         <div className={styles['content__hero']}>
                             {props.data.mainImage && (
-                                <Image
-                                    alt="Image"
-                                    src={
-                                        readThemeCookie() === 'dark' &&
-                                            props.data.mainImageDark !== undefined
-                                            ? urlFor(props.data.mainImageDark).width().url()
-                                            : urlFor(props.data.mainImage).width().url()
-                                    }
-                                    layout="fill"
-                                    objectFit="cover"
-                                    quality={process.env.IMAGE_QUALITY}
-                                    loading="lazy"
-                                    nopin="nopin"
-                                />
+                                <animated.div style={fade}>
+                                    <Image
+                                        alt="Image"
+                                        src={
+                                            readThemeCookie() === 'dark' &&
+                                                props.data.mainImageDark !== undefined
+                                                ? urlFor(props.data.mainImageDark).width().url()
+                                                : urlFor(props.data.mainImage).width().url()
+                                        }
+                                        layout="fill"
+                                        objectFit="cover"
+                                        quality={process.env.IMAGE_QUALITY}
+                                        loading="lazy"
+                                        nopin="nopin"
+                                    />
+                                </animated.div>
                             )}
                         </div>
 

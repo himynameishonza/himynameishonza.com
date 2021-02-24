@@ -2,6 +2,10 @@ import React from 'react';
 import Router from 'next/router';
 import Illustration from '../Illustration';
 import styles from './ErrorPage.scss';
+import Head from '../Head';
+import {
+    readThemeCookie, setTheme,
+} from '../../utils/cookies';
 export class ErrorPage extends React.Component {
     constructor(props) {
         super(props);
@@ -16,7 +20,7 @@ export class ErrorPage extends React.Component {
         } else {
             setTimeout(
                 function () {
-                    this.setState({timeout: this.state.timeout - 1});
+                    this.setState({ timeout: this.state.timeout - 1 });
                     this.backToHomePage();
                 }.bind(this),
                 1000
@@ -28,11 +32,16 @@ export class ErrorPage extends React.Component {
         if (this.props.statusCode !== 500) {
             this.backToHomePage();
         }
+        setTheme();
     }
 
     render() {
-        return (
-            <div className={styles['error-page']}>
+        return (<>
+            <Head
+                theme={readThemeCookie()}
+            />
+
+            < div className={styles['error-page']} >
                 <div className={styles['error-page__illustration']}>
                     <Illustration
                         illustration={this.props.statusCode === 404 ? 'error404' : 'error500'}
@@ -93,18 +102,19 @@ export class ErrorPage extends React.Component {
                                     proběhne za {this.state.timeout} vteřin
                                     {this.state.timeout === 1 ? 'u' : null}
                                     {this.state.timeout === 2 ||
-                                    this.state.timeout === 3 ||
-                                    this.state.timeout === 4
+                                        this.state.timeout === 3 ||
+                                        this.state.timeout === 4
                                         ? 'y'
                                         : null}
                                 </>
                             ) : (
-                                'Nic dalšího tu momentálně není k vidění. Zkuste to, prosím, později.'
-                            )}
+                                    'Nic dalšího tu momentálně není k vidění. Zkuste to, prosím, později.'
+                                )}
                         </h4>
                     </div>
                 </div>
-            </div>
+            </div >
+        </>
         );
     }
 }

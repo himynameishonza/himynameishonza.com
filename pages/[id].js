@@ -1,22 +1,17 @@
-import {withRouter, useRouter} from 'next/router';
-import {getPost} from '../api/';
-import {useState, useEffect} from 'react';
+import { withRouter, useRouter } from 'next/router';
+import { getPost } from '../api/';
+import { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
+import ErrorPage from '../components/ErrorPage';
 import '../styles/global.scss';
 import ReactGA from 'react-ga';
 
-const Post = ({data}) => {
+const Post = ({ data }) => {
     const [postData, setData] = useState(data);
-    const [renderError, setRenderError] = useState(false);
 
     const router = useRouter();
-    const {id} = router.query;
+    const { id } = router.query;
 
-    function checkRender() {
-        setTimeout(() => {
-            setRenderError(true);
-        }, 3000);
-    }
 
     useEffect(
         () => {
@@ -25,28 +20,25 @@ const Post = ({data}) => {
             ReactGA.pageview(window.location.pathname + window.location.search);
         },
         [id],
-        checkRender()
     );
 
-    return postData && postData.length !== 0 ? (
+    return postData && postData.length !== 0 ?
         <Layout data={postData} type="article" />
-    ) : renderError ? (
-        <Layout type="error" statusCode={404} />
-    ) : (
-        <Layout type="loading" />
-    );
+        :
+        <ErrorPage statusCode={404} />
+
 };
 
-Post.getInitialProps = async ({req}) => {
+Post.getInitialProps = async ({ req }) => {
     if (typeof window !== 'undefined') {
-        return {data: null};
+        return { data: null };
     }
 
     const id = req.url.replace('/', '');
     const res = await getPost(id);
     const json = await res.json();
     const data = json.result[0];
-    return {data};
+    return { data };
 };
 
 export default withRouter(Post);
