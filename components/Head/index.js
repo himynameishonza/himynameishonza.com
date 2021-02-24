@@ -40,7 +40,7 @@ const Index = props => (
         <meta name="msapplication-config" content="/static/favicon/browserconfig.xml" />
         <meta name="theme-color" content="#ffffff" />
         <link
-            rel="stylesheet/scss"
+            rel="preload"
             type="text/css"
             href={'/static/theme-' + props.theme + '.css'}
         />

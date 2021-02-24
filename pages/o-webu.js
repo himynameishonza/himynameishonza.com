@@ -26,13 +26,13 @@ const content = (
             </a>
             . Hostování a deployment probíhá přes platformu{' '}
             <a href="https://vercel.com/" target="_blank">
-                Vercel Now
+                Vercel
             </a>
             . Web v současnosti nevyužívá žádný testovací framework, takže je velmi "bug friendly".
             Pokud na nějakého brouka narazíte, neváhejte mě kontaktovat na sociálních internetech.
         </p>
 
-        <h3>Využívané Knihovny</h3>
+        <h3>Hlavní Knihovny</h3>
         <p>
             <b>react &amp; react-dom</b> - verze 17.0.1
             <br />
@@ -40,13 +40,13 @@ const content = (
             <br />
             <b>node-sass</b> - verze 4.13.0
             <br />
-            <b>react-awesome-reveal</b> - knihovna pro animace
+            <b>react-spring</b> - verze 8.0.27
             <br />
             <b>sanity</b> - verze 2.2.3
             <br />
-            <b>vercel</b> - verze 4.41.2
+            <b>vercel</b> - verze 21.2.3
             <br />
-            <b>webpack</b> - verze 21.2.3
+            <b>webpack</b> - verze 4.41.2
             <br />
             <b>Ilustrace</b> - Eastwood by Icons8
             <br />
@@ -60,7 +60,7 @@ const content = (
             </a>
             : Sdílejte, upravujte, prodávejte, vždy ale uveďte zdroj.
         </p>
-        <p>Licence zdrojového kódu je MIT, kód je ke stažení na stránkách GitHub</p>
+        <p>Licence zdrojového kódu je MIT, kód bude brzy ke stažení na stránkách GitHub</p>
         <p>
             Ostatní obsah (fotografie, ilustrace, ikony, audio a video) se řídí právy vlastníků
             obsahu.

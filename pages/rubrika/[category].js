@@ -2,7 +2,6 @@ import { withRouter, useRouter } from 'next/router';
 import { getPostsInCategory } from '../../api/';
 import { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
-import Loading from '../../components/Loading';
 import '../../styles/global.scss';
 import ReactGA from 'react-ga';
 
@@ -21,7 +20,7 @@ const IndexPage = ({ posts }) => {
         [category]
     );
 
-    return postData && postData.length !== 0 ? <Layout data={postData} type="archive" category={category} /> : <Loading />;
+    return postData && postData.length !== 0 ? <Layout data={postData} type="archive" category={category} /> : null;
 };
 
 IndexPage.getInitialProps = async ({ req }) => {

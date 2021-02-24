@@ -4,6 +4,7 @@ import Header from '../Header';
 import { LayoutInfoPage, LayoutArticle, LayoutArchive, LayoutHomepage } from './Layout';
 import CookiesModal from '../CookiesModal';
 import Footer from '../Footer';
+import Loading from '../Loading';
 
 import {
     setInitialCookies,
@@ -22,6 +23,8 @@ function Layout(props) {
     const [navState, setNavState] = useState(false);
     const [cookiesModal, setCookiesModal] = useState(readMasterCookie() === undefined);
     const [scrollable, setScrollable] = useState(false);
+    const [renderPage, setRenderPage] = useState(false);
+
 
     function initCookies(userChoice) {
         if (userChoice === true) {
@@ -42,10 +45,12 @@ function Layout(props) {
             : document.body.classList.remove('scroll-locked');
         cookiesModal || navState ? setScrollable(false) : setScrollable(true);
         setTheme();
+        setRenderPage(true);
     });
 
     return (
         <>
+            <Loading status={renderPage} />
             <Head
                 theme={readThemeCookie()}
                 title={props.type !== 'homepage' && props.data ? props.data.title : props.title}
