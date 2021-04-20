@@ -34,7 +34,7 @@ export function FeedPost(props) {
                     <div dangerouslySetInnerHTML={{__html: props.data.attachment}} />
                 )}
             </div>
-            <div className={styles['feed-post__footer']}>
+            {/* <div className={styles['feed-post__footer']}>
                 <div className={styles['footer__tags']}>
                     <ul>
                         {props.data.tags.map(tag => (
@@ -47,7 +47,7 @@ export function FeedPost(props) {
                     <Icon icon="ui-unlike" size="24" />
                     <span>234</span>
                 </div>
-            </div>
+            </div> */}
         </article>
     );
 }
