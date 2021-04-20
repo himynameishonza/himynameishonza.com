@@ -58,6 +58,10 @@
             color: var(--color-link-hover);
         }
     }
+
+    &.article-preview--mark-read {
+        opacity: 0.3 !important;
+    }
 }
 
 .article-preview--sidecar {
@@ -302,4 +306,17 @@
     p {
         -webkit-line-clamp: 5;
     }
+}
+
+.mark-read-badge {
+    background: var(--color-divider);
+    border-radius: 4px;
+    padding: 4px;
+    display: inline-block;
+    font-size: 11px;
+    font-family: $font-secondary;
+    text-transform: uppercase;
+    color: var(--color-secondary-text);
+    margin-bottom: $spacer-tiny;
+    letter-spacing: 1px;
 }

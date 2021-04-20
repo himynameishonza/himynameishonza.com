@@ -21,17 +21,23 @@ export default {
             name: 'contentType',
             title: 'Typ příspěvku',
             type: 'array',
-            of: [{ type: 'string' }],
+            of: [{type: 'string'}],
             options: {
                 list: [
-                    { title: 'Text', value: 'text' },
-                    { title: 'Video', value: 'video' },
-                    { title: 'Audio', value: 'audio' },
-                    { title: 'Kniha', value: 'kniha' },
-                    { title: 'Hra', value: 'hra' },
-                    { title: 'Film', value: 'film' }
-                ]
-            }
+                    {title: 'Text', value: 'text'},
+                    {title: 'Video', value: 'video'},
+                    {title: 'Audio', value: 'audio'},
+                    {title: 'Kniha', value: 'kniha'},
+                    {title: 'Hra', value: 'hra'},
+                    {title: 'Film', value: 'film'},
+                ],
+            },
+        },
+        {
+            name: 'tags',
+            title: 'Tagy',
+            type: 'array',
+            of: [{type: 'string'}],
         },
         {
             name: 'publishedAt',

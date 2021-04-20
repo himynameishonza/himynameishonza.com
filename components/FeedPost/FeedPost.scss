@@ -16,17 +16,76 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    .header__content-type {
+        border-radius: 4px;
+        background: var(--color-divider);
+        display: inline-block;
+        font-size: 12px;
+        font-weight: bold;
+        font-family: $font-secondary;
+        color: var(--color-main-text);
+        padding: $spacer-tiny;
+        text-transform: uppercase;
+        margin-right: $spacer-tiny;
+    }
 }
 
-.content-type {
-    border-radius: 4px;
-    background: var(--color-divider);
-    display: inline-block;
-    font-size: 12px;
-    font-weight: bold;
-    font-family: $font-secondary;
-    color: var(--color-main-text);
-    padding: $spacer-tiny;
-    text-transform: uppercase;
-    margin-right: $spacer-tiny;
+.feed-post__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacer-tiny 0;
+
+    .footer__tags {
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+
+            li::before {
+                display: none;
+            }
+
+            li {
+                padding: $spacer-tiny / 2 $spacer-tiny;
+                background: var(--color-divider);
+                border-radius: 4px;
+                margin-right: $spacer-tiny;
+                font-size: 12px;
+                font-family: $font-secondary;
+                color: var(--color-link);
+            }
+        }
+    }
+
+    .footer__counter {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        svg {
+            margin-right: $spacer-tiny;
+            transition: all 0.24s;
+            fill: var(--color-link);
+        }
+
+        span {
+            font-family: $font-secondary;
+            font-size: 13px;
+            color: var(--color-main-text);
+            transition: all 0.24s;
+        }
+
+        &:hover {
+            svg {
+                fill: var(--color-link-hover);
+            }
+
+            span {
+                color: var(--color-link-hover);
+            }
+        }
+    }
 }

@@ -1,14 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
-import { plainText, urlFor } from '../../utils';
+import {plainText, urlFor} from '../../utils';
 import Icon from '../Icon';
 import classnames from 'classnames';
 import styles from './ArticlePreview.scss';
-import { readThemeCookie } from '../../utils/cookies';
-import { useSpring, animated } from 'react-spring'
+import {checkIfRead, readThemeCookie} from '../../utils/cookies';
+import {useSpring, animated} from 'react-spring';
 
 export function HeroArticlePreview(props) {
-    const fade = useSpring({ opacity: 1, from: { opacity: 0 } })
+    const fade = useSpring({opacity: 1, from: {opacity: 0}});
     return (
         <article className={classnames(styles['article-preview'], styles['article-preview--hero'])}>
             <a
@@ -18,11 +18,11 @@ export function HeroArticlePreview(props) {
                 <div className={styles['hero__image']}>
                     <animated.div style={fade}>
                         <div className={styles['image__container']}>
-
                             <Image
                                 alt="Image"
                                 src={
-                                    readThemeCookie() === 'dark' && props.mainImageDark !== undefined
+                                    readThemeCookie() === 'dark' &&
+                                    props.mainImageDark !== undefined
                                         ? urlFor(props.mainImageDark).width().url()
                                         : urlFor(props.mainImage).width().url()
                                 }
@@ -39,6 +39,9 @@ export function HeroArticlePreview(props) {
                 </div>
                 <div className={styles['hero__content']}>
                     <h3 className={styles['text--margin-bottom-tiny']}>{props.category}</h3>
+                    {props.markRead ? (
+                        <div className={styles['mark-read-badge']}>Přečteno</div>
+                    ) : null}
                     <h2>
                         {props.title}
                         <span>
@@ -61,6 +64,7 @@ export function SidecarArticlePreview(props) {
                 href={props.link}
                 aria-label={'Odkaz na článek ' + props.title + ' z rubriky ' + props.category}
             >
+                {props.markRead ? <div className={styles['mark-read-badge']}>Přečteno</div> : null}
                 <h2
                     className={classnames(
                         styles['headline--medium'],
@@ -98,6 +102,9 @@ export function FeaturedArticlePreview(props) {
             >
                 <div className={styles['hero__content']}>
                     <h3 className={styles['text--margin-bottom-tiny']}>{props.category}</h3>
+                    {props.markRead ? (
+                        <div className={styles['mark-read-badge']}>Přečteno</div>
+                    ) : null}
                     <h2
                         className={classnames(
                             styles['headline--medium'],
@@ -118,7 +125,7 @@ export function FeaturedArticlePreview(props) {
 }
 
 export function ArchiveArticlePreview(props) {
-    const fade = useSpring({ opacity: 1, from: { opacity: 0 } })
+    const fade = useSpring({opacity: 1, from: {opacity: 0}});
     return (
         <article
             className={classnames(styles['article-preview'], styles['article-preview--archive'])}
@@ -133,7 +140,8 @@ export function ArchiveArticlePreview(props) {
                             <Image
                                 alt="Image"
                                 src={
-                                    readThemeCookie() === 'dark' && props.mainImageDark !== undefined
+                                    readThemeCookie() === 'dark' &&
+                                    props.mainImageDark !== undefined
                                         ? urlFor(props.mainImageDark).width().url()
                                         : urlFor(props.mainImage).width().url()
                                 }
@@ -149,6 +157,9 @@ export function ArchiveArticlePreview(props) {
                     <div className={styles['image__decoration']}></div>
                 </div>
                 <div className={styles['hero__content']}>
+                    {props.markRead ? (
+                        <div className={styles['mark-read-badge']}>Přečteno</div>
+                    ) : null}
                     <h2
                         className={classnames(
                             styles['headline--medium'],
