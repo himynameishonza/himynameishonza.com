@@ -85,7 +85,7 @@ function Layout(props) {
             <Loading status={renderPage} />
             <Head
                 theme={readThemeCookie()}
-                title={props.type !== 'homepage' && props.data ? props.type === 'archive' && props.data ? props.data[0].categoryNames[0].title : props.data.title : props.title}
+                title={props.type !== 'homepage' && props.data ? props.type === 'archive' && props.data ? props.data[0].categoryNames[0].title : props.type === 'feed' ? props.title : props.data.title : props.title}
                 description={
                     props.type === 'article' && props.data
                         ? plainText(props.data.body)
