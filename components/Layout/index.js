@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Head from '../Head';
 import Header from '../Header';
-import { LayoutInfoPage, LayoutArticle, LayoutArchive, LayoutHomepage } from './Layout';
+import { LayoutInfoPage, LayoutArticle, LayoutArchive, LayoutHomepage, LayoutFeed } from './Layout';
 import CookiesModal from '../CookiesModal';
 import Footer from '../Footer';
 import Loading from '../Loading';
+import { urlFor } from '../../utils';
 
 import {
     setInitialCookies,
@@ -39,6 +40,36 @@ function Layout(props) {
         }
     }
 
+    function parseImageData(layout, data) {
+        if (layout === 'homepage') { return; }
+        else if (layout === 'archive') {
+            return "/static/rubrika-" + data[0].categoryNames[0].slug
+        }
+        else if (layout === 'article') {
+            if (data.ogImage !== undefined) {
+                return urlFor(data.ogImage).width().url();
+            }
+            else { return urlFor(data.mainImage).width().url() };
+        } else {
+            return;
+        }
+    }
+
+
+    function parseUrl(layout, data) {
+        if (layout === 'homepage') { return "https://www.himynameishonza.com"; }
+        else if (layout === 'archive') {
+            return "https://www.himynameishonza.com/rubrika/" + data[0].categoryNames[0].slug
+        }
+        else if (layout === 'article') {
+            return "https://www.himynameishonza.com/" + data.slug.current
+        } else {
+            return "https://www.himynameishonza.com";
+        }
+    }
+
+
+
     useEffect(() => {
         !scrollable
             ? document.body.classList.add('scroll-locked')
@@ -48,17 +79,20 @@ function Layout(props) {
         setRenderPage(true);
     });
 
+
     return (
         <>
             <Loading status={renderPage} />
             <Head
                 theme={readThemeCookie()}
-                title={props.type !== 'homepage' && props.data ? props.data.title : props.title}
+                title={props.type !== 'homepage' && props.data ? props.type === 'archive' && props.data ? props.data[0].categoryNames[0].title : props.type === 'feed' ? 'Feed' : props.data.title : props.title}
                 description={
                     props.type === 'article' && props.data
                         ? plainText(props.data.body)
                         : props.description
                 }
+                ogImage={parseImageData(props.type, props.data)}
+                url={parseUrl(props.type, props.data)}
             />
             {cookiesModal && (
                 <CookiesModal
@@ -81,6 +115,7 @@ function Layout(props) {
                 {props.type === 'archive' && <LayoutArchive {...props} />}
                 {props.type === 'info-page' && <LayoutInfoPage {...props} />}
                 {props.type === 'article' && <LayoutArticle {...props} />}
+                {props.type === 'feed' && <LayoutFeed {...props} />}
             </div>
             {props.type !== 'article' && <Footer />}
         </>

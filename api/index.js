@@ -28,3 +28,11 @@ export function getPostsInCategory(category) {
         `*%5B_type%3D%3D%27post%27%26%26*%5B_type%3D%3D%22category%22%26%26slug%3D%3D%22${category}%22%5D%5B0%5D._id%20in%20categories%5B%5D._ref%5D%7B%22categoryNames%22%3A%20categories%5B%5D-%3E%7Btitle%2C%20slug%7D%2C%20...%7D%7Corder(publishedAt%20desc)`
     );
 }
+
+
+export function getFeed() {
+    return fetch(
+        apiURL +
+        `*%5B_type%20%3D%3D%20%22feed%22%5D%7C%20order(publishedAt%20desc)%5B0...4%5D`
+    );
+}

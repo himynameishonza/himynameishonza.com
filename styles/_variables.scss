@@ -50,6 +50,9 @@ $header-mobile: 97px;
         --color-primary-button-text: #262523;
         --color-primary-button-hover-text: #f9f4ec;
         --color-bg-rgb: 38, 37, 35;
+        --color-shadow: #f9f4ec;
+
+        --color-plyr-main: #c7754d;
     }
 
     body.theme--light {
@@ -64,5 +67,8 @@ $header-mobile: 97px;
         --color-primary-button-text: #f9f4ec;
         --color-primary-button-hover-text: #f9f4ec;
         --color-bg-rgb: 249, 244, 236;
+        --color-shadow: #262523;
+
+        --color-plyr-main: #c7754d;
     }
 }

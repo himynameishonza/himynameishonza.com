@@ -1,6 +1,6 @@
 import React from 'react';
-import {useEffect} from 'react';
-import {useRouter} from 'next/router';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import sanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 
@@ -70,6 +70,12 @@ export function monthFormater(date, type) {
         : month[d.getMonth()] + ' ' + yearString;
 }
 
+// Time formater
+export function timeFormatter(date) {
+    const t = new Date(date);
+    return t.getHours() + ":" + t.getMinutes();
+}
+
 // Reading time
 export function readingTime(data) {
     let wordCount = 0;
@@ -132,7 +138,7 @@ export function plainText(content) {
     return contentToString;
 }
 
-const defaults = {nonTextBehavior: 'remove'};
+const defaults = { nonTextBehavior: 'remove' };
 
 function blocksToText(blocks, opts = {}) {
     const options = Object.assign({}, defaults, opts);

@@ -27,7 +27,7 @@ const Index = props => (
                     : 'Jmenuju se Honza. Mám názor a nebojim se ho použít.'
             }
         />
-        <meta property="og:image" content={props.image ? props.image : '/static/og.jpg'} />
+        <meta property="og:image" content={props.ogImage ? props.ogImage : '/static/og-' + props.theme + '.jpg'} />
         <meta property="og:url" content={props.url ? props.url : 'https://himynameishonza.com'} />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta property="og:type" content="website" />
@@ -39,11 +39,6 @@ const Index = props => (
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-config" content="/static/favicon/browserconfig.xml" />
         <meta name="theme-color" content="#ffffff" />
-        <link
-            rel="preload"
-            type="text/css"
-            href={'/static/theme-' + props.theme + '.css'}
-        />
     </Head>
 );
 

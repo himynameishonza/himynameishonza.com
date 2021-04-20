@@ -114,6 +114,14 @@
         }
     }
 
+    &.layout--feed {
+        padding: $spacer-large;
+
+        @media (max-width: $breakpoint-mobile) {
+            padding: $spacer-large $spacer-medium;
+        }
+    }
+
     &.layout--info-page {
         .layout__content {
             display: grid;
@@ -254,4 +262,12 @@
     @media (max-width: $breakpoint-mobile) {
         padding: $spacer-small;
     }
+}
+
+.end-of-feed {
+    text-align: center;
+    font-family: $font-secondary;
+    font-size: 13px;
+    color: var(--color-secondary-text);
+    padding: $spacer-large;
 }

@@ -51,7 +51,7 @@ export default {
             name: 'categories',
             title: 'Kategorie',
             type: 'array',
-            of: [{type: 'reference', to: {type: 'category'}}],
+            of: [{ type: 'reference', to: { type: 'category' } }],
         },
         {
             name: 'publishedAt',
@@ -63,6 +63,14 @@ export default {
             title: 'Obsah',
             type: 'blockContent',
         },
+        {
+            name: 'ogImage',
+            title: 'OG Image',
+            type: 'image',
+            options: {
+                hotspot: false,
+            },
+        },
     ],
 
     preview: {
@@ -72,7 +80,7 @@ export default {
             media: 'mainImage',
         },
         prepare(selection) {
-            const {author} = selection;
+            const { author } = selection;
             return Object.assign({}, selection, {
                 subtitle: author && `by ${author}`,
             });
