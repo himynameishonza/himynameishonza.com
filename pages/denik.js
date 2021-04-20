@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import { getFeed } from '../api/';
+import { getFeed } from '../api';
 import '../styles/global.scss';
 import ReactGA from 'react-ga';
 
@@ -15,6 +15,8 @@ export class Feed extends React.Component {
             <Layout
                 type="feed"
                 data={this.props.posts.result}
+                title="Deník"
+                description="Všechno to, co jsem nechtěl dávat nikam jinam."
             />
         );
     }

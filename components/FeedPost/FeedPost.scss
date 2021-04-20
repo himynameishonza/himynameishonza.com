@@ -4,8 +4,8 @@
     width: 100%;
     max-width: 600px;
     margin: $spacer-large auto;
-    padding: 0 0 $spacer-medium 0;
-    border-bottom: 1px solid var(--color-divider);
+    padding: $spacer-large 0 0 0;
+    border-top: 1px solid var(--color-divider);
 
     &:last-child {
         border-bottom: none;

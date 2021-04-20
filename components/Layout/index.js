@@ -85,11 +85,11 @@ function Layout(props) {
             <Loading status={renderPage} />
             <Head
                 theme={readThemeCookie()}
-                title={props.type !== 'homepage' && props.data ? props.type === 'archive' && props.data ? props.data[0].categoryNames[0].title : props.type === 'feed' ? 'Feed' : props.data.title : props.title}
+                title={props.type !== 'homepage' && props.data ? props.type === 'archive' && props.data ? props.data[0].categoryNames[0].title : props.data.title : props.title}
                 description={
                     props.type === 'article' && props.data
                         ? plainText(props.data.body)
-                        : props.description
+                        : props.description ? props.description : null
                 }
                 ogImage={parseImageData(props.type, props.data)}
                 url={parseUrl(props.type, props.data)}

@@ -20,6 +20,11 @@ function Navigation(props) {
                 <animated.div style={fade}>
                     <ul>
                         <li>
+                            <a href="/denik">
+                                Deník<span>Všechno to, co se mi nechce dávat jinam</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="/rubrika/knihy">
                                 Knihy<span>Recenze a doporučení na četbu</span>
                             </a>
