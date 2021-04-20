@@ -63,7 +63,13 @@ function Layout(props) {
         }
         else if (layout === 'article') {
             return "https://www.himynameishonza.com/" + data.slug.current
-        } else {
+        }
+        else if (layout === 'feed') {
+            return "https://www.himynameishonza.com/denik"
+        } else if (layout === 'info-page') {
+            return "https://www.himynameishonza.com/" + props.slug
+        }
+        else {
             return "https://www.himynameishonza.com";
         }
     }
@@ -83,17 +89,7 @@ function Layout(props) {
     return (
         <>
             <Loading status={renderPage} />
-            <Head
-                theme={readThemeCookie()}
-                title={props.type !== 'homepage' && props.data ? props.type === 'archive' && props.data ? props.data[0].categoryNames[0].title : props.type === 'feed' ? props.title : props.data.title : props.title}
-                description={
-                    props.type === 'article' && props.data
-                        ? plainText(props.data.body)
-                        : props.description ? props.description : null
-                }
-                ogImage={parseImageData(props.type, props.data)}
-                url={parseUrl(props.type, props.data)}
-            />
+
             {cookiesModal && (
                 <CookiesModal
                     saveCookies={() => initCookies(true)}
@@ -111,11 +107,35 @@ function Layout(props) {
             )}
             <div className={classnames(styles['layout'], styles['layout--' + props.type])}>
 
-                {props.type === 'homepage' && <LayoutHomepage {...props} />}
-                {props.type === 'archive' && <LayoutArchive {...props} />}
-                {props.type === 'info-page' && <LayoutInfoPage {...props} />}
-                {props.type === 'article' && <LayoutArticle {...props} />}
-                {props.type === 'feed' && <LayoutFeed {...props} />}
+                {props.type === 'homepage' &&
+                    <>
+                        <Head theme={readThemeCookie()} ogImage={parseImageData(props.type, props.data)} url={parseUrl(props.type, props.data)} />
+                        <LayoutHomepage {...props} />
+                    </>}
+
+                {props.type === 'archive' &&
+                    <>
+                        <Head title={props.data[0].categoryNames[0].title} theme={readThemeCookie()} url={parseUrl(props.type, props.data)} />
+                        <LayoutArchive {...props} />
+                    </>}
+
+                {props.type === 'info-page' &&
+                    <>
+                        <Head theme={readThemeCookie()} title={props.title} ogImage={parseImageData(props.type, props.data)} url={parseUrl(props.type, props.data)} />
+                        <LayoutInfoPage {...props} />
+                    </>}
+
+                {props.type === 'article' &&
+                    <>
+                        <Head theme={readThemeCookie()} title={props.data.title} description={plainText(props.data.body)} ogImage={parseImageData(props.type, props.data)} url={parseUrl(props.type, props.data)} />
+                        <LayoutArticle {...props} />
+                    </>}
+
+                {props.type === 'feed' &&
+                    <>
+                        <Head theme={readThemeCookie()} title="Deník" description="Všechno to, co se mi nechtělo dát jinam." url={parseUrl(props.type, props.data)} />
+                        <LayoutFeed {...props} />
+                    </>}
             </div>
             {props.type !== 'article' && <Footer />}
         </>

@@ -27,7 +27,7 @@ const Index = props => (
                     : 'Jmenuju se Honza. Mám názor a nebojim se ho použít.'
             }
         />
-        <meta property="og:image" content={props.ogImage ? props.ogImage : '/static/og-' + props.theme + '.jpg'} />
+        <meta property="og:image" content={props.ogImage ? props.ogImage : '/static/og-dark.jpg'} />
         <meta property="og:url" content={props.url ? props.url : 'https://himynameishonza.com'} />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta property="og:type" content="website" />

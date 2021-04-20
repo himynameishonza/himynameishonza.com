@@ -15,8 +15,6 @@ export class Feed extends React.Component {
             <Layout
                 type="feed"
                 data={this.props.posts.result}
-                title="Deník"
-                description="Všechno to, co jsem nechtěl dávat nikam jinam."
             />
         );
     }

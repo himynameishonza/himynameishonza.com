@@ -73,6 +73,7 @@ function OWebu(props) {
         <Layout
             type="info-page"
             title="O webu"
+            slug="o-webu"
             description="Historie webu sahá do roku 2011, kdy byl spuštěn studentský online magazín iDetail.cz. Ten kvůli celkovému nezájmu (jak čtenářů, tak autorů) přežil pouhé dva roky. Autor potom zběhnul a jako autor a fotograf krátce pracoval pro časopis Reflex. V roce 2017 byl spuštěn blog Venku zase prší, který si už našel pravidelné čtenáře."
         >
             {content}
