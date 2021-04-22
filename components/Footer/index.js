@@ -8,7 +8,6 @@ export class Footer extends React.Component {
     render() {
         return (
             <footer className={styles['footer']}>
-
                 <div className={styles['footer__left']}>
                     &copy; {n} himynameishonza.com
                     </div>

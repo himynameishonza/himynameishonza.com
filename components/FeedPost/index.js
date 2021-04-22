@@ -5,14 +5,8 @@ import urlParser from "js-video-url-parser";
 import { serializers, dateFormater, monthFormater, timeFormatter } from '../../utils';
 import PlyrPlayer from "../PlyrPlayer";
 import './index.scss'
-
-import dynamic from 'next/dynamic';
-const ReactTinyLink = dynamic(
-    () => import('react-tiny-link').then(mod => mod.ReactTinyLink),
-    { ssr: false }
-)
-
 import BlockContent from '@sanity/block-content-to-react';
+
 export function FeedPost(props) {
     let attachmentType = props.attachmentType[0];
     const attachmentData = urlParser.parse(props.attachment)
@@ -27,13 +21,6 @@ export function FeedPost(props) {
             </div>
             <BlockContent blocks={props.body} serializers={serializers} />
             {props.attachment && attachmentType === 'video' ? <PlyrPlayer type="video" provider={attachmentData.provider} source={attachmentData.id} /> : null}
-            {props.attachment && attachmentType === 'link' ? <ReactTinyLink
-                cardSize="small"
-                showGraphic={true}
-                maxLine={2}
-                minLine={1}
-                url={props.attachment}
-            /> : null}
             {props.attachment && attachmentType === 'embed' ? <div dangerouslySetInnerHTML={{ __html: props.attachment }} /> : null}
 
         </article>

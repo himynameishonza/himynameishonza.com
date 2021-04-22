@@ -83,6 +83,7 @@ function Layout(props) {
         cookiesModal || navState ? setScrollable(false) : setScrollable(true);
         setTheme();
         setRenderPage(true);
+
     });
 
 
@@ -90,11 +91,14 @@ function Layout(props) {
         <>
             <Loading status={renderPage} />
 
-            {cookiesModal && (
+            {/* This block causing <div> in <div> browser error */}
+            {/* {cookiesModal && (
                 <CookiesModal
                     saveCookies={() => initCookies(true)}
                 />
-            )}
+            )} */}
+            {/* This block causing <div> in <div> browser error */}
+
             {props.type !== 'error' && (
                 <Header
                     showAbout

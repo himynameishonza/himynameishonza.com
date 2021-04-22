@@ -24,6 +24,7 @@ export function LayoutArchive(props) {
                     />
                     {props.data.slice(1).map(article => (
                         <ArchiveArticlePreview
+                            key={article.title}
                             title={article.title}
                             link={'/' + article.slug.current}
                             excerpt={article.body}

@@ -18,7 +18,7 @@ function Facts() {
                     (Bez)významná fakta
                 </h3>
                 <p className={classnames(styles['text--no-margin'], styles['paragraph--medium'])}>
-                    <em>{fact.content}</em>
+                    <em suppressHydrationWarning={true}>{fact.content}</em>
                 </p>
             </div>
         </section>

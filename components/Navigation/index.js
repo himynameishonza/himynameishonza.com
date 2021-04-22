@@ -10,9 +10,9 @@ function Navigation(props) {
         <section className={styles['navigation']}>
             <div className={styles['nav__illustration']}>
                 <animated.div style={fade}>
-                    <blockquote className={styles['quote']}>
+                    <blockquote className={styles['quote']} suppressHydrationWarning={true}>
                         {quote.content}
-                        <cite>– {quote.author}</cite>
+                        <cite suppressHydrationWarning={true}>– {quote.author}</cite>
                     </blockquote>
                 </animated.div>
             </div>

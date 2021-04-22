@@ -26,7 +26,7 @@ export default {
                 list: [
                     { title: 'Text', value: 'text' },
                     { title: 'Video', value: 'video' },
-                    { title: 'Audio', value: 'audio' },
+                    { title: 'Hudba', value: 'hudba' },
                     { title: 'Kniha', value: 'kniha' },
                     { title: 'Hra', value: 'hra' },
                     { title: 'Film', value: 'film' }

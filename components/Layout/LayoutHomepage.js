@@ -1,5 +1,5 @@
 import styles from './Layout.scss';
-import {HeroArticlePreview, FeaturedArticlePreview} from '../ArticlePreview';
+import { HeroArticlePreview, FeaturedArticlePreview } from '../ArticlePreview';
 import Facts from '../Facts';
 import SideContent from '../SideContent';
 

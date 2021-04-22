@@ -58,13 +58,6 @@ function Header(props) {
                         </div>
                     )}
 
-                    {/* {props.showAbout && props.navState && !settingsState && (
-                        <a href="/o-webu" aria-label="Přejít na stránku O webu">
-                            <span className={styles['svg__text']}>O webu</span>
-                            <Icon icon="ui-about" size="24" />
-                        </a>
-                    )} */}
-
                     {props.navState && !settingsState && (
                         <a
                             aria-label="Přejít na stránku Nastavení"

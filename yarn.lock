@@ -5124,11 +5124,6 @@ react-spring@^8.0.27:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
 
-react-tiny-link@^3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/react-tiny-link/-/react-tiny-link-3.6.1.tgz#69da07660e16e2498c42458b09b02d4c41e6683c"
-  integrity sha512-spQghU5GqBWsLE8rKOTYo/h6MNoZJn8Gqs6jpeQuo/eq2bALkeOke2FfSswVOhGN8z8riDY+TqaJ2eaoNKtrAw==
-
 react@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.1.tgz#6e0600416bd57574e3f86d92edba3d9008726127"
