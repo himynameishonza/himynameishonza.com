@@ -48,5 +48,18 @@ export default {
             title: 'Příloha',
             type: 'text',
         },
+        {
+            name: 'attachmentType',
+            title: 'Typ přílohy',
+            type: 'array',
+            of: [{ type: 'string' }],
+            options: {
+                list: [
+                    { title: 'Odkaz', value: 'link' },
+                    { title: 'Youtube/Vimeo', value: 'video' },
+                    { title: 'Embed', value: 'embed' },
+                ]
+            }
+        },
     ],
 };

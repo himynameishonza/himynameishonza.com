@@ -15,7 +15,7 @@ export function LayoutFeed(props) {
                     )}
                 >Deník</h3>
 
-                {props.data.map(post => (<FeedPost publishedAt={post.publishedAt} contentType={post.contentType} body={post.body} attachment={post.attachment} />))}
+                {props.data.map(post => (<FeedPost publishedAt={post.publishedAt} contentType={post.contentType} body={post.body} attachmentType={post.attachmentType} attachment={post.attachment} />))}
 
                 <div className={styles['end-of-feed']}>Začátek deníku. Nebo teda konec. Prostě tu už nic dalšího neni!</div>
             </div>
