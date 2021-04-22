@@ -12,12 +12,16 @@ export function FeedPost(props) {
     const attachmentData = urlParser.parse(props.attachment)
 
     return (
-        <article className={styles["feed-post"]}>
-            <div className={styles["feed-post__header"]}>
+        <article className={styles['feed-post']}>
+            <div className={styles['feed-post__header']}>
                 <h3 className={classnames(styles['headline--medium'], styles['text--no-margin'])}>
-                    {dateFormater(props.publishedAt) + '. ' + monthFormater(props.publishedAt) + ' ' + timeFormatter(props.publishedAt)}
+                    {dateFormater(props.data.publishedAt) +
+                        '. ' +
+                        monthFormater(props.data.publishedAt) +
+                        ' ' +
+                        timeFormatter(props.data.publishedAt)}
                 </h3>
-                <div className={styles['content-type']}>{props.contentType[0]}</div>
+                <div className={styles['header__content-type']}>{props.data.contentType[0]}</div>
             </div>
             <BlockContent blocks={props.body} serializers={serializers} />
             {props.attachment && attachmentType === 'video' ? <PlyrPlayer type="video" provider={attachmentData.provider} source={attachmentData.id} /> : null}
@@ -26,4 +30,3 @@ export function FeedPost(props) {
         </article>
     );
 }
-
