@@ -10,18 +10,17 @@ import BlockContent from '@sanity/block-content-to-react';
 export function FeedPost(props) {
     let attachmentType = props.attachmentType[0];
     const attachmentData = urlParser.parse(props.attachment)
-
     return (
         <article className={styles['feed-post']}>
             <div className={styles['feed-post__header']}>
                 <h3 className={classnames(styles['headline--medium'], styles['text--no-margin'])}>
-                    {dateFormater(props.data.publishedAt) +
+                    {dateFormater(props.publishedAt) +
                         '. ' +
-                        monthFormater(props.data.publishedAt) +
+                        monthFormater(props.publishedAt) +
                         ' ' +
-                        timeFormatter(props.data.publishedAt)}
+                        timeFormatter(props.publishedAt)}
                 </h3>
-                <div className={styles['header__content-type']}>{props.data.contentType[0]}</div>
+                <div className={styles['header__content-type']}>{props.contentType[0]}</div>
             </div>
             <BlockContent blocks={props.body} serializers={serializers} />
             {props.attachment && attachmentType === 'video' ? <PlyrPlayer type="video" provider={attachmentData.provider} source={attachmentData.id} /> : null}

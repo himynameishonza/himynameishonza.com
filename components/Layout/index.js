@@ -91,13 +91,11 @@ function Layout(props) {
         <>
             <Loading status={renderPage} />
 
-            {/* This block causing <div> in <div> browser error */}
-            {/* {cookiesModal && (
+            {cookiesModal && (
                 <CookiesModal
                     saveCookies={() => initCookies(true)}
                 />
-            )} */}
-            {/* This block causing <div> in <div> browser error */}
+            )}
 
             {props.type !== 'error' && (
                 <Header

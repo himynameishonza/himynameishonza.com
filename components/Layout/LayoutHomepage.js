@@ -2,6 +2,7 @@ import styles from './Layout.scss';
 import { HeroArticlePreview, FeaturedArticlePreview } from '../ArticlePreview';
 import Facts from '../Facts';
 import SideContent from '../SideContent';
+import { readMarkReadSetting } from "../../utils/cookies"
 
 export function LayoutHomepage(props) {
     let markReadCookie = readMarkReadSetting();
