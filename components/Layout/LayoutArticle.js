@@ -1,13 +1,12 @@
 import styles from './Layout.scss';
 import Image from 'next/image';
 import BlockContent from '@sanity/block-content-to-react';
-import {serializers, urlFor, readingTime, dateFormater, monthFormater} from '../../utils';
-import {readThemeCookie, saveMarkReadCookie} from '../../utils/cookies';
-import {useSpring, animated} from 'react-spring';
+import { serializers, urlFor, readingTime, dateFormater, monthFormater } from '../../utils';
+import { readThemeCookie } from '../../utils/cookies';
+import { useSpring, animated } from 'react-spring';
 
 export function LayoutArticle(props) {
-    const fade = useSpring({opacity: 1, from: {opacity: 0}});
-    saveMarkReadCookie(props.data.slug.current);
+    const fade = useSpring({ opacity: 1, from: { opacity: 0 } });
     return (
         <>
             <div className={styles['layout__content']}>
@@ -18,7 +17,7 @@ export function LayoutArticle(props) {
                                 alt="Image"
                                 src={
                                     readThemeCookie() === 'dark' &&
-                                    props.data.mainImageDark !== undefined
+                                        props.data.mainImageDark !== undefined
                                         ? urlFor(props.data.mainImageDark).width().url()
                                         : urlFor(props.data.mainImage).width().url()
                                 }
@@ -37,11 +36,11 @@ export function LayoutArticle(props) {
                         {props.data.categoryNames[0].title !== 'Texty' ? (
                             <h3 className={styles['headline--medium']}>
                                 {props.data.categoryNames[0].title === 'Venku zase prší' ||
-                                props.data.categoryNames[0].title === 'Texty'
+                                    props.data.categoryNames[0].title === 'Texty'
                                     ? null
                                     : dateFormater(props.data.publishedAt) +
-                                      '. ' +
-                                      monthFormater(props.data.publishedAt)}
+                                    '. ' +
+                                    monthFormater(props.data.publishedAt)}
                                 {props.data.categoryNames[0].title === 'Venku zase prší' ? null : (
                                     <span>|</span>
                                 )}
@@ -65,7 +64,7 @@ export function LayoutArticle(props) {
                                         alt="Image"
                                         src={
                                             readThemeCookie() === 'dark' &&
-                                            props.data.mainImageDark !== undefined
+                                                props.data.mainImageDark !== undefined
                                                 ? urlFor(props.data.mainImageDark).width().url()
                                                 : urlFor(props.data.mainImage).width().url()
                                         }

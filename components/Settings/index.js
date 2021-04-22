@@ -1,25 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Settings.scss';
 import Illustration from '../Illustration';
-import {useTransition, animated} from 'react-spring';
+import { useTransition, animated } from 'react-spring';
 import {
     readThemeCookie,
     saveThemeCookie,
     setTheme,
-    readMarkReadSetting,
-    setMarkReadSetting,
 } from '../../utils/cookies';
 
 function Settings(props) {
     const [settingsChanged, setSettingsChanged] = useState(false);
     const [themeSwitch, setThemeSwitch] = useState(readThemeCookie() === 'dark' ? true : false);
-    const [markReadSwitch, setMarkReadSwitch] = useState(
-        readMarkReadSetting() === 'true' ? true : false
-    );
+
     const transitions = useTransition(settingsChanged, null, {
-        from: {position: 'absolute', bottom: 0, opacity: 0},
-        enter: {opacity: 1},
-        leave: {opacity: 0},
+        from: { position: 'absolute', bottom: 0, opacity: 0 },
+        enter: { opacity: 1 },
+        leave: { opacity: 0 },
     });
 
     useEffect(() => {
@@ -63,7 +59,7 @@ function Settings(props) {
                         </div>
                     </li>
 
-                    <li>
+                    {/* <li>
                         <div className={styles['setting__title']}>Označit přečtené články</div>
                         <div className={styles['setting__content']}>
                             <div className={styles['switch']}>
@@ -80,7 +76,7 @@ function Settings(props) {
                                 <div className={styles['switch__text']}>Ano</div>
                             </div>
                         </div>
-                    </li>
+                    </li> */}
 
                     {/* <li>
                     <div className={styles['setting__title']}>Možnosti sdílení</div>
@@ -97,7 +93,7 @@ function Settings(props) {
                 </ul>
 
                 {transitions.map(
-                    ({item, key, props}) =>
+                    ({ item, key, props }) =>
                         item && (
                             <animated.div key={key} style={props}>
                                 <div className={styles['message']}>Nastavení uloženo</div>

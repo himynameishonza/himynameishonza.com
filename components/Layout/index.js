@@ -107,6 +107,8 @@ function Layout(props) {
                     type={props.type}
                 />
             )}
+
+
             <div className={classnames(styles['layout'], styles['layout--' + props.type])}>
 
                 {props.type === 'homepage' &&

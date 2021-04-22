@@ -1,12 +1,9 @@
 import React from 'react';
 import styles from './SideContent.scss';
-import {SidecarArticlePreview} from '../ArticlePreview';
-import {checkIfRead, readMarkReadSetting} from '../../utils/cookies';
+import { SidecarArticlePreview } from '../ArticlePreview';
 
 export class SideContent extends React.Component {
     render() {
-        let markReadCookie = readMarkReadSetting();
-        let showReadBadge = markReadCookie === 'true' ? true : false;
 
         return (
             <section className={styles['side-content']} aria-label="Sekce Venku zase prší">
@@ -16,28 +13,28 @@ export class SideContent extends React.Component {
                     title={this.props.data[0].title}
                     excerpt={this.props.data[0].body}
                     link={this.props.data[0].slug.current}
-                    markRead={showReadBadge && checkIfRead(this.props.data[0].slug.current)}
+                    markRead={false}
                 />
 
                 <SidecarArticlePreview
                     title={this.props.data[1].title}
                     excerpt={this.props.data[1].body}
                     link={this.props.data[1].slug.current}
-                    markRead={showReadBadge && checkIfRead(this.props.data[1].slug.current)}
+                    markRead={false}
                 />
 
                 <SidecarArticlePreview
                     title={this.props.data[2].title}
                     excerpt={this.props.data[2].body}
                     link={this.props.data[2].slug.current}
-                    markRead={showReadBadge && checkIfRead(this.props.data[2].slug.current)}
+                    markRead={false}
                 />
 
                 <SidecarArticlePreview
                     title={this.props.data[3].title}
                     excerpt={this.props.data[3].body}
                     link={this.props.data[3].slug.current}
-                    markRead={showReadBadge && checkIfRead(this.props.data[3].slug.current)}
+                    markRead={false}
                 />
             </section>
         );

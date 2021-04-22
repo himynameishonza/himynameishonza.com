@@ -1,11 +1,8 @@
 import styles from './Layout.scss';
-import {ArchiveArticlePreview} from '../ArticlePreview';
+import { ArchiveArticlePreview } from '../ArticlePreview';
 import classnames from 'classnames';
-import {checkIfRead, readMarkReadSetting} from '../../utils/cookies';
 
 export function LayoutArchive(props) {
-    let markReadCookie = readMarkReadSetting();
-    let showReadBadge = markReadCookie === 'true' ? true : false;
     return (
         <>
             <div className={styles['layout__content']}>
@@ -24,7 +21,7 @@ export function LayoutArchive(props) {
                         excerpt={props.data[0].body}
                         mainImage={props.data[0].mainImage}
                         mainImageDark={props.data[0].mainImageDark}
-                        markRead={showReadBadge && checkIfRead(props.data[0].slug.current)}
+                        markRead={false}
                     />
                     {props.data.slice(1).map(article => (
                         <ArchiveArticlePreview
@@ -34,7 +31,7 @@ export function LayoutArchive(props) {
                             excerpt={article.body}
                             mainImage={article.mainImage}
                             mainImageDark={article.mainImageDark}
-                            markRead={showReadBadge && checkIfRead(article.slug.current)}
+                            markRead={false}
                         />
                     ))}
                 </div>
