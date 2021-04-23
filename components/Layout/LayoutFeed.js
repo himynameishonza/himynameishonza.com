@@ -1,5 +1,5 @@
 import styles from './Layout.scss';
-import { FeedPost } from '../FeedPost';
+import FeedPost from '../FeedPost';
 import classnames from 'classnames';
 
 export function LayoutFeed(props) {

@@ -7,6 +7,7 @@
         "start": "next start"
     },
     "dependencies": {
+        "@microlink/react": "^5.5.5",
         "@sanity/block-content-to-react": "^2.0.7",
         "@sanity/client": "^2.1.0",
         "@sanity/image-url": "^0.140.19",
@@ -28,6 +29,7 @@
         "react-gtm-module": "^2.0.11",
         "react-spring": "^8.0.27",
         "standard": "^10.0.3",
+        "styled-components": "^5.2.3",
         "universal-cookie": "^4.0.4",
         "vercel": "^21.2.3",
         "webpack": "^4.41.2"
